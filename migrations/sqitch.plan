@@ -1,0 +1,4 @@
+%syntax-version=1.0.0
+%project=hypnotic_peafowl
+
+01-base-schema 2021-04-09T16:56:18Z "Etudiant O'clock",,, <etudiant@teleporteur> # Schéma de base
