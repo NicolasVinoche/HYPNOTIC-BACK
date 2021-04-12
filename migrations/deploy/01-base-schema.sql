@@ -6,9 +6,10 @@ CREATE TABLE users (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     first_name TEXT NOT NULL, 
     last_name TEXT NOT NULL,  
-    "role" INT, 
+    "role" INT DEFAULT 1, 
     email TEXT NOT NULL, 
-    "password" TEXT NOT NULL  
+    "password" TEXT NOT NULL, 
+    pseudo TEXT NOT NULL  
 ); 
 
 CREATE TABLE subscriptions (
