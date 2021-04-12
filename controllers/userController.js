@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt'); 
-const { response } = require('express');
-var jwt = require('jsonwebtoken'); 
-const userDataMapper = require('../dataMappers/userDataMapper')
+var jwtUtils = require('../utils/jwt'); 
+const userDataMapper = require('../dataMappers/userDataMapper') 
 
 module.exports = {
     register: async function(req, res, error) { 
@@ -9,7 +8,8 @@ module.exports = {
         const firstName = req.body.first_name;
         const lastName = req.body.last_name;
         const email = req.body.email;
-        const password = req.body.password
+        const password = req.body.password; 
+        const pseudo = req.body.pseudo;
         
         //TODO regex
 
@@ -17,14 +17,14 @@ module.exports = {
         const hash = bcrypt.hashSync(password, salt);
                 try {
             
-                    const newUser = await userDataMapper.newUser(firstName, lastName, email, hash);
+                    const newUser = await userDataMapper.newUser(firstName, lastName, email, hash, pseudo);
                     console.log(newUser)
                     res.json({data:newUser})
                 } catch (error) {
                     console.log(error);
                 }
         
-        if (firstName == null || lastName == null || email == null || password == null) {
+        if (firstName == null || lastName == null || email == null || password == null || pseudo == null) {
             return res.status(400).json({'error': error});
         } 
 
@@ -38,7 +38,37 @@ module.exports = {
 
     }, 
 
-    login: function(req,res) {
+    login: async function(req, res, error) {
+        
+        const email = req.body.email;
+        const password = req.body.password;
 
+        
+        try {
+            const loginUser = await userDataMapper.loginUser(email)
+            console.log(loginUser)
+            
+            if (loginUser) {
+                   const match = await bcrypt.compare(password, loginUser.password);
+                   console.log('match:', match)
+                   
+                       if(match) {
+                        return res.status(200).json({
+                            'userId': loginUser.id,
+                            'token': jwtUtils.generateTokenForUser(loginUser)
+                        }); 
+                        console.log('Login successful');
+                           
+                       } else { return res.status(403).json({"error": "invalid password"});
+                     }
+
+            } else {
+                return res.status(400).json({'Utilisateur introuvale': error});
+                
+            }
+         } catch (error) {
+            console.log(error);
+        } 
+        
     }
 }
