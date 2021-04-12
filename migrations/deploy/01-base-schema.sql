@@ -9,7 +9,8 @@ CREATE TABLE users (
     "role" INT DEFAULT 1, 
     email TEXT NOT NULL, 
     "password" TEXT NOT NULL, 
-    pseudo TEXT NOT NULL  
+    pseudo TEXT NOT NULL,  
+    isAdmin BOOLEAN NOT NULL DEFAULT FALSE
 ); 
 
 CREATE TABLE subscriptions (
@@ -39,7 +40,8 @@ CREATE TABLE packs (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title TEXT NOT NULL, 
     content TEXT, 
-    price NUMERIC(6, 2) NOT NULL
+    price NUMERIC(6, 2) NOT NULL, 
+    tag TEXT
 ); 
 
 CREATE TABLE albums (

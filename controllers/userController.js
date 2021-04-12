@@ -1,18 +1,60 @@
-const bcrypt = require('bcrypt'); 
+const bcrypt = require('bcrypt');  
 var jwtUtils = require('../utils/jwt'); 
 const userDataMapper = require('../dataMappers/userDataMapper') 
 
+const regex_password = /^(?=.*\d).{5,20}$/;
+const regex_email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 module.exports = {
     register: async function(req, res, error) { 
-        
         const firstName = req.body.first_name;
         const lastName = req.body.last_name;
         const email = req.body.email;
         const password = req.body.password; 
         const pseudo = req.body.pseudo;
         
-        //TODO regex
+        function isEmpty(str) {
+            return !str.trim().length;
+        }
 
+        const errors = [];
+                    
+        if (isEmpty(firstName)) {
+            errors.push('missing first name'); 
+        };
+
+        if (isEmpty(lastName)) {
+            errors.push('missing last name');
+        };
+        
+        if (isEmpty(email)) {
+            errors.push('missing email');
+        }; 
+
+        if (!regex_email.test(email)) {
+            errors.push('wrong email format');
+        };
+
+        if (isEmpty(password)) {
+            errors.push(`missing password`);
+        };
+
+        if (!regex_password.test(password)) {
+            errors.push('password invalid (must length 5 - 20 and include 1 number at least)');
+        };
+
+        if (isEmpty(pseudo)) {
+            errors.push('missing pseudo');
+        };
+
+        if (pseudo.length >= 13 || pseudo.length <= 4) {
+            errors.push('wrong pseudo (must be length 5 - 12)');
+        }; 
+
+        if (errors.length) {
+            return res.status(400).json({errors});
+        }
+        
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
                 try {
@@ -24,9 +66,6 @@ module.exports = {
                     console.log(error);
                 }
         
-        if (firstName == null || lastName == null || email == null || password == null || pseudo == null) {
-            return res.status(400).json({'error': error});
-        } 
 
         
         
