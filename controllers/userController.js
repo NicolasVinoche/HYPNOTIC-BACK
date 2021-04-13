@@ -10,7 +10,8 @@ module.exports = {
         const firstName = req.body.first_name;
         const lastName = req.body.last_name;
         const email = req.body.email;
-        const password = req.body.password; 
+        const password = req.body.password;
+        const confirmPassword = req.body.confirmPassword
         const pseudo = req.body.pseudo;
         
         function isEmpty(str) {
@@ -43,6 +44,14 @@ module.exports = {
             errors.push('password invalid (must length 5 - 20 and include 1 number at least)');
         };
 
+        if (isEmpty(confirmPassword)) {
+            errors.push('missing password confirmation');
+        };
+
+        if (confirmPassword !== password) {
+            errors.push('password confimation not correct');
+        };
+
         if (isEmpty(pseudo)) {
             errors.push('missing pseudo');
         };
@@ -55,25 +64,25 @@ module.exports = {
             return res.status(400).json({errors});
         }
         
-        const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync(password, salt);
-                try {
-            
-                    const newUser = await userDataMapper.newUser(firstName, lastName, email, hash, pseudo);
-                    console.log(newUser)
-                    res.json({data:newUser})
-                } catch (error) {
-                    console.log(error);
-                }
-        
+        const userFound = await userDataMapper.findUser(email)
 
+        if(!userFound) { 
+             const salt = bcrypt.genSaltSync(10);
+             const hash = bcrypt.hashSync(password, salt);
+                     try {
+                 
+                         const newUser = await userDataMapper.newUser(firstName, lastName, email, hash, pseudo);
+                         console.log(newUser)
+                         res.json({data:newUser})
+                     } catch (error) {
+                         console.log(error);
+                     }
+
+         } else {
+            return res.status(400).json('this email already exist');
+         }
         
         
-        // const userFound = await userDataMapper.findUser(userMail)
-        // .then(function async (userFound) {
-        //     if(!userFound) {
-        //     }
-        // })
 
     }, 
 
@@ -96,7 +105,6 @@ module.exports = {
                             'userId': loginUser.id,
                             'token': jwtUtils.generateTokenForUser(loginUser)
                         }); 
-                        console.log('Login successful');
                            
                        } else { return res.status(403).json({"error": "invalid password"});
                      }

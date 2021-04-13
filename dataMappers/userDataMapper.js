@@ -1,8 +1,8 @@
 const client = require('./client');
 
 module.exports = {
-    async findUser(userMail) {
-        const result = await client.query(`SELECT * FROM users WHERE email = $1`,[userMail]);
+    async findUser(email) {
+        const result = await client.query(`SELECT * FROM users WHERE email = $1`,[email]);
         if (result.rowCount === 0) {
             return undefined;
         }
