@@ -1,0 +1,29 @@
+[
+    {
+        "title": "lejolipacksample",
+        "content": "description du jolipacksample",
+        "price": 20,
+        "tag": "joli"
+    },
+
+    {
+        "title": "le packsample de léon",
+        "content": "description du packsample de léon",
+        "price": 70.49,
+        "tag": "wow"
+    },
+
+    {
+        "title": "oui",
+        "content": "description du oui",
+        "price": 0.14,
+        "tag": "oui"
+    },
+
+    {
+        "title": "le packsample de léon 2",
+        "content": "description du 2eme packsample de léon",
+        "price": 74,
+        "tag": "wow"
+    }
+]

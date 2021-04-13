@@ -6,12 +6,12 @@ const regex_password = /^(?=.*\d).{5,20}$/;
 const regex_email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 module.exports = {
-    register: async function(req, res, error) { 
+    register: async function(req, res, error, next) { 
         const firstName = req.body.first_name;
         const lastName = req.body.last_name;
         const email = req.body.email;
         const password = req.body.password;
-        const confirmPassword = req.body.confirmPassword
+        const confirmPassword = req.body.confirmPassword;
         const pseudo = req.body.pseudo;
         
         function isEmpty(str) {
@@ -75,7 +75,7 @@ module.exports = {
                          console.log(newUser)
                          res.json({data:newUser})
                      } catch (error) {
-                         console.log(error);
+                         next(error);
                      }
 
          } else {
@@ -106,7 +106,8 @@ module.exports = {
                             'token': jwtUtils.generateTokenForUser(loginUser)
                         }); 
                            
-                       } else { return res.status(403).json({"error": "invalid password"});
+                       } else { 
+                            return res.status(403).json({"error": "invalid password"});
                      }
 
             } else {
@@ -114,7 +115,7 @@ module.exports = {
                 
             }
          } catch (error) {
-            console.log(error);
+            next(error);
         } 
         
     }
