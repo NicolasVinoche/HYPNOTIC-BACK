@@ -2,17 +2,17 @@ const client = require ('./client');
 
 module.exports = {
 
-    async findAllProjects() {
+    async findAllTips() {
         const result = await client.query(`SELECT * 
-                                           FROM projects 
+                                           FROM tips 
                                            ORDER BY id`); 
         return result.rows;
     }, 
 
-    async findProjectsById (projectId) {
+    async findTipsById (tipsId) {
         const result = await client.query(`SELECT * 
-                                            FROM projects 
-                                            WHERE id = $1`, [projectId]); 
+                                            FROM tips 
+                                            WHERE id = $1`, [tipsId]); 
         if (result.rowCount === 0) {
             return undefined;
         } 

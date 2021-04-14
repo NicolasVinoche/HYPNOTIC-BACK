@@ -62,7 +62,7 @@ module.exports = {
 
         if (errors.length) {
             return res.status(400).json({errors});
-        }
+        };
         
         const userFound = await userDataMapper.findUser(email)
 
