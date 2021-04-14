@@ -23,7 +23,7 @@ module.exports = {
 
             const jsonCart = JSON.parse(cart.cart); 
             console.log('JSON:', jsonCart)
-            return res.json({ data: jsonCart });
+            return res.json({ cart: jsonCart });
         } catch (error) {
             next(error);
         }
