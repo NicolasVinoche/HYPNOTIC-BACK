@@ -69,12 +69,23 @@ module.exports = {
         if(!userFound) { 
              const salt = bcrypt.genSaltSync(10);
              const hash = bcrypt.hashSync(password, salt);
-                     try {
+                    
+                    try {
                  
                          const newUser = await userDataMapper.newUser(firstName, lastName, email, hash, pseudo);
-                         console.log(newUser)
-                         res.json({data:newUser})
-                     } catch (error) {
+                         console.log(newUser);
+                         
+                         return res.status(200).json ({
+                            'role': newUser.role,
+                            'userId': newUser.id,
+                            'first_name': newUser.first_name,
+                            'last_name': newUser.last_name,
+                            'email': newUser.email,
+                            'pseudo': newUser.pseudo,
+                            'isAdmin': newUser.isAdmin
+                        });
+                     
+                    } catch (error) {
                          next(error);
                      }
 
@@ -89,7 +100,23 @@ module.exports = {
     login: async function(req, res, error) {
         
         const email = req.body.email;
-        const password = req.body.password;
+        const password = req.body.password; 
+
+        function isEmpty(str) {
+            return !str.trim().length;
+        } 
+
+        if (isEmpty(email)) {
+            errors.push('missing email');
+        }; 
+
+        if (isEmpty(password)) {
+            errors.push(`missing password`);
+        }; 
+
+        if (errors.length) {
+            return res.status(400).json({errors});
+        }
 
         
         try {
