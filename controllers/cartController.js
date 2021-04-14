@@ -15,5 +15,14 @@ module.exports = {
         } catch (error) {
             next(error);
         }
+    },
+    getCart: async function(req, res, next) {
+        const userId = req.params.id 
+        try { 
+            const cart = await cartDataMapper.getCart(userId);
+           return res.json({ data: cart });
+        } catch (error) {
+            next(error);
+        }
     }
 }
