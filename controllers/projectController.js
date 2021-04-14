@@ -5,7 +5,7 @@ module.exports = {
         try { 
             const projects = await projectsDataMapper.findAllProjects(); 
 
-            res.json({ data: packs });
+            res.json({ data: projects });
         } catch (error) {
             next(error);
         }

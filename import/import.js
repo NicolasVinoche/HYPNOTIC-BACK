@@ -2,7 +2,8 @@ require('dotenv').config();
 
 const { Client } = require('pg');
 const users = require('../data/users.json'); 
-const packs = require ('../data/pack.json');
+const packs = require ('../data/pack.json'); 
+const projects = require('../data/project.json');
 
 const client = new Client({ connectionString: process.env.DATABASE_URL, 
     ssl: {
@@ -39,6 +40,18 @@ const client = new Client({ connectionString: process.env.DATABASE_URL,
                                 pack.content, 
                                 pack.price, 
                                 pack.tag
+                            ]);
+    } 
+
+    for(let project of projects){
+        console.log("Insertion de la table projects :", project.title); 
+
+        await client.query(`INSERT INTO projects(title, description, image_path, video_path) 
+                            VALUES ($1, $2, $3, $4)`, [
+                                project.title, 
+                                project.description, 
+                                project.image_path, 
+                                project.video_path
                             ]);
     }
 
