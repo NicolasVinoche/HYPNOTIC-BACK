@@ -18,9 +18,13 @@ module.exports = {
     },
     getCart: async function(req, res, next) {
         const userId = req.params.id 
-        try { 
+        try {  
             const cart = await cartDataMapper.getCart(userId);
-           return res.json({ data: cart });
+            console.log('stringCart :', cart);
+
+            const jsonCart = JSON.parse(cart.cart); 
+            console.log('JSON:', jsonCart)
+            return res.json({ data: jsonCart });
         } catch (error) {
             next(error);
         }
