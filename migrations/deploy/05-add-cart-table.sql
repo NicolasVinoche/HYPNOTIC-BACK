@@ -3,6 +3,6 @@
 BEGIN;
 
 ALTER TABLE users 
-ADD COLUMN cart TEXT;
+ADD COLUMN cart TEXT DEFAULT '[]';
 
 COMMIT;
