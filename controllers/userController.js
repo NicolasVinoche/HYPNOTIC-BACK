@@ -104,7 +104,9 @@ module.exports = {
 
         function isEmpty(str) {
             return !str.trim().length;
-        } 
+        }  
+
+        const errors = [];
 
         if (isEmpty(email)) {
             errors.push('missing email');
