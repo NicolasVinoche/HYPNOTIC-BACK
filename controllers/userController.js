@@ -102,8 +102,12 @@ module.exports = {
                    
                        if(match) {
                         return res.status(200).json({
-                            loginUser,
+                            'role': loginUser.role,
                             'userId': loginUser.id,
+                            'first_name': loginUser.first_name,
+                            'last_name': loginUser.last_name,
+                            'email': loginUser.email,
+                            'pseudo': loginUser.pseudo,
                             'token': jwtUtils.generateTokenForUser(loginUser)
                         }); 
                            
