@@ -4,6 +4,7 @@ const { Client } = require('pg');
 const users = require('../data/users.json'); 
 const packs = require ('../data/pack.json'); 
 const projects = require('../data/project.json');
+const tips = require('../data/tips.json')
 
 const client = new Client({ connectionString: process.env.DATABASE_URL, 
     ssl: {
@@ -52,6 +53,18 @@ const client = new Client({ connectionString: process.env.DATABASE_URL,
                                 project.description, 
                                 project.image_path, 
                                 project.video_path
+                            ]);
+    }
+
+    for(let tip of tips){
+        console.log("Insertion de la table tips :", tip.title); 
+
+        await client.query(`INSERT INTO tips(title, category, image_path, video_path) 
+                            VALUES ($1, $2, $3, $4)`, [
+                                tip.title, 
+                                tip.category, 
+                                tip.image_path,
+                                tip.video_path
                             ]);
     }
 

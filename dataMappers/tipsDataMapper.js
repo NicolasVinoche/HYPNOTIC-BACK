@@ -9,15 +9,15 @@ module.exports = {
         return result.rows;
     }, 
 
-    async findTipsById (tipsId) {
+    async findTipsByCategory (category) {
         const result = await client.query(`SELECT * 
                                             FROM tips 
-                                            WHERE id = $1`, [tipsId]); 
+                                            WHERE category = $1`, [category]); 
         if (result.rowCount === 0) {
             return undefined;
         } 
 
-        return result.rows[0];
+        return result.rows;
     }
 
 }

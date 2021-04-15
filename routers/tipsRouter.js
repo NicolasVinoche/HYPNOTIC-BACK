@@ -4,6 +4,6 @@ const router = express.Router();
 const tipsController = require('../controllers/tipsController');
 
 router.get('/', tipsController.getTips); 
-router.get('/:id', tipsController.tipsById); 
+router.get('/:category?', tipsController.tipsByCategory); 
 
 module.exports = router;

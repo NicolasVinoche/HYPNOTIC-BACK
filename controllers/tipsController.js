@@ -11,11 +11,11 @@ module.exports = {
         }
     }, 
     
-    tipsById: async function(req, res, next) {
-        const tipsId = req.params.id; 
+    tipsByCategory: async function(req, res, next) {
+        const category = req.query.q; 
 
         try {
-            const tips = await tipsDataMapper.findTipsById(tipsId); 
+            const tips = await tipsDataMapper.findTipsByCategory(category); 
 
             res.json({ data: tips });
         

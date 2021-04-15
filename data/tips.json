@@ -1,0 +1,33 @@
+[
+    {
+        "title": "tips1", 
+        "category":"effect", 
+        "image_path":"chemin", 
+        "video_path":"chemin"
+    }, 
+    {
+        "title": "tips2", 
+        "category":"effect", 
+        "image_path":"chemin", 
+        "video_path":"chemin"
+    }, 
+    {
+        "title": "tips3", 
+        "category":"effect", 
+        "image_path":"chemin", 
+        "video_path":"chemin"
+    }, 
+    {
+        "title": "tips4", 
+        "category":"midi", 
+        "image_path":"chemin", 
+        "video_path":"chemin"
+    }, 
+    {
+        "title": "tips5", 
+        "category":"midi", 
+        "image_path":"chemin", 
+        "video_path":"chemin"
+    }
+
+]

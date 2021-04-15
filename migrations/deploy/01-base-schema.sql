@@ -61,7 +61,8 @@ CREATE TABLE tips (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title TEXT NOT NULL, 
     category TEXT NOT NULL, 
-    image_path TEXT 
+    image_path TEXT, 
+    video_path TEXT 
 ); 
  
 -- Insertion des FK dans albums
