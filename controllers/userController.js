@@ -126,7 +126,7 @@ module.exports = {
             console.log(loginUser)
             
             if (loginUser) {
-                   const match = await bcrypt.compare(password, loginUser.password);
+                const match = await bcrypt.compare(password, loginUser.password);
                    console.log('match:', match)
                        if(match) {
                         return res.status(200).json({
@@ -140,12 +140,16 @@ module.exports = {
                             'token': jwtUtils.generateTokenForUser(loginUser)
                         }); 
                            
-                       } else { 
-                            return res.status(403).json({"errors": "invalid password"});
+                       } else {
+                        //    return res.status(403).json({"error": "invalid password"});
+                        errors.push(`invalid password`);
+                        return res.status(400).json({errors});
                      }
 
             } else {
-                return res.status(400).json({'Utilisateur introuvale': errors});
+                // return res.status(400).json({'Utilisateur introuvale': errors});
+                errors.push(`Utilisateur introuvale`);
+                return res.status(400).json({errors});
                 
             }
          } catch (error) {
