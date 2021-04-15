@@ -82,7 +82,7 @@ module.exports = {
                             'last_name': newUser.last_name,
                             'email': newUser.email,
                             'pseudo': newUser.pseudo,
-                            'isAdmin': newUser.isAdmin
+                            'isadmin': newUser.isadmin
                         });
                      
                     } catch (error) {
@@ -97,7 +97,7 @@ module.exports = {
 
     }, 
 
-    login: async function(req, res, error) {
+    login: async function(req, res, next) {
         
         const email = req.body.email;
         const password = req.body.password; 
@@ -128,7 +128,6 @@ module.exports = {
             if (loginUser) {
                    const match = await bcrypt.compare(password, loginUser.password);
                    console.log('match:', match)
-                   
                        if(match) {
                         return res.status(200).json({
                             'role': loginUser.role,
@@ -136,16 +135,17 @@ module.exports = {
                             'first_name': loginUser.first_name,
                             'last_name': loginUser.last_name,
                             'email': loginUser.email,
-                            'pseudo': loginUser.pseudo,
+                            'pseudo': loginUser.pseudo, 
+                            'isadmin': loginUser.isadmin,
                             'token': jwtUtils.generateTokenForUser(loginUser)
                         }); 
                            
                        } else { 
-                            return res.status(403).json({"error": "invalid password"});
+                            return res.status(403).json({"errors": "invalid password"});
                      }
 
             } else {
-                return res.status(400).json({'Utilisateur introuvale': error});
+                return res.status(400).json({'Utilisateur introuvale': errors});
                 
             }
          } catch (error) {
