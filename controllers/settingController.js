@@ -5,65 +5,330 @@ const settingDataMapper = require('../dataMappers/settingDataMapper');
 const regex_password = /^(?=.*\d).{5,20}$/;
 
 module.exports = {
-    updateUser: async function(req, res, next) {
-        const userId = req.params.id;
-        const pseudo = req.body.pseudo;
-        const password = req.body.password; 
-        const confirmPassword = req.body.confirmPassword; 
-        const oldPassword = req.body.oldPassword;
+    // updateUser: async function(req, res, next) {
+    //     const userId = req.params.id;
+    //     const pseudo = req.body.pseudo;
+    //     const password = req.body.password; 
+    //     const confirmPassword = req.body.confirmPassword; 
+    //     const oldPassword = req.body.oldPassword;
         
-        function isEmpty(str) {
-            return !str.trim().length;
-        } 
+    //     function isEmpty(str) {
+    //         return !str.trim().length;
+    //     } 
 
-        const errors = []; 
+    //     const errors = []; 
 
-        if (isEmpty(password)) {
-            errors.push(`missing password`);
-        }; 
+    //     if (isEmpty(password)) {
+    //         errors.push(`missing password`);
+    //     }; 
 
-        if (!regex_password.test(password)) {
-            errors.push('password invalid (must length 5 - 20 and include 1 number at least)');
-        };
+    //     if (!regex_password.test(password)) {
+    //         errors.push('password invalid (must length 5 - 20 and include 1 number at least)');
+    //     };
         
-        if (confirmPassword !== password) {
-            errors.push('password confimation not correct');
-        };
+    //     if (confirmPassword !== password) {
+    //         errors.push('password confimation not correct');
+    //     };
         
-        if (isEmpty(pseudo)) {
-            errors.push('missing pseudo');
-        }; 
+    //     if (isEmpty(pseudo)) {
+    //         errors.push('missing pseudo');
+    //     }; 
 
-        if (pseudo.length >= 13 || pseudo.length <= 4) {
-            errors.push('wrong pseudo (must be length 5 - 12)');
-        }; 
+    //     if (pseudo.length >= 13 || pseudo.length <= 4) {
+    //         errors.push('wrong pseudo (must be length 5 - 12)');
+    //     }; 
 
-        if (errors.length) {
-            return res.status(400).json({errors});
-        };
+    //     if (errors.length) {
+    //         return res.status(400).json({errors});
+    //     };
 
-        try {
-            const validationUser = await settingDataMapper.findPassword(userId); 
-            console.log('validationUser :', validationUser);
-            if(validationUser) {
-                const match = await bcrypt.compare(oldPassword, validationUser.password);
-                console.log('match:', match)
-                if(match) {
-                    const salt = bcrypt.genSaltSync(10);
-                    const hash = bcrypt.hashSync(password, salt);
+    //     try {
+    //         const validationUser = await settingDataMapper.findPassword(userId); 
+    //         console.log('validationUser :', validationUser);
+    //         if(validationUser) {
+    //             const match = await bcrypt.compare(oldPassword, validationUser.password);
+    //             console.log('match:', match)
+    //             if(match) {
+    //                 const salt = bcrypt.genSaltSync(10);
+    //                 const hash = bcrypt.hashSync(password, salt);
 
-                    const userSetting = await settingDataMapper.updateUser(pseudo, hash, userId); 
+    //                 const userSetting = await settingDataMapper.updateUser(pseudo, hash, userId); 
             
-                        return res.status(200).json({ 'pseudo': userSetting.pseudo}); 
-                } else { 
-                    errors.push(`invalid password`);
-                    return res.status(400).json({errors}); 
-                }
-            }
+    //                     return res.status(200).json({ 'pseudo': userSetting.pseudo}); 
+    //             } else { 
+    //                 errors.push(`invalid password`);
+    //                 return res.status(400).json({errors}); 
+    //             }
+    //         }
 
-        } catch(error) {
-            next(error);
-        }
+    //     } catch(error) {
+    //         next(error);
+    //     }
 
-    }
+    // },
+
+    // updatePseudo: async function(req, res, next) {
+    //     const userId = req.params.id;
+    //     const pseudo = req.body.pseudo;
+    //     const oldPassword = req.body.oldPassword;
+        
+    //     function isEmpty(str) {
+    //         return !str.trim().length;
+    //     } 
+
+    //     const errors = [];
+
+    //     if (isEmpty(oldPassword)) {
+    //         errors.push(`missing password`);
+    //     };
+        
+    //     if (isEmpty(pseudo)) {
+    //         errors.push('missing pseudo');
+    //     };
+
+    //     if (pseudo.length >= 13 || pseudo.length <= 4) {
+    //         errors.push('wrong pseudo (must be length 5 - 12)');
+    //     };
+
+    //     if (errors.length) {
+    //         return res.status(400).json({errors});
+    //     };
+
+    //     try {
+    //         const validationUser = await settingDataMapper.findPassword(userId);
+    //         console.log('validationUser :', validationUser);
+    //         if(validationUser) {
+    //             const match = await bcrypt.compare(oldPassword, validationUser.password);
+    //             console.log('match:', match)
+    //             if(match) {
+
+    //                 const userSetting = await settingDataMapper.updatePseudo(pseudo, userId);
+            
+    //                     return res.status(200).json({ 'pseudo': userSetting.pseudo});
+    //             } else { 
+    //                 errors.push(`invalid password`);
+    //                 return res.status(400).json({errors});
+    //             }
+    //         }
+
+    //     } catch(error) {
+    //         next(error);
+    //     }
+
+    // },
+
+    // updatePassword: async function(req, res, next) {
+    //     const userId = req.params.id;
+    //     const password = req.body.password;
+    //     const confirmPassword = req.body.confirmPassword;
+    //     const oldPassword = req.body.oldPassword;
+        
+    //     function isEmpty(str) {
+    //         return !str.trim().length;
+    //     }
+
+    //     const errors = [];
+
+    //     if (isEmpty(password)) {
+    //         errors.push(`missing password`);
+    //     };
+
+    //     if (!regex_password.test(password)) {
+    //         errors.push('password invalid (must length 5 - 20 and include 1 number at least)');
+    //     };
+        
+    //     if (confirmPassword !== password) {
+    //         errors.push('password confimation not correct');
+    //     };
+
+    //     if (errors.length) {
+    //         return res.status(400).json({errors});
+    //     };
+
+    //     try {
+    //         const validationUser = await settingDataMapper.findPassword(userId);
+    //         console.log('validationUser :', validationUser);
+    //         if(validationUser) {
+    //             const match = await bcrypt.compare(oldPassword, validationUser.password);
+    //             console.log('match:', match)
+    //             if(match) {
+        //                 const salt = bcrypt.genSaltSync(10);
+        //                 const hash = bcrypt.hashSync(password, salt);
+        
+        //                 const userSetting = await settingDataMapper.updatePassword(hash, userId);
+        
+        //                     return res.status(200).json({ 'id': userSetting.id});
+        //             } else {
+            //                 errors.push(`invalid password`);
+            //                 return res.status(400).json({errors});
+            //             }
+            //         }
+            
+            //     } catch(error) {
+                //         next(error);
+                //     }
+                
+
+
+
+
+
+                updateUser: async function(req, res, next) {
+                    const userId = req.params.id;
+                    const pseudo = req.body.pseudo;
+                    const password = req.body.password; 
+                    const confirmPassword = req.body.confirmPassword; 
+                    const oldPassword = req.body.oldPassword;
+                    
+                    function isEmpty(str) {
+                        return !str.trim().length;
+                    } 
+                
+                    const errors = []; 
+                
+                    if (isEmpty(password)) {
+                    
+                    function isEmpty(str) {
+                        return !str.trim().length;
+                    } 
+                
+                    const errors = [];
+                
+                    if (isEmpty(oldPassword)) {
+                        errors.push(`missing password`);
+                    };
+                    
+                    if (isEmpty(pseudo)) {
+                        errors.push('missing pseudo');
+                    };
+                
+                    if (pseudo.length >= 13 || pseudo.length <= 4) {
+                        errors.push('wrong pseudo (must be length 5 - 12)');
+                    };
+                
+                    if (errors.length) {
+                        return res.status(400).json({errors});
+                    };
+                
+                    try {
+                        const validationUser = await settingDataMapper.findPassword(userId);
+                        console.log('validationUser :', validationUser);
+                        if(validationUser) {
+                            const match = await bcrypt.compare(oldPassword, validationUser.password);
+                            console.log('match:', match)
+                            if(match) {
+                
+                                const userSetting = await settingDataMapper.updatePseudo(pseudo, userId);
+                        
+                                    return res.status(200).json({ 'pseudo': userSetting.pseudo});
+                            } else { 
+                                errors.push(`invalid password`);
+                                return res.status(400).json({errors});
+                            }
+                        }
+                
+                    } catch(error) {
+                        next(error);
+                        }
+                    } else if (isEmpty(pseudo)) {
+                        function isEmpty(str) {
+                            return !str.trim().length;
+                        }
+                
+                        const errors = [];
+                
+                        if (isEmpty(password)) {
+                            errors.push(`missing password`);
+                        };
+                
+                        if (!regex_password.test(password)) {
+                            errors.push('password invalid (must length 5 - 20 and include 1 number at least)');
+                        };
+                        
+                        if (confirmPassword !== password) {
+                            errors.push('password confimation not correct');
+                        };
+                
+                        if (errors.length) {
+                            return res.status(400).json({errors});
+                        };
+                
+                        try {
+                            const validationUser = await settingDataMapper.findPassword(userId);
+                            console.log('validationUser :', validationUser);
+                            if(validationUser) {
+                                const match = await bcrypt.compare(oldPassword, validationUser.password);
+                                console.log('match:', match)
+                                if(match) {
+                                    const salt = bcrypt.genSaltSync(10);
+                                    const hash = bcrypt.hashSync(password, salt);
+                
+                                    const userSetting = await settingDataMapper.updatePassword(hash, userId);
+                            
+                                        return res.status(200).json({ 'id': userSetting.id});
+                                } else {
+                                    errors.push(`invalid password`);
+                                    return res.status(400).json({errors});
+                                }
+                            }
+                
+                        } catch(error) {
+                            next(error);
+                        }
+                    }; 
+                
+                    if (!regex_password.test(password)) {
+                        errors.push('password invalid (must length 5 - 20 and include 1 number at least)');
+                    };
+                    
+                    if (confirmPassword !== password) {
+                        errors.push('password confimation not correct');
+                    };
+                    
+                
+                    if (pseudo.length >= 13 || pseudo.length <= 4) {
+                        errors.push('wrong pseudo (must be length 5 - 12)');
+                    }; 
+                
+                    if (errors.length) {
+                        return res.status(400).json({errors});
+                    };
+                
+                    try {
+                        const validationUser = await settingDataMapper.findPassword(userId); 
+                        console.log('validationUser :', validationUser);
+                        if(validationUser) {
+                            const match = await bcrypt.compare(oldPassword, validationUser.password);
+                            console.log('match:', match)
+                            if(match) {
+                                const salt = bcrypt.genSaltSync(10);
+                                const hash = bcrypt.hashSync(password, salt);
+                
+                                const userSetting = await settingDataMapper.updateUser(pseudo, hash, userId); 
+                        
+                                    return res.status(200).json({ 'pseudo': userSetting.pseudo}); 
+                            } else { 
+                                errors.push(`invalid password`);
+                                return res.status(400).json({errors}); 
+                            }
+                        }
+                
+                    } catch(error) {
+                        next(error);
+                    }
+                
+                },
 }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+ 
