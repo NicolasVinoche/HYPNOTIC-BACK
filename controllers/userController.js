@@ -141,13 +141,11 @@ module.exports = {
                         }); 
                            
                        } else {
-                        //    return res.status(403).json({"error": "invalid password"});
                         errors.push(`invalid password`);
                         return res.status(400).json({errors});
                      }
 
             } else {
-                // return res.status(400).json({'Utilisateur introuvale': errors});
                 errors.push(`Utilisateur introuvale`);
                 return res.status(400).json({errors});
                 
