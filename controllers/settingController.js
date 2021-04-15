@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+var jwtUtils = require('../utils/jwt'); 
 const settingDataMapper = require('../dataMappers/settingDataMapper'); 
 
 const regex_password = /^(?=.*\d).{5,20}$/;
@@ -42,17 +43,18 @@ module.exports = {
         };
 
         try {
-            const validationUser = await settingDataMapper.findPassword(userId);
+            const validationUser = await settingDataMapper.findPassword(userId); 
+            console.log('validationUser :', validationUser);
             if(validationUser) {
                 const match = await bcrypt.compare(oldPassword, validationUser.password);
                 console.log('match:', match)
                 if(match) {
                     const salt = bcrypt.genSaltSync(10);
-                    const hash = bcrypt.hashSync(validationUser.password, salt);
+                    const hash = bcrypt.hashSync(password, salt);
 
                     const userSetting = await settingDataMapper.updateUser(pseudo, hash, userId); 
             
-                        return res.status(200).json({ 'pseudo': userSetting.pseudo }); 
+                        return res.status(200).json({ 'pseudo': userSetting.pseudo}); 
                 } else { 
                     errors.push(`invalid password`);
                     return res.status(400).json({errors}); 
