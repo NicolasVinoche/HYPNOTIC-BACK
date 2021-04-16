@@ -17,6 +17,7 @@ module.exports = {
     try {
         const { product, email } = req.body;
        // const checkEmail = await userDataMapper.findUser(email); 
+       console.log('JE SUIS DANS LE TRY');
 
         // if (checkEmail) {
         //     console.log('le check email passe')
