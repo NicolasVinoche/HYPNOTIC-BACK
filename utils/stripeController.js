@@ -1,5 +1,12 @@
+const cors = require("cors");
+const express = require("express");
 const stripe = require("stripe")("sk_test_51IgW8cIXwT38my0aJiBhw4YHO8xtVt49kOEV7NONO251J7TaZBhW402AUj0s7FMYdgP0ojiq4CnP5WX5q5qChrPI00yochtDIm"); 
-const uuid = require("uuid/v4");
+const uuid = require("uuid");
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
 
 module.exports = {
 
