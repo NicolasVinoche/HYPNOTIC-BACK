@@ -67,7 +67,7 @@ module.exports = {
                 }, 
             });
 
-            console.log('CUSTOMER OK')
+            console.log('CUSTOMER OK :', customer)
 
             const subscription = await stripe.subscription.create({
                 customer: customer.id,
