@@ -11,6 +11,7 @@ app.use(cors());
 module.exports = {
 
     stripeCheckout: async function(req, res, next) {
+        console.log(req.body);
 
         let error;
         let status;
@@ -23,7 +24,7 @@ module.exports = {
             source: token.id
         }); 
 
-        const idempotency_key = uuidv4();
+        const idempotencyKey = uuidv4();
         const charge = await stripe.charges.create(
             {
                 amount: product.price * 100,
@@ -43,7 +44,7 @@ module.exports = {
                 }
             },
             {
-                idempotency_key
+                idempotencyKey
             }
         );
         console.log("Charge:", { charge });
