@@ -1,8 +1,9 @@
 const express = require('express'); 
 const router = express.Router();  
 
-const stripeController = require('../utils/stripeController'); 
+const stripeController = require('../controllers/stripeController'); 
 
-router.post('/', stripeController.stripeCheckout); 
+router.post('/checkout', stripeController.stripeCheckout);
+router.post('/sub', stripeController.stripeSub);
 
 module.exports = router;

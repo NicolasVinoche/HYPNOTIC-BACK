@@ -10,8 +10,6 @@ const masterclassRouter = require('./masterclassRouter');
 const settingRouter = require('./settingRouter'); 
 const stripeRouter = require('./stripeRouter');
 
-
-
 const errorsMiddleware = require('../controllers/errorsMiddleware');
 
 const router = express.Router();
@@ -24,7 +22,7 @@ router.use('/tips', tipsRouter);
 router.use('/cart', cartRouter);
 router.use('/masterclass', masterclassRouter);
 router.use('/setting', settingRouter); 
-router.use('/checkout', stripeRouter);
+router.use('/', stripeRouter);
 
 
 router.use(errorsMiddleware.error404);
