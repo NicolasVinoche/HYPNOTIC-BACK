@@ -16,11 +16,11 @@ module.exports = {
 
     try {
         const { product, email } = req.body;
-       // const checkEmail = await userDataMapper.findUser(email); 
+        const checkEmail = await userDataMapper.findUser(email); 
        console.log('JE SUIS DANS LE TRY');
 
-        // if (checkEmail) {
-        //     console.log('le check email passe')
+        if (checkEmail) {
+            console.log('le check email passe')
 
             // On fait la somme de tout les produits et on la stocke
             const allProductPrice = product.map(item => item.price).reduce((memo, val) => memo + val)
@@ -39,9 +39,9 @@ module.exports = {
                 }
             );
             res.json({'client_secret': paymentIntent['client_secret']})
-        // } else {
-        //     return res.status(400).json({errors :[`Utilisateur introuvale`]});
-        // }
+        } else {
+            return res.status(400).json({errors :[`Utilisateur introuvale`]});
+        }
 
     }   catch (error){
             next(error);
