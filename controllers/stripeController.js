@@ -76,9 +76,9 @@ module.exports = {
                 const status = subscription['latest_invoice']['payment_intent']['status']
                 const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
                 if(subscription) {
-                    console.log('FIN DU SUB')
+                    const subscriber = await userDataMapper.subscriber(email);
+                    res.json({'client_secret': client_secret, 'status': status, 'data': subscriber});
                 }
-                res.json({'client_secret': client_secret, 'status': status});
             }else {
                 return res.status(400).json({errors :[`Utilisateur introuvable`]});
             }
