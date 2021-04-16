@@ -2,6 +2,7 @@ const cors = require("cors");
 const express = require("express");
 const stripe = require("stripe")("sk_test_51IgW8cIXwT38my0aJiBhw4YHO8xtVt49kOEV7NONO251J7TaZBhW402AUj0s7FMYdgP0ojiq4CnP5WX5q5qChrPI00yochtDIm"); 
 const { uuid } = require('uuidv4');
+const { all } = require("../routers");
 
 const app = express();
 
@@ -18,7 +19,9 @@ module.exports = {
 
     try {
         const { product, token } = req.body;
-        // stripe.customers nous créer un token 
+        // stripe.customers nous créer un token
+        const allProductPrice = product.map(item => item.price).reduce((memo, val) => memo + val)
+        console.log(allProductPrice)
         const customer = await stripe.customers.create({
             email: token.email,
             source: token.id
@@ -27,7 +30,7 @@ module.exports = {
         const idempotencyKey = uuid();
         const charge = await stripe.charges.create(
             {
-                amount: product.price * 100,
+                amount: allProductPrice * 100,
                 currency: "EUR",
                 customer: customer.id,
                 receipt_email: token.email,
