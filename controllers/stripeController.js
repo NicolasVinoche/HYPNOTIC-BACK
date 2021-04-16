@@ -1,4 +1,4 @@
-const cors = require("cors");
+// const cors = require("cors");
 const express = require("express");
 const stripe = require("stripe")("sk_test_51IgW8cIXwT38my0aJiBhw4YHO8xtVt49kOEV7NONO251J7TaZBhW402AUj0s7FMYdgP0ojiq4CnP5WX5q5qChrPI00yochtDIm"); 
 const { uuid } = require('uuidv4'); 
@@ -7,7 +7,14 @@ const userDataMapper = require('../dataMappers/userDataMapper');
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+var allowCrossDomain = function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+   next();
+ };
+  app.use(allowCrossDomain);
 
 module.exports = {
 
@@ -49,7 +56,7 @@ module.exports = {
         
         console.log('JE SUIS DANS LA METHODE')
         try {
-            const { email, payment_method} = req.body; 
+            const { email, payment_method } = req.body; 
             console.log('REQ BODY :', email, payment_method);
 
             const customer = await stripe.customers.create({
