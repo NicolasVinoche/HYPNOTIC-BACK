@@ -1,7 +1,7 @@
 const cors = require("cors");
 const express = require("express");
 const stripe = require("stripe")("sk_test_51IgW8cIXwT38my0aJiBhw4YHO8xtVt49kOEV7NONO251J7TaZBhW402AUj0s7FMYdgP0ojiq4CnP5WX5q5qChrPI00yochtDIm"); 
-const { v4: uuidv4 } = require('uuid');
+const { uuid } = require('uuidv4');
 
 const app = express();
 
@@ -24,7 +24,7 @@ module.exports = {
             source: token.id
         }); 
 
-        const idempotencyKey = uuidv4();
+        const idempotencyKey = uuid();
         const charge = await stripe.charges.create(
             {
                 amount: product.price * 100,
