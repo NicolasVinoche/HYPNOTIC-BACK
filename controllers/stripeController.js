@@ -64,9 +64,11 @@ module.exports = {
 
             const subscription = await stripe.subscription.create({
                 customer: customer.id,
-                items: [{plan: 'price_1IgqssIXwT38my0aexbDg4BE' }],
+                items: [{plan: 'price_1IgtTzIXwT38my0apodcr4Yn'}],
                 expand: ['latest_invoice.payment_intent']
             });
+
+            console.log('SUBSCRIPTION OK')
 
             const status = subscription['latest_invoice']['payment_intent']['status']
             const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
