@@ -78,13 +78,15 @@ module.exports = {
                 if(subscription) {
                     const subscriber = await userDataMapper.subscriber(email);
                     res.json({'client_secret': client_secret, 'status': status, 
-                    'role': subscriber.role,
-                    'userId': subscriber.id,
-                    'first_name': subscriber.first_name,
-                    'last_name': subscriber.last_name,
-                    'email': subscriber.email,
-                    'pseudo': subscriber.pseudo,
-                    'isadmin': subscriber.isadmin
+                    data :{
+                        'role': subscriber.role,
+                        'userId': subscriber.id,
+                        'first_name': subscriber.first_name,
+                        'last_name': subscriber.last_name,
+                        'email': subscriber.email,
+                        'pseudo': subscriber.pseudo,
+                        'isadmin': subscriber.isadmin
+                    }
                 });
                 }
             }else {
