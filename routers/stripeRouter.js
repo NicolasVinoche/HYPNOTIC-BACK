@@ -3,6 +3,6 @@ const router = express.Router();
 
 const stripeController = require('../utils/stripeController'); 
 
-router.post('/checkout', stripeController.stripeCheckout); 
+router.post('/', stripeController.stripeCheckout); 
 
 module.exports = router;

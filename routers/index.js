@@ -7,7 +7,8 @@ const streamRouter = require('./streamRouter');
 const tipsRouter = require('./tipsRouter');
 const cartRouter = require('./cartRouter');
 const masterclassRouter = require('./masterclassRouter');
-const settingRouter = require('./settingRouter');
+const settingRouter = require('./settingRouter'); 
+const stripeRouter = require('./stripeRouter');
 
 
 
@@ -22,7 +23,9 @@ router.use('/stream', streamRouter);
 router.use('/tips', tipsRouter);
 router.use('/cart', cartRouter);
 router.use('/masterclass', masterclassRouter);
-router.use('/setting', settingRouter);
+router.use('/setting', settingRouter); 
+router.use('/checkout', stripeRouter);
+
 
 router.use(errorsMiddleware.error404);
 router.use(errorsMiddleware.error500);
