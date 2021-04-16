@@ -52,6 +52,9 @@ module.exports = {
         );
         console.log("Charge:", { charge });
         status = "success";
+        if(status === "success") {
+            console.log("je suis dans le status")
+        }
     }   catch (error){
             console.error("Error:", error);
             status = "failure";
