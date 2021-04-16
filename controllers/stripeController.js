@@ -71,7 +71,7 @@ module.exports = {
 
             const subscription = await stripe.subscription.create({
                 customer: customer.id,
-                items: [{price: 'price_1IgtTzIXwT38my0apodcr4Yn'}],
+                items: [{plan: 'prod_JJWXHw15DPtHh1'}],
                 expand: ['latest_invoice.payment_intent']
             });
 
