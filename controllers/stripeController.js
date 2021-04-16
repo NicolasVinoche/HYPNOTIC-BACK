@@ -46,6 +46,7 @@ module.exports = {
 },
 
     stripeSub: async function(req, res, next) { 
+        
         console.log('JE SUIS DANS LA METHODE')
         try {
             const { email, payment_method} = req.body; 
@@ -56,8 +57,10 @@ module.exports = {
                 email: email,
                 invoice_settings: {
                     default_payment_method: payment_method,
-                },
+                }, 
             });
+
+            console.log('CUSTOMER OK')
 
             const subscription = await stripe.subscription.create({
                 customer: customer.id,
