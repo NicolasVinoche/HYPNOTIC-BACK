@@ -27,7 +27,7 @@ module.exports = {
         const idempotencyKey = uuid();
         const charge = await stripe.charges.create(
             {
-                amount: product.price * 100,
+                amount: Number(product.price) * 100,
                 currency: "usd",
                 customer: customer.id,
                 receipt_email: token.email,
