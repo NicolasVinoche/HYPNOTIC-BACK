@@ -46,9 +46,10 @@ module.exports = {
 },
 
     stripeSub: async function(req, res, next) { 
-
+        console.log('JE SUIS DANS LA METHODE')
         try {
-            const { email, payment_method} = req.body;
+            const { email, payment_method} = req.body; 
+            console.log('REQ BODY :', email, payment_method);
 
             const customer = await stripe.customers.create({
                 payment_method: payment_method,
