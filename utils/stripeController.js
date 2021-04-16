@@ -11,7 +11,7 @@ app.use(cors());
 module.exports = {
 
     stripeCheckout: async function(req, res, next) {
-        console.log(req.body);
+        console.log('MON REQ BODY :',req.body);
 
         let error;
         let status;
@@ -27,8 +27,8 @@ module.exports = {
         const idempotencyKey = uuid();
         const charge = await stripe.charges.create(
             {
-                amount: Number(product.price) * 100,
-                currency: "usd",
+                amount: product.price * 100,
+                currency: "EUR",
                 customer: customer.id,
                 receipt_email: token.email,
                 description: `Purchased the ${product.name}`,
