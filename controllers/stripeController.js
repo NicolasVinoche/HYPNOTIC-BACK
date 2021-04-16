@@ -54,36 +54,37 @@ module.exports = {
 
     stripeSub: async function(req, res, next) { 
         
-        console.log('JE SUIS DANS LA METHODE')
         try {
             const { email, payment_method } = req.body; 
-            console.log('REQ BODY :', email, payment_method);
+            const checkEmail = await userDataMapper.findUser(email); 
 
-            const customer = await stripe.customers.create({
-                payment_method: payment_method,
-                email: email,
-                invoice_settings: {
-                    default_payment_method: payment_method,
-                }, 
-            });
+            if (checkEmail) {
+                const customer = await stripe.customers.create({
+                    payment_method: payment_method,
+                    email: email,
+                    invoice_settings: {
+                        default_payment_method: payment_method,
+                    }, 
+                });
 
-            console.log('CUSTOMER OK :', customer)
+                const subscription = await stripe.subscriptions.create({
+                    customer: customer.id,
+                    items: [{plan: 'price_1IgtTzIXwT38my0apodcr4Yn'}],
+                    expand: ['latest_invoice.payment_intent']
+                });
 
-            const subscription = await stripe.subscriptions.create({
-                customer: customer.id,
-                items: [{plan: 'price_1IgtTzIXwT38my0apodcr4Yn'}],
-                expand: ['latest_invoice.payment_intent']
-            });
-
-            console.log('SUBSCRIPTION OK')
-
-            const status = subscription['latest_invoice']['payment_intent']['status']
-            const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
-
-            res.json({'client_secret': client_secret, 'status': status});
-            
+                const status = subscription['latest_invoice']['payment_intent']['status']
+                const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
+                if(subscription) {
+                    console.log('FIN DU SUB')
+                }
+                res.json({'client_secret': client_secret, 'status': status});
+            }else {
+                return res.status(400).json({errors :[`Utilisateur introuvable`]});
+            }
         } catch(error) {
             next(error);
-        }
+        } 
+    
     }
 }
