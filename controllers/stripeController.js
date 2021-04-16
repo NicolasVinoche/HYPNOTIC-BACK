@@ -80,7 +80,6 @@ module.exports = {
                 if(subscription) {
                     const subscriber = await userDataMapper.subscriber(email);
                     res.json({'client_secret': client_secret, 'status': status, 
-                    data :{
                         'role': subscriber.role,
                         'userId': subscriber.id,
                         'first_name': subscriber.first_name,
@@ -89,7 +88,7 @@ module.exports = {
                         'pseudo': subscriber.pseudo,
                         'isadmin': subscriber.isadmin,
                         'token': jwtUtils.generateTokenForUser(subscriber)
-                    }
+                    
                 });
                 }
             }else {
