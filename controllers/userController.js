@@ -69,7 +69,6 @@ module.exports = {
         if(!userFound) { 
              const salt = bcrypt.genSaltSync(10);
              const hash = bcrypt.hashSync(password, salt);
-                    
                     try {
                  
                          const newUser = await userDataMapper.newUser(firstName, lastName, email, hash, pseudo);
@@ -90,13 +89,9 @@ module.exports = {
                      }
 
          } else {
-            return res.status(400).json('this email already exist');
-         }
-        
-        
-
-    }, 
-
+            return res.status(400).json({errors :['this email already exist']});
+         } 
+    },
     login: async function(req, res, next) {
         
         const email = req.body.email;
