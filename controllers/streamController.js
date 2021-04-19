@@ -1,4 +1,3 @@
-// const streamDataMapper = require('../dataMappers/streamDataMapper');
 const Vimeo = require('vimeo').Vimeo;
 const client = new Vimeo(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.ACCESS_TOKEN);
 

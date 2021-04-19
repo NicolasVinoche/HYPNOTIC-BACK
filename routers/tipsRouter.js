@@ -3,7 +3,6 @@ const router = express.Router();
 
 const tipsController = require('../controllers/tipsController');
 
-router.get('/', tipsController.getTips); 
-router.get('/:category?', tipsController.tipsByCategory); 
+router.get('/audio_effect', tipsController.getAudioEffect);
 
 module.exports = router;
