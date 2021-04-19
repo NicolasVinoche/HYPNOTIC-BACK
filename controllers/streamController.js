@@ -5,16 +5,14 @@ const client = new Vimeo(process.env.CLIENT_ID, process.env.CLIENT_SECRET, proce
 module.exports = {
     getStreams: async function(req, res, next) {
         try { 
-            // const streams = await streamDataMapper.findAllStreams(); 
-            // res.json({ data: streams });
-
+            
             client.request({
                 method: 'GET',
                 path: '/tags/Stream/videos'
               }, function (error, body, status_code, headers) {
                 res.json({ ...[body.data] });
               
-                console.log(body);
+                console.log(body.data);
               })
         } catch (error) {
             next(error);
