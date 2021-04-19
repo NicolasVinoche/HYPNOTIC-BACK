@@ -12,7 +12,7 @@ module.exports = {
                 method: 'GET',
                 path: '/tags/Stream/videos'
               }, function (error, body, status_code, headers) {
-                res.json({ ...body.data });
+                res.json({ ...[body.data] });
               
                 console.log(body);
               })
