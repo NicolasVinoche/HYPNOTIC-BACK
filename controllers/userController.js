@@ -141,7 +141,8 @@ module.exports = {
                             'email': loginUser.email,
                             'pseudo': loginUser.pseudo, 
                             'isadmin': loginUser.isadmin,
-                            'token': jwtUtils.generateTokenForUser(loginUser)
+                            'token': jwtUtils.generateTokenForUser(loginUser) 
+                            
                             
                         });  
                         
