@@ -138,12 +138,13 @@ module.exports = {
                             //    sameSite: 'strict'
                            
                             // });  
-                            cookieParser.signedCookie ("jwt", token, {
+                            res.cookie ("jwt", token, {
                                 expires: new Date(Date.now() + 6000), 
                                  httpOnly: true, 
                                  sameSite: 'strict'
                             
-                             })
+                             }); 
+                            console.log('Success');
                             
                             
                            
