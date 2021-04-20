@@ -132,12 +132,18 @@ module.exports = {
 
 
                        if(match) { 
-                            res.cookie("jwt", token, {
-                               expires: new Date(Date.now() + 6000), 
-                               httpOnly: true, 
-                               sameSite: 'strict'
+                            // res.cookie("jwt", token, {
+                            //    expires: new Date(Date.now() + 6000), 
+                            //    httpOnly: true, 
+                            //    sameSite: 'strict'
                            
-                            }); 
+                            // });  
+                            cookieParser.JSONCookie ("jwt", token, {
+                                expires: new Date(Date.now() + 6000), 
+                                 httpOnly: true, 
+                                 sameSite: 'strict'
+                            
+                             })
                             
                             
                            
@@ -149,12 +155,13 @@ module.exports = {
                             'email': loginUser.email,
                             'pseudo': loginUser.pseudo, 
                             'isadmin': loginUser.isadmin,
-                            //'token': jwtUtils.generateTokenForUser(loginUser) 
-                            // 'cookie': res.cookie ("jwt", token, {
-                            //        expires: new Date(Date.now() + 6000), 
-                            //         httpOnly: true
+                            'token': jwtUtils.generateTokenForUser(loginUser), 
+                            'cookie': cookieParser.JSONCookie ("jwt", token, {
+                                   expires: new Date(Date.now() + 6000), 
+                                    httpOnly: true, 
+                                    sameSite: 'strict'
                                
-                            //     })
+                                })
                         });  
                         
                            
