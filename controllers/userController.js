@@ -138,7 +138,7 @@ module.exports = {
                             //    sameSite: 'strict'
                            
                             // });  
-                            cookieParser.JSONCookie ("jwt", token, {
+                            cookieParser.signedCookie ("jwt", token, {
                                 expires: new Date(Date.now() + 6000), 
                                  httpOnly: true, 
                                  sameSite: 'strict'
@@ -155,8 +155,8 @@ module.exports = {
                             'email': loginUser.email,
                             'pseudo': loginUser.pseudo, 
                             'isadmin': loginUser.isadmin,
-                            'token': jwtUtils.generateTokenForUser(loginUser), 
-                            'cookie': cookieParser.JSONCookie ("jwt", token, {
+                            //'token': jwtUtils.generateTokenForUser(loginUser), 
+                            'cookie': cookieParser.signedCookie ("jwt", token, {
                                    expires: new Date(Date.now() + 6000), 
                                     httpOnly: true, 
                                     sameSite: 'strict'
