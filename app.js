@@ -18,8 +18,10 @@ const app = express();
 //  };
 //   app.use(allowCrossDomain); 
 var corsOptions = { credentials: true,
-                    allowedHeaders: 'Accept, Content-Type',
-                    preflightContinue: true
+                    allowedHeaders: 'Accept, Content-Type, Authorization',
+                    preflightContinue: true,
+                    methods: 'GET, PUT, POST, DELETE, OPTION',
+                    optionSuccessStatus: true
 };
 app.use(cors(corsOptions)); 
 app.use(express.json());
