@@ -18,7 +18,7 @@ const app = express();
 //  };
 //   app.use(allowCrossDomain); 
 var corsOptions = { credentials: true,
-                    allowedHeaders: 'Accept, Content-Type, Authorization',
+                    allowedHeaders: 'Accept, Content-Type, Authorization,append,delete,entries,foreach,get,has,keys,set,values',
                     preflightContinue: true,
                     methods: 'GET, PUT, POST, DELETE, OPTION',
                     optionSuccessStatus: true
