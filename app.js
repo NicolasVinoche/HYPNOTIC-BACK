@@ -19,6 +19,7 @@ const app = express();
 //   app.use(allowCrossDomain); 
 var corsOptions = { credentials: true,
                     allowedHeaders: 'Accept, Content-Type',
+                    preflightContinue: true
 };
 app.use(cors(corsOptions)); 
 app.use(express.json());

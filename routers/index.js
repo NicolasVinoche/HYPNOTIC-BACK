@@ -18,7 +18,7 @@ const authentificationMiddleware = require('./authentificationMiddleware');
 const router = express.Router();
 
 router.use('/user', userRouter);
-router.use('/stream', authentificationMiddleware.checkTokenMiddleware(), (req, res, next) => {
+router.use('/stream', authentificationMiddleware.checkTokenMiddleware, (req, res, next) => {
     // Récupération du token
     const token = req.headers.authorization && extractBearerToken(req.headers.authorization)
     // Décodage du token
