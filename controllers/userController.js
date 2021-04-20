@@ -132,21 +132,6 @@ module.exports = {
 
 
                        if(match) { 
-                            // res.cookie("jwt", token, {
-                            //    expires: new Date(Date.now() + 6000), 
-                            //    httpOnly: true, 
-                            //    sameSite: 'strict'
-                           
-                            // });  
-                            res.cookie ("jwt", token, {
-                                expires: new Date(Date.now() + 6000), 
-                                 httpOnly: true, 
-                                 sameSite: 'strict'
-                            
-                             }); 
-                            console.log('Success');
-                            
-                            
                            
                         return res.status(200).json({
                             'role': loginUser.role,
@@ -156,13 +141,8 @@ module.exports = {
                             'email': loginUser.email,
                             'pseudo': loginUser.pseudo, 
                             'isadmin': loginUser.isadmin,
-                            //'token': jwtUtils.generateTokenForUser(loginUser), 
-                            'cookie': cookieParser.signedCookie ("jwt", token, {
-                                   expires: new Date(Date.now() + 6000), 
-                                    httpOnly: true, 
-                                    sameSite: 'strict'
-                               
-                                })
+                            'token': jwtUtils.generateTokenForUser(loginUser)
+                            
                         });  
                         
                            
