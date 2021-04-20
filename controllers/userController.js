@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');  
 var jwtUtils = require('../utils/jwt'); 
-const userDataMapper = require('../dataMappers/userDataMapper') 
+var cookieParser = require('cookie-parser');
+const userDataMapper = require('../dataMappers/userDataMapper'); 
+
 
 const regex_password = /^(?=.*\d).{5,20}$/;
 const regex_email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -118,28 +120,47 @@ module.exports = {
         
         try {
             const loginUser = await userDataMapper.loginUser(email)
-            console.log(loginUser)
+            //console.log(loginUser)
             
             if (loginUser) {
                 const match = await bcrypt.compare(password, loginUser.password);
-                   console.log('match:', match)
-                       if(match) {
-                        return res.status(200).json({
-                            'role': loginUser.role,
-                            'userId': loginUser.id,
-                            'first_name': loginUser.first_name,
-                            'last_name': loginUser.last_name,
-                            'email': loginUser.email,
-                            'pseudo': loginUser.pseudo, 
-                            'isadmin': loginUser.isadmin,
-                            'token': jwtUtils.generateTokenForUser(loginUser)
-                        }); 
+                   console.log('match:', match) 
+
+                const token = await jwtUtils.generateTokenForUser(loginUser); 
+
+                console.log(token); 
+
+
+                       if(match) { 
+                            res.cookie("jwt", token, {
+                               expires: new Date(Date.now() + 6000), 
+                               httpOnly: true, 
+                               sameSite: 'strict'
+                           
+                            }); 
+                           
+                        // return res.status(200).json({
+                        //     'role': loginUser.role,
+                        //     'userId': loginUser.id,
+                        //     'first_name': loginUser.first_name,
+                        //     'last_name': loginUser.last_name,
+                        //     'email': loginUser.email,
+                        //     'pseudo': loginUser.pseudo, 
+                        //     'isadmin': loginUser.isadmin,
+                        //     //'token': jwtUtils.generateTokenForUser(loginUser) 
+                        //     'cookie': res.cookie ("jwt", token, {
+                        //            expires: new Date(Date.now() + 6000), 
+                        //             httpOnly: true
+                               
+                        //         })
+                        // });  
+                        
                            
                        } else {
                         errors.push(`invalid password`);
                         return res.status(400).json({errors});
                      }
-
+                     
             } else {
                 errors.push(`Utilisateur introuvale`);
                 return res.status(400).json({errors});

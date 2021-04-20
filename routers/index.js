@@ -8,7 +8,9 @@ const tipsRouter = require('./tipsRouter');
 const cartRouter = require('./cartRouter');
 const masterclassRouter = require('./masterclassRouter');
 const settingRouter = require('./settingRouter'); 
-const stripeRouter = require('./stripeRouter');
+const stripeRouter = require('./stripeRouter'); 
+const contactRouter = require('./contactRouter');
+const templeRouter = require('./templeRouter');
 
 const errorsMiddleware = require('../controllers/errorsMiddleware');
 
@@ -22,7 +24,9 @@ router.use('/tips', tipsRouter);
 router.use('/cart', cartRouter);
 router.use('/masterclass', masterclassRouter);
 router.use('/setting', settingRouter); 
+router.use('/messages', contactRouter);
 router.use('/', stripeRouter);
+router.use('/temple', templeRouter);
 
 
 router.use(errorsMiddleware.error404);

@@ -1,0 +1,1 @@
+const templeDataMapper = require('../dataMappers/templeDataMapper') 

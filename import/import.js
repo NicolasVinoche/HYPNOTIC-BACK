@@ -4,7 +4,8 @@ const { Client } = require('pg');
 const users = require('../data/users.json'); 
 const packs = require ('../data/pack.json'); 
 const projects = require('../data/project.json');
-const tips = require('../data/tips.json')
+const tips = require('../data/tips.json') 
+const messages = require('../data/message.json');
 
 const client = new Client({ connectionString: process.env.DATABASE_URL, 
     ssl: {
@@ -15,7 +16,7 @@ const client = new Client({ connectionString: process.env.DATABASE_URL,
     await client.connect()
     console.log("connected")
 
-    await client.query('TRUNCATE TABLE users, subscriptions, projects, masterclasses, packs, albums, streams, tips, _m2m_user_tips, _m2m_user_projects, _m2m_user_packs, _m2m_user_subscriptions RESTART IDENTITY');
+    await client.query('TRUNCATE TABLE users, subscriptions, projects, masterclasses, packs, albums, streams, tips, _m2m_user_tips, _m2m_user_projects, _m2m_user_packs, _m2m_user_subscriptions, message_contact RESTART IDENTITY');
 
     for(let user of users){
         console.log("Insertion de la table users :", user.first_name);
@@ -65,6 +66,18 @@ const client = new Client({ connectionString: process.env.DATABASE_URL,
                                 tip.category, 
                                 tip.image_path,
                                 tip.video_path
+                            ]);
+    }  
+
+
+    for(let message of messages){
+        console.log("Insertion de la table message_contact :", message.title); 
+
+        await client.query(`INSERT INTO message_contact(title, content, pseudo) 
+                            VALUES ($1, $2, $3)` , [
+                               message.title,  
+                               message.content,  
+                               message.pseudo
                             ]);
     }
 
