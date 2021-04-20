@@ -138,22 +138,24 @@ module.exports = {
                                sameSite: 'strict'
                            
                             }); 
+                            
+                            
                            
-                        // return res.status(200).json({
-                        //     'role': loginUser.role,
-                        //     'userId': loginUser.id,
-                        //     'first_name': loginUser.first_name,
-                        //     'last_name': loginUser.last_name,
-                        //     'email': loginUser.email,
-                        //     'pseudo': loginUser.pseudo, 
-                        //     'isadmin': loginUser.isadmin,
-                        //     //'token': jwtUtils.generateTokenForUser(loginUser) 
-                        //     'cookie': res.cookie ("jwt", token, {
-                        //            expires: new Date(Date.now() + 6000), 
-                        //             httpOnly: true
+                        return res.status(200).json({
+                            'role': loginUser.role,
+                            'userId': loginUser.id,
+                            'first_name': loginUser.first_name,
+                            'last_name': loginUser.last_name,
+                            'email': loginUser.email,
+                            'pseudo': loginUser.pseudo, 
+                            'isadmin': loginUser.isadmin,
+                            //'token': jwtUtils.generateTokenForUser(loginUser) 
+                            // 'cookie': res.cookie ("jwt", token, {
+                            //        expires: new Date(Date.now() + 6000), 
+                            //         httpOnly: true
                                
-                        //         })
-                        // });  
+                            //     })
+                        });  
                         
                            
                        } else {
