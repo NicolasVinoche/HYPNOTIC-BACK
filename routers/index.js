@@ -21,12 +21,12 @@ router.use('/user', userRouter);
 router.use('/pack', packRouter);
 router.use('/project', projectRouter);
 router.use('/stream', auth, streamRouter); 
-router.use('/tips', tipsRouter);
-router.use('/cart', cartRouter);
-router.use('/masterclass', masterclassRouter);
-router.use('/setting', settingRouter); 
+router.use('/tips', auth, tipsRouter);
+router.use('/cart', auth, cartRouter);
+router.use('/masterclass', auth, masterclassRouter);
+router.use('/setting', auth, settingRouter); 
 router.use('/messages', contactRouter);
-router.use('/', stripeRouter);
+router.use('/', auth,  stripeRouter);
 router.use('/temple', templeRouter);
 
 
