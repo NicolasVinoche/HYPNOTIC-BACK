@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');  
 var jwtUtils = require('../utils/jwt'); 
-var cookies = require('cookies');
+var cookies = require('cookies'); 
+var cookieparser = require('cookie-parser')
 const userDataMapper = require('../dataMappers/userDataMapper'); 
 
 
@@ -129,14 +130,19 @@ module.exports = {
                 const token = await jwtUtils.generateTokenForUser(loginUser); 
 
                        if(match) { 
-                       // 
-                       const cookie = new cookies (req,res).set('access-token',token, {
+                       // const cookie = new cookies (req,res).set
+                       res.cookie('access-token',token, {
                             httpOnly: true, //cookie not available through client js code
                             secure: false, 
                             expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours  
-                            sameSite: "none"
+                            domain: ".app.localhost"
+                        // localhost 
+                        // null 
+                        // .app.localhost
+                            
                         }); 
-                           
+                        
+                        
                         return res.status(200).json({
                             'role': loginUser.role,
                             'userId': loginUser.id,
@@ -147,6 +153,8 @@ module.exports = {
                             'isadmin': loginUser.isadmin,
                             'token': token
                         }); 
+
+                        
 
                        } else {
                         errors.push(`invalid password`);
