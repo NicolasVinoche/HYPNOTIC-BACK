@@ -3,8 +3,8 @@ const express = require("express");
 const stripe = require("stripe")("sk_test_51IgW8cIXwT38my0aJiBhw4YHO8xtVt49kOEV7NONO251J7TaZBhW402AUj0s7FMYdgP0ojiq4CnP5WX5q5qChrPI00yochtDIm"); 
 const { uuid } = require('uuidv4'); 
 const userDataMapper = require('../dataMappers/userDataMapper');
-const { subscribe } = require("../routers");
 var jwtUtils = require('../utils/jwt'); 
+const { subscribe } = require("../routers");
 
 const app = express();
 
@@ -71,7 +71,7 @@ module.exports = {
 
                 const subscription = await stripe.subscriptions.create({
                     customer: customer.id,
-                    items: [{plan:'price_1IiKkjIXwT38my0aN2MLyFCF'}],
+                    items: [{plan:'price_1IgtTzIXwT38my0apodcr4Yn'}],
                     expand: ['latest_invoice.payment_intent']
                 });
 

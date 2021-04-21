@@ -13,7 +13,7 @@ const contactRouter = require('./contactRouter');
 const templeRouter = require('./templeRouter');
 
 const errorsMiddleware = require('../controllers/errorsMiddleware'); 
-const authentificationMiddleware = require('./authentificationMiddleware');
+//const authentificationMiddleware = require('./authentificationMiddleware');
 
 const router = express.Router();
 
