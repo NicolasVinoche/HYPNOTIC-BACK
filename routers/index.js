@@ -22,9 +22,9 @@ router.use('/pack', packRouter);
 router.use('/project', projectRouter);
 router.use('/stream', auth, streamRouter); 
 router.use('/tips', auth, tipsRouter);
-router.use('/cart', auth, cartRouter);
+router.use('/cart', cartRouter); //auth
 router.use('/masterclass', auth, masterclassRouter);
-router.use('/setting', auth, settingRouter); 
+router.use('/setting', settingRouter); //auth
 router.use('/messages', contactRouter);
 router.use('/', auth,  stripeRouter);
 router.use('/temple', templeRouter);
