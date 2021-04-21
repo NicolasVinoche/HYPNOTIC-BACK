@@ -1,8 +1,7 @@
 // Imports
 require('dotenv').config();
 const express = require('express');
-const routers = require('./routers'); 
-var cookieParser = require('cookie-parser'); 
+const routers = require('./routers');  
 const cors = require('cors');
 
 // Instanciate server
@@ -27,7 +26,6 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(routers); 
-app.use(cookieParser());
 
 // Launch server
 app.listen(process.env.PORT || 3000, () => {

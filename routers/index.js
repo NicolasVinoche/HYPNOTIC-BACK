@@ -13,23 +13,14 @@ const contactRouter = require('./contactRouter');
 const templeRouter = require('./templeRouter');
 
 const errorsMiddleware = require('../controllers/errorsMiddleware'); 
-//const authentificationMiddleware = require('./authentificationMiddleware');
+const auth = require('../controllers/auth');
 
 const router = express.Router();
 
 router.use('/user', userRouter);
-// router.use('/stream', authentificationMiddleware.checkTokenMiddleware, (req, res, next) => {
-//     // Récupération du token
-//     const token = req.headers.authorization && extractBearerToken(req.headers.authorization)
-//     // Décodage du token
-//     const decoded = jwt.decode(token, { complete: false })
-
-//     return res.json({ content: decoded }); 
-// });
-
 router.use('/pack', packRouter);
 router.use('/project', projectRouter);
-router.use('/stream', streamRouter); 
+router.use('/stream', auth, streamRouter); 
 router.use('/tips', tipsRouter);
 router.use('/cart', cartRouter);
 router.use('/masterclass', masterclassRouter);

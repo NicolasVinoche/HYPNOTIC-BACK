@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');  
 var jwtUtils = require('../utils/jwt'); 
-var cookieParser = require('cookie-parser');
+var cookies = require('cookies');
 const userDataMapper = require('../dataMappers/userDataMapper'); 
 
 
@@ -128,10 +128,12 @@ module.exports = {
 
                 const token = await jwtUtils.generateTokenForUser(loginUser); 
 
-                console.log(token); 
-
-
                        if(match) { 
+
+                        const cookie = new cookies (req,res).set(process.env.JWT_SIGN_SECRET,token, {
+                            httpOnly: true, //cookie not available through client js code
+                            secure: true // true to force https
+                        });
                            
                         return res.status(200).json({
                             'role': loginUser.role,
@@ -141,12 +143,9 @@ module.exports = {
                             'email': loginUser.email,
                             'pseudo': loginUser.pseudo, 
                             'isadmin': loginUser.isadmin,
-                            'token': jwtUtils.generateTokenForUser(loginUser) 
-                            
-                            
-                        });  
-                        
-                           
+                            'token': token
+                        }); 
+
                        } else {
                         errors.push(`invalid password`);
                         return res.status(400).json({errors});
