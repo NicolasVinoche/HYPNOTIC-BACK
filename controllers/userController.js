@@ -129,12 +129,13 @@ module.exports = {
                 const token = await jwtUtils.generateTokenForUser(loginUser); 
 
                        if(match) { 
-
-                        const cookie = new cookies (req,res).set('access-token',token, {
+                       // 
+                       const cookie = new cookies (req,res).set('access-token',token, {
                             httpOnly: true, //cookie not available through client js code
                             secure: false, 
-                            expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours 
-                        });
+                            expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours  
+                            sameSite: "none"
+                        }); 
                            
                         return res.status(200).json({
                             'role': loginUser.role,
