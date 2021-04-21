@@ -132,7 +132,8 @@ module.exports = {
 
                         const cookie = new cookies (req,res).set(process.env.JWT_SIGN_SECRET,token, {
                             httpOnly: true, //cookie not available through client js code
-                            secure: true // true to force https
+                            secure: false, 
+                            expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours 
                         });
                            
                         return res.status(200).json({
