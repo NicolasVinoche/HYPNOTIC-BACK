@@ -130,7 +130,7 @@ module.exports = {
 
                        if(match) { 
 
-                        const cookie = new cookies (req,res).set(process.env.JWT_SIGN_SECRET,token, {
+                        const cookie = new cookies (req,res).set('access-token',token, {
                             httpOnly: true, //cookie not available through client js code
                             secure: false, 
                             expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours 
