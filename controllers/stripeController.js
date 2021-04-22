@@ -87,7 +87,10 @@ module.exports = {
                         'email': subscriber.email,
                         'pseudo': subscriber.pseudo,
                         'isadmin': subscriber.isadmin,
-                        'token': jwtUtils.generateTokenForUser(subscriber)
+                        'token': jwtUtils.generateTokenForUser(subscriber),
+                        'current_period_end': subscription.current_period_end,
+                        'current_period_start': subscription.current_period_start,
+                        'sub_id': subscription.id
                 });
                 }
             }else {
