@@ -132,9 +132,9 @@ module.exports = {
                        if(match) { 
                             new cookies (req,res).set('access-token',token, {
                                 httpOnly: true, //cookie not available through client js code
-                                secure: false, 
+                                secure: true, 
                                 expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
-                                sameSite: 'lax'  
+                                sameSite: 'none'  
                                 //domain: "http://localhost:8080", 
                                // path: "/login"
                             // localhost 
