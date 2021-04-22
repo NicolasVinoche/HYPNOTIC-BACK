@@ -53,7 +53,14 @@ module.exports = {
         }  
     },
 
-    stripeSub: async function(req, res, next) { 
+    stripeSub: async function(req, res, next) {  
+
+        const plan = await stripe.plans.create({
+            amount: 1500,
+            currency: 'eur',
+            interval: 'month',
+            product: 'prod_JLlNaYM6K2gD5p',  // ID PRODUCT DE L'ABONNEMENT PAR MOIS
+            });
         
         try {
             const { email, payment_method } = req.body; 
@@ -73,7 +80,7 @@ module.exports = {
                     
                     const subscription = await stripe.subscriptions.create({
                         customer: customer.id,
-                        items: [{plan:'price_1IgtTzIXwT38my0apodcr4Yn'}],
+                        items: [{plan: plan}], // FONCTIONNEL : price_1IgtTzIXwT38my0apodcr4Yn
                         expand: ['latest_invoice.payment_intent']
                     }); 
 
