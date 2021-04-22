@@ -3,6 +3,6 @@
 BEGIN;
 
 ALTER TABLE users
-ADD COLUMN "sub_end" TEXT;
+ADD COLUMN "sub_id" TEXT;
 
 COMMIT;

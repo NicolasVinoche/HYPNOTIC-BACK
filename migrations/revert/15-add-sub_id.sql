@@ -3,6 +3,6 @@
 BEGIN;
 
 ALTER TABLE users 
-DROP COLUMN "sub_end";
+DROP COLUMN "sub_id";
 
 COMMIT;
