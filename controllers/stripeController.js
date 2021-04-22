@@ -90,7 +90,8 @@ module.exports = {
                         'token': jwtUtils.generateTokenForUser(subscriber),
                         'current_period_end': subscription.current_period_end,
                         'current_period_start': subscription.current_period_start,
-                        'sub_id': subscription.id
+                        'sub_id': subscription.id,
+                        'status': subscription.status
                 });
                 }
             }else {
