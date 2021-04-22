@@ -134,7 +134,7 @@ module.exports = {
                                 httpOnly: true, //cookie not available through client js code
                                 secure: false, 
                                 expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
-                                sameSite: 'none'  
+                                sameSite: 'lax'  
                                 //domain: "http://localhost:8080", 
                                // path: "/login"
                             // localhost 
