@@ -8,7 +8,7 @@ const routers = require('./routers');
 const app = express(); 
 
 var allowCrossDomain = function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'req.headers.origin');
+    res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Accept, Content-Type, X-requested-With, X-HTTP-Method-Override');
     res.header('Access-Control-Allow-Credentials', true);

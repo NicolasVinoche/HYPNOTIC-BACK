@@ -130,29 +130,29 @@ module.exports = {
                 const token = await jwtUtils.generateTokenForUser(loginUser); 
 
                        if(match) { 
-                       // const cookie = new cookies (req,res).set
-                       res.cookie('access-token',token, {
-                            httpOnly: true, //cookie not available through client js code
-                            secure: false, 
-                            expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours  
-                            domain: ".app.localhost"
-                        // localhost 
-                        // null 
-                        // .app.localhost
+                            new cookies (req,res).set('access-token',token, {
+                                httpOnly: true, //cookie not available through client js code
+                                secure: false, 
+                                expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours  
+                                domain: ".app.localhost",
+                                SameSite: true
+                            // localhost 
+                            // null 
+                            // .app.localhost
+                                
+                            }); 
                             
-                        }); 
-                        
-                        
-                        return res.status(200).json({
-                            'role': loginUser.role,
-                            'userId': loginUser.id,
-                            'first_name': loginUser.first_name,
-                            'last_name': loginUser.last_name,
-                            'email': loginUser.email,
-                            'pseudo': loginUser.pseudo, 
-                            'isadmin': loginUser.isadmin,
-                            'token': token
-                        }); 
+                            
+                            return res.status(200).json({
+                                'role': loginUser.role,
+                                'userId': loginUser.id,
+                                'first_name': loginUser.first_name,
+                                'last_name': loginUser.last_name,
+                                'email': loginUser.email,
+                                'pseudo': loginUser.pseudo, 
+                                'isadmin': loginUser.isadmin,
+                                'token': token
+                            }); 
 
                         
 
