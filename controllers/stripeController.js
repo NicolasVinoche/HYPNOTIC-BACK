@@ -93,7 +93,7 @@ module.exports = {
                 
                 if(subscription) { //.status === 'active'
                     const subscriber = await userDataMapper.subscriber(email);
-                    // await userDataMapper.subscriptionId(subscription.id, email);
+                    await userDataMapper.subscriptionEnd(subscription.current_period_end, email);
                     res.json({'client_secret': client_secret, 'status': status,
                         'role': subscriber.role,
                         'userId': subscriber.id,
