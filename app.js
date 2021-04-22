@@ -15,14 +15,20 @@ const app = express();
 
 //     next();
 // };
-  //app.use(allowCrossDomain); 
+//app.use(allowCrossDomain);
 var corsOptions = { credentials: true,
+                    origin: 'http://localhost:8080',
                     allowedHeaders: 'Accept, Content-Type, Authorization,append,delete,entries,foreach,get,has,keys,set,values',
                     preflightContinue: true,
                     methods: 'GET, PUT, POST, DELETE, OPTIONS',
                     optionSuccessStatus: true
 };
 app.options(cors(corsOptions)); 
+app.use(cors(corsOptions));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+  next();
+})
 app.use(express.json());
 app.use(express.urlencoded())
 app.use(routers); 
