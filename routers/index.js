@@ -20,13 +20,13 @@ const router = express.Router();
 router.use('/user', userRouter);
 router.use('/pack', packRouter);
 router.use('/project', projectRouter);
-router.use('/stream', auth, streamRouter); 
-router.use('/tips', auth, tipsRouter);
+router.use('/stream', streamRouter); 
+router.use('/tips', tipsRouter);
 router.use('/cart', cartRouter); //auth
 router.use('/masterclass', auth, masterclassRouter);
 router.use('/setting', settingRouter); //auth
 router.use('/messages', contactRouter);
-router.use('/', auth,  stripeRouter);
+router.use('/', stripeRouter);
 router.use('/temple', templeRouter);
 
 
