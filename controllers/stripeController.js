@@ -4,7 +4,6 @@ const stripe = require("stripe")("sk_test_51IgW8cIXwT38my0aJiBhw4YHO8xtVt49kOEV7
 const { uuid } = require('uuidv4'); 
 const userDataMapper = require('../dataMappers/userDataMapper');
 var jwtUtils = require('../utils/jwt'); 
-const { subscribe } = require("../routers");
 
 const app = express();
 
@@ -52,7 +51,7 @@ module.exports = {
     }   catch (error){
             next(error);
         }  
-},
+    },
 
     stripeSub: async function(req, res, next) { 
         
@@ -81,9 +80,9 @@ module.exports = {
                 const status = subscription['latest_invoice']['payment_intent']['status']
                 const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
                 
-                if(subscription.status === 'active') {
+                if(subscription) { //.status === 'active'
                     const subscriber = await userDataMapper.subscriber(email);
-                    await userDataMapper.subscriptionId(subscription.id, email);
+                    // await userDataMapper.subscriptionId(subscription.id, email);
                     res.json({'client_secret': client_secret, 'status': status,
                         'role': subscriber.role,
                         'userId': subscriber.id,
@@ -108,7 +107,7 @@ module.exports = {
         } 
     
     }, 
-
+}
     // cancelSub: async function(req, res, next) {
 
     //     try {
@@ -132,4 +131,3 @@ module.exports = {
     //     }
 
     // }
-}
