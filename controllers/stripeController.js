@@ -30,7 +30,7 @@ module.exports = {
 
             // On fait la somme de tout les produits et on la stocke
             const allProductPrice = product.map(item => item.price).reduce((memo, val) => memo + val)
-            console.log(allProductPrice)
+        
     
             const idempotencyKey = uuid();
             const paymentIntent = await stripe.paymentIntents.create(
@@ -61,25 +61,33 @@ module.exports = {
             const checkEmail = await userDataMapper.findUser(email); 
 
             if (checkEmail) {
-                const customer = await stripe.customers.create({
-                    payment_method: payment_method,
-                    email: email,
-                    invoice_settings: {
-                        default_payment_method: payment_method,
-                    }, 
-                });
+                
+                const createsub = async function() {
 
-                const subscription = await stripe.subscriptions.create({
-                    customer: customer.id,
-                    items: [{plan:'price_1IgtTzIXwT38my0apodcr4Yn'}],
-                    expand: ['latest_invoice.payment_intent']
-                });
+                    const customer = await stripe.customers.create({
+                        payment_method: payment_method,
+                        email: email,
+                        invoice_settings: {
+                            default_payment_method: payment_method,
+                        }, 
+                    });
+    
+                    const subscription = await stripe.subscriptions.create({
+                        customer: customer.id,
+                        items: [{plan:'price_1IgtTzIXwT38my0apodcr4Yn'}],
+                        expand: ['latest_invoice.payment_intent']
+                    });
+                }
+                
+                
                 console.log(subscription)
+                
                 const status = subscription['latest_invoice']['payment_intent']['status']
                 const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
-                if(subscription) {
+                
+                if(subscription.status === 'active') {
                     const subscriber = await userDataMapper.subscriber(email);
-                    res.json({'client_secret': client_secret, 'status': status, 
+                    res.json({'client_secret': client_secret, 'status': status,
                         'role': subscriber.role,
                         'userId': subscriber.id,
                         'first_name': subscriber.first_name,
@@ -94,7 +102,8 @@ module.exports = {
                         'status': subscription.status
                 });
                 }
-            }else {
+            } else {
+                
                 return res.status(400).json({errors :[`Utilisateur introuvable`]});
             }
         } catch(error) {
