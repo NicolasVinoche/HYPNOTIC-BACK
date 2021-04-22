@@ -61,25 +61,21 @@ module.exports = {
             const checkEmail = await userDataMapper.findUser(email); 
 
             if (checkEmail) {
-                
-                const createsub = async function() {
 
                     const customer = await stripe.customers.create({
                         payment_method: payment_method,
                         email: email,
                         invoice_settings: {
                             default_payment_method: payment_method,
-                        }, 
+                        },
                     });
-    
+
                     const subscription = await stripe.subscriptions.create({
                         customer: customer.id,
                         items: [{plan:'price_1IgtTzIXwT38my0apodcr4Yn'}],
                         expand: ['latest_invoice.payment_intent']
                     });
-                }
-                
-                
+                            
                 console.log(subscription)
                 
                 const status = subscription['latest_invoice']['payment_intent']['status']
@@ -87,6 +83,7 @@ module.exports = {
                 
                 if(subscription.status === 'active') {
                     const subscriber = await userDataMapper.subscriber(email);
+                    await userDataMapper.subscriptionId(subscription.id);
                     res.json({'client_secret': client_secret, 'status': status,
                         'role': subscriber.role,
                         'userId': subscriber.id,
@@ -110,5 +107,27 @@ module.exports = {
             next(error);
         } 
     
-    }
+    }, 
+
+    // cancelSub: async function(req, res, next) {
+
+    //     try {
+
+    //         const email = req.body.email 
+    //         const checkEmail = await userDataMapper.findUser(email);
+            
+    //         if (email === subscriber.email) {
+
+    //             const deleted = await stripe.subscriptions.del({
+                    
+    //                 subscription.id
+    //             });
+
+    //         }
+
+    //     } 
+
+
+
+    //}
 }

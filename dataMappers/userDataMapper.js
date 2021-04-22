@@ -31,5 +31,10 @@ module.exports = {
             return undefined;
         } 
         return result.rows[0];
+    }, 
+
+    async subscriptionId (sub_id, email) {
+        const result = await client.query(`INSERT INTO users (sub_id) 
+                                           VALUES ($1) WHERE email = $2 RETURNING * `, [sub_id, email])
     }
 }

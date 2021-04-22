@@ -130,18 +130,18 @@ module.exports = {
                 const token = await jwtUtils.generateTokenForUser(loginUser); 
 
                        if(match) { 
-                            new cookies (req,res).set('access-token',token, {
-                                httpOnly: true, //cookie not available through client js code
-                                secure: true, 
-                                expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
-                                sameSite: 'none'  
-                                //domain: "http://localhost:8080", 
-                               // path: "/login"
-                            // localhost 
-                            // null 
-                            // .app.localhost
+                            // new cookies (req,res).set('access-token',token, {
+                            //     httpOnly: true, //cookie not available through client js code
+                            //     secure: true, 
+                            //     expires: new Date(Date.now() + 8 * 3600000), // cookie will be removed after 8 hours
+                            //     sameSite: 'none'  
+                            //     //domain: "http://localhost:8080", 
+                            //    // path: "/login"
+                            // // localhost 
+                            // // null 
+                            // // .app.localhost
                                 
-                            }); 
+                            // }); 
                             
                             
                             return res.status(200).json({
