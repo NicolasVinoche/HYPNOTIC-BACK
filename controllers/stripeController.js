@@ -74,7 +74,7 @@ module.exports = {
                     items: [{plan:'price_1IgtTzIXwT38my0apodcr4Yn'}],
                     expand: ['latest_invoice.payment_intent']
                 });
-
+                console.log(subscription)
                 const status = subscription['latest_invoice']['payment_intent']['status']
                 const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
                 if(subscription) {
@@ -88,7 +88,6 @@ module.exports = {
                         'pseudo': subscriber.pseudo,
                         'isadmin': subscriber.isadmin,
                         'token': jwtUtils.generateTokenForUser(subscriber)
-                    
                 });
                 }
             }else {
