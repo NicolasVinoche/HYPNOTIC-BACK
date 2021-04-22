@@ -72,7 +72,7 @@ module.exports = {
 
                     const subscription = await stripe.subscriptions.create({
                         customer: customer.id,
-                        items: [{plan:'price_1IgtTzIXwT38my0apodcr4Yn'}],
+                        items: [{plan:'price_1Ij3qYIXwT38my0aHbnmoa2v'}],
                         expand: ['latest_invoice.payment_intent']
                     });
                             
@@ -83,7 +83,7 @@ module.exports = {
                 
                 if(subscription.status === 'active') {
                     const subscriber = await userDataMapper.subscriber(email);
-                    await userDataMapper.subscriptionId(subscription.id);
+                    await userDataMapper.subscriptionId(subscription.id, email);
                     res.json({'client_secret': client_secret, 'status': status,
                         'role': subscriber.role,
                         'userId': subscriber.id,
@@ -113,21 +113,23 @@ module.exports = {
 
     //     try {
 
-    //         const email = req.body.email 
-    //         const checkEmail = await userDataMapper.findUser(email);
+    //         const email = req.body.email
+    //         const user = await userDataMapper.findUser(email); 
             
-    //         if (email === subscriber.email) {
+    //         if (email === user.email) {
 
-    //             const deleted = await stripe.subscriptions.del({
-                    
-    //                 subscription.id
-    //             });
+    //             const deleted = await stripe.subscriptions.del(
 
+    //                 user.sub_id
+    //              );
+                
+    //         } else {
+    //             return res.status(400).json({errors :[`Utilisateur introuvable`]});
     //         }
 
-    //     } 
+    //     } catch(error) {
+    //         next();
+    //     }
 
-
-
-    //}
+    // }
 }
