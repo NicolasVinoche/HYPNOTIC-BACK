@@ -76,12 +76,10 @@ module.exports = {
                         },
                     });
                     
-                    console.log('JE SUIS APRES LE CUSTOMER');
-                    
                     const subscription = await stripe.subscriptions.create({
                         customer: customer.id,
                         items: [{price: plan.id}], // FONCTIONNEL : price_1IgtTzIXwT38my0apodcr4Yn
-                        cancel_at_period_end: true
+                        cancel_at_period_end: true // l'abonnement s'arrête à la fin de la 1ère période
                        // expand: ['latest_invoice.payment_intent']
                     }); 
 
