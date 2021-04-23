@@ -89,18 +89,17 @@ module.exports = {
                             
                 console.log(subscription)
                 
-                // const status = subscription['latest_invoice']['payment_intent']['status']
-                // const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
+                 const status = subscription['latest_invoice']['payment_intent']['status']
+                 const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
                 // console.log('status', status);
                 // console.log('client_secret', client_secret)
                 
                 if(subscription.status === 'active') { //.status === 'active'
                     const subscriber = await userDataMapper.subscriber(email);
                     //await userDataMapper.subscriptionEnd(subscription.current_period_end, email);
-                    console.log('subscriber', subscriber)
                     res.json({
-                        // 'client_secret': client_secret, 
-                        // 'status': status,
+                        'client_secret': client_secret, 
+                        'status': status,
                         'role': subscriber.role,
                         'userId': subscriber.id,
                         'first_name': subscriber.first_name,
@@ -109,8 +108,8 @@ module.exports = {
                         'pseudo': subscriber.pseudo,
                         'isadmin': subscriber.isadmin,
                         'token': jwtUtils.generateTokenForUser(subscriber),
-                        //'current_period_end': subscription.current_period_end,
-                        //'status': subscription.status
+                        'current_period_end': subscription.current_period_end,
+                        'status': subscription.status
                 });
                 }
             } else {
