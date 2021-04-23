@@ -34,10 +34,10 @@ module.exports = {
     }, 
 
     async subscriptionEnd (sub_end, email) {
-        const result = await client.query(`INSERT INTO users (sub_end) 
-                                           VALUES ($1) WHERE email = $2 RETURNING * `, [sub_end, email])
+        const result = await client.query(`UPDATE users
+                                           SET sub_end = $1 WHERE email = $2 RETURNING * `, [sub_end, email])
         return result.rows[0];
-                                        }, 
+    }, 
 
     async subscriberSet(email) {
         const result = await client.query(`UPDATE users
