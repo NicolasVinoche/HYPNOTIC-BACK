@@ -59,8 +59,8 @@ module.exports = {
             errors.push('missing pseudo');
         };
 
-        if (pseudo.length >= 13 || pseudo.length <= 4) {
-            errors.push('wrong pseudo (must be length 5 - 12)');
+        if (pseudo.length >= 13 || pseudo.length <= 2) {
+            errors.push('wrong pseudo (must be length 3 - 12)');
         }; 
 
         if (errors.length) {
