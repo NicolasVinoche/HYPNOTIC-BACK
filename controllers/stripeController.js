@@ -80,7 +80,7 @@ module.exports = {
                     
                     const subscription = await stripe.subscriptions.create({
                         customer: customer.id,
-                        items: [{plan: plan.id}], // FONCTIONNEL : price_1IgtTzIXwT38my0apodcr4Yn
+                        items: [{plan: 'price_1IgtTzIXwT38my0apodcr4Yn'}], // FONCTIONNEL : price_1IgtTzIXwT38my0apodcr4Yn
                         expand: ['latest_invoice.payment_intent']
                     }); 
 
@@ -91,7 +91,7 @@ module.exports = {
                 const status = subscription['latest_invoice']['payment_intent']['status']
                 const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
                 
-                if(subscription) { //.status === 'active'
+                if(subscription.status === 'active') { //.status === 'active'
                     const subscriber = await userDataMapper.subscriber(email);
                     await userDataMapper.subscriptionEnd(subscription.current_period_end, email);
                     res.json({'client_secret': client_secret, 'status': status,
