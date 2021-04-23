@@ -152,16 +152,6 @@ module.exports = {
                 
     },
 
-    getContactMessage: async function(req, res, next) {
-        try {
-            const messages = await settingDataMapper.getMessage();
-        
-            res.json({ data: messages });
-        } catch (error) {
-            next(error);
-        }
-    }
-
                 // updateUser: async function(req, res, next) {
                 //     const userId = req.params.id;
                 //     const pseudo = req.body.pseudo;
