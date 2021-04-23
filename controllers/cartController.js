@@ -16,7 +16,7 @@ module.exports = {
         }
     },
     getCart: async function (req, res, next) {
-        console.log('req: ', req.headers)
+        console.log('req.headers pour check le cookie: ', req.headers)
         const userId = req.params.id 
         try {  
             const cart = await cartDataMapper.getCart(userId);
