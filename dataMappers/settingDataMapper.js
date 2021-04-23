@@ -31,5 +31,11 @@ module.exports = {
                                            SET password = $1 
                                            WHERE id = $2 RETURNING *`, [hash, userId]); 
         return result.rows[0];
+    },
+
+    async getMessage() {
+        const result = await client.query(`SELECT * 
+                                           FROM message_contact`); 
+        return result.rows;
     }
 }

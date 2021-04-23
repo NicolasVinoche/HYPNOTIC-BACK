@@ -1,14 +1,43 @@
+// album
 [
-    {
+    {    
+        "album_id": "1",
+        "title": "Projet 1",
+        "description": "projet de test",
+        "image_path": "cheminimage"
+    },
+    {    
+        "album_id": "2",
+        "title": "album 2",
+        "description": "projet de test",
+        "image_path": "cheminimage"
+    }
+]
+
+// track
+[
+    {   
+        "album_id": "1",
+        "track_id": "1",
         "title": "Projet 1",
         "description": "projet de test",
         "image_path": "cheminimage",
-        "video_path": "cheminvideo"
+        "link_dl": "aws",
     }, 
-    {
+    {   
+        "album_id": "1",
+        "track_id": "2",
         "title": "Projet 2",
-        "description": "projet de test 2",
+        "description": "projet de test",
         "image_path": "cheminimage",
-        "video_path": "cheminvideo"
-    }
+        "link_dl": "aws",
+    }, 
+    {   
+        "album_id": "2",
+        "track_id": "3",
+        "title": "Projet 3",
+        "description": "projet de test",
+        "image_path": "cheminimage",
+        "link_dl": "aws",
+    }, 
 ]
