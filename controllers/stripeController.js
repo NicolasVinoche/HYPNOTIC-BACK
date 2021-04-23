@@ -80,8 +80,9 @@ module.exports = {
                     
                     const subscription = await stripe.subscriptions.create({
                         customer: customer.id,
-                        items: [{plan: 'price_1IgtTzIXwT38my0apodcr4Yn'}], // FONCTIONNEL : price_1IgtTzIXwT38my0apodcr4Yn
-                        expand: ['latest_invoice.payment_intent']
+                        items: [{price: 'price_1IgtTzIXwT38my0apodcr4Yn'}], // FONCTIONNEL : price_1IgtTzIXwT38my0apodcr4Yn
+                        cancel_at_period_end: true
+                       // expand: ['latest_invoice.payment_intent']
                     }); 
 
                     
