@@ -4,7 +4,7 @@ const router = express.Router();
 const cartController = require('../controllers/cartController'); 
 const auth = require('../controllers/auth');
 
-router.put('/:id', cartController.cartUpdate); 
+router.put('/:id', auth, cartController.cartUpdate); 
 router.get('/:id', auth, cartController.getCart);
 
 module.exports = router;
