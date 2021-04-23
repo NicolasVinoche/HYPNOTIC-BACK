@@ -147,12 +147,12 @@ module.exports = {
                             // // .app.localhost
                                 
                             // }); 
-                            // res.cookie('token', token, {
-                            //     maxAge: 1000 * 60 * 60 * 5,
-                            //     httpOnly: true,
-                            //     secure: true,
-                            //     sameSite: 'None',
-                            //   });
+                             res.cookie('token', token, {
+                                 maxAge: 1000 * 60 * 60 * 5,
+                                 httpOnly: true,
+                                 secure: false,
+                                 sameSite: 'None',
+                               });
                             return res.status(200).json({
                                 'token': token
                             });
