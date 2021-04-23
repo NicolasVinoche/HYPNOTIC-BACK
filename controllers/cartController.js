@@ -15,7 +15,8 @@ module.exports = {
             next(error);
         }
     },
-    getCart: async function(req, res, next) {
+    getCart: async function (req, res, next) {
+        console.log('req: ', req.headers)
         const userId = req.params.id 
         try {  
             const cart = await cartDataMapper.getCart(userId);
