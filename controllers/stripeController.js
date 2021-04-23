@@ -98,8 +98,8 @@ module.exports = {
                     const subscriber = await userDataMapper.subscriber(email);
                     //await userDataMapper.subscriptionEnd(subscription.current_period_end, email);
                     res.json({
-                        'client_secret': client_secret, 
-                        'status': status,
+                        // 'client_secret': client_secret, 
+                        // 'status': status,
                         'role': subscriber.role,
                         'userId': subscriber.id,
                         'first_name': subscriber.first_name,
@@ -108,8 +108,7 @@ module.exports = {
                         'pseudo': subscriber.pseudo,
                         'isadmin': subscriber.isadmin,
                         'token': jwtUtils.generateTokenForUser(subscriber),
-                        'current_period_end': subscription.current_period_end,
-                        'status': subscription.status
+                        'current_period_end': subscription.current_period_end
                 });
                 }
             } else {
