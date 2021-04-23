@@ -80,7 +80,7 @@ module.exports = {
                     
                     const subscription = await stripe.subscriptions.create({
                         customer: customer.id,
-                        items: [{price: 'price_1IgtTzIXwT38my0apodcr4Yn'}], // FONCTIONNEL : price_1IgtTzIXwT38my0apodcr4Yn
+                        items: [{price: plan.id}], // FONCTIONNEL : price_1IgtTzIXwT38my0apodcr4Yn
                         cancel_at_period_end: true
                        // expand: ['latest_invoice.payment_intent']
                     }); 
@@ -89,16 +89,15 @@ module.exports = {
                             
                 console.log(subscription)
                 
-                //const status = subscription['latest_invoice']['payment_intent']['status']
-                //const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
+                // const status = subscription['latest_invoice']['payment_intent']['status']
+                // const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
                 // console.log('status', status);
                 // console.log('client_secret', client_secret)
                 
                 if(subscription.status === 'active') { //.status === 'active'
-                    await userDataMapper.subscriber(email);
-                    await userDataMapper.subscriptionEnd(subscription.current_period_end, email);
-                    const subscriber = await userDataMapper.findUser(email);
-                    console.log('je passe par ici')
+                    const subscriber = await userDataMapper.subscriber(email);
+                    //await userDataMapper.subscriptionEnd(subscription.current_period_end, email);
+                    console.log('subscriber', subscriber)
                     res.json({
                         // 'client_secret': client_secret, 
                         // 'status': status,
@@ -110,8 +109,8 @@ module.exports = {
                         'pseudo': subscriber.pseudo,
                         'isadmin': subscriber.isadmin,
                         'token': jwtUtils.generateTokenForUser(subscriber),
-                        'current_period_end': subscription.current_period_end,
-                        'status': subscription.status
+                        //'current_period_end': subscription.current_period_end,
+                        //'status': subscription.status
                 });
                 }
             } else {
