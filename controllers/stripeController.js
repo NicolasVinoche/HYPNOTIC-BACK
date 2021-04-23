@@ -91,8 +91,8 @@ module.exports = {
                 
                 const status = subscription['latest_invoice']['payment_intent']['status']
                 const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
-                console.log(status);
-                console.log(client_secret)
+                console.log('status', status);
+                console.log('client_secret', client_secret)
                 
                 if(subscription.status === 'active') { //.status === 'active'
                     const subscriber = await userDataMapper.subscriber(email);
