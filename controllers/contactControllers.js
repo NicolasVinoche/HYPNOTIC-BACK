@@ -5,7 +5,7 @@ module.exports = {
         try {
             const messages = await contactDataMapper.getAllMessages(); 
 
-            res.json ({ data: messages });
+            res.json ({ messages });
         } catch (error) {
             next(error);
         }
@@ -16,6 +16,7 @@ module.exports = {
         const title  = req.body.title;
         const content = req.body.content; 
         const pseudo = req.body.pseudo;
+        const userId = req.params.id;
 
         function isEmpty(str) {
             return !str.trim().length;
@@ -43,22 +44,19 @@ module.exports = {
 
             if (pseudoUser) {
 
-            const message = await contactDataMapper.insertMessage(title, content, pseudo);
+            const message = await contactDataMapper.insertMessage(title, content, pseudo, userId);
             res.status(200).json ({  
                 'title' : message.title, 
                 'content' : message.content, 
-                'userId': message.user_id, 
+                'userId': userId, 
                 'pseudo' : message.pseudo 
-
-         }); 
+            }); 
 
         } else {
             errors.push('Pseudo not found'); 
             return res.status(400).json({errors});
         } 
 
-
-        
     } catch (error) {
             next(error);
         }
