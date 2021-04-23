@@ -9,13 +9,13 @@ const app = express();
 
 app.use(express.json());
 // app.use(cors());
-var allowCrossDomain = function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-   next();
- };
-  app.use(allowCrossDomain);
+// var allowCrossDomain = function (req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type');
+//    next();
+//  };
+//   app.use(allowCrossDomain);
 
 module.exports = {
 
@@ -82,15 +82,13 @@ module.exports = {
                         cancel_at_period_end: true // l'abonnement s'arrête à la fin de la 1ère période
                        // expand: ['latest_invoice.payment_intent']
                     }); 
-
-                    
-                            
+         
                 console.log(subscription)
                 
-                  const status = subscription['latest_invoice']['payment_intent']['status']
-                  const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
-                console.log('STATUS CHELOU', status);
-                console.log('CLIENT CHELOU', client_secret);
+                //   const status = subscription['latest_invoice']['payment_intent']['status']
+                //   const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
+                // console.log('STATUS CHELOU', status);
+                // console.log('CLIENT CHELOU', client_secret);
 
                 if(subscription.status === 'active') { //.status === 'active'
                     const subscriber = await userDataMapper.subscriber(email);
