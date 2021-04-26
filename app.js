@@ -19,7 +19,7 @@ const app = express();
 var corsOptions = {
                    origin: 'https://sami-fekkar.xyz/',
                    allowedHeaders: 'Content-Type, Accept, Origin, Authorization',
-                   preflightContinue: true,
+                   preflightContinue: false,
                    methods: 'GET, PUT, POST, DELETE, PATCH',
                    credentials: true
 };
