@@ -26,7 +26,7 @@ router.use('/cart', auth, cartRouter);
 router.use('/masterclass', auth, masterclassRouter);
 router.use('/setting', auth, settingRouter);
 router.use('/contact', contactRouter);
-router.use('/', auth, stripeRouter);
+router.use('/stripe', auth, stripeRouter);
 router.use('/temple', templeRouter);
 
 
