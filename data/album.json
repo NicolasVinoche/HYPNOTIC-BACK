@@ -1,0 +1,384 @@
+// ALBUMS/EP/V.A
+
+[
+  {
+    "album_id": "1",
+    "title": "Compilations",
+    "description": "",
+    "cover": ""
+  },
+  {
+    "album_id": "2",
+    "title": "Enygma",
+    "description": "Télécharge et entre à l’intérieur de mon 1er album Enygma. Tu pourras explorer et modifier à volonté les huit musiques de cet opus. Cet Album c’est, 8 musiques, 536 pistes et des centaines d’heures d’expérimentation ! Amuses-toi et hésites pas à me partager tes versions !",
+    "cover": ""
+  },
+  {
+    "album_id": "3",
+    "title": "Allotropie",
+    "description": "Immerge toi dans mon univers le plus relax avec ma premiere sortie alternative 'Allotropie' ! Quatre musiques aux couleurs très posées et jazzy que tu vas pouvoir revisiter à ta guise.",
+    "cover": ""
+  },
+  {
+    "album_id": "4",
+    "title": "The Mirror",
+    "description": "Un autre niveau de production à porté de click avec mon EP The Mirror. Tu vas pouvoir découvrir les techniques que j'ai développé pour ce volume et t'amuser à décortiquer et donner une autre allure à mes musiques. Partage tes découvertes avec moi, je suis toujours ouvert et curieux de découvrir de nouvelles utilisations !",
+    "cover": ""
+  },
+  {
+    "album_id": "5",
+    "title": "Logorrhia",
+    "description": "Ready for the next level ? Analyse mes toutes dernières techniques de mixage et de production avec mon Album Logorrhia !",
+    "cover": ""
+  }
+]
+
+
+// TRACK
+[
+  // album_id: "1"
+  {
+    "track_id": "17",
+    "album_id": "1",
+    "track_number": "1",
+    "title": "Hypnotic Peafowl - Adena",
+    "description": "",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "18",
+    "album_id": "1",
+    "track_number": "2",
+    "title": "Hypnotic Peafowl - Flegma",
+    "description": "",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "19",
+    "album_id": "1",
+    "track_number": "3",
+    "title": "Hypnotic Peafowl - Matryman",
+    "description": "",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "20",
+    "album_id": "1",
+    "track_number": "4",
+    "title": "Hypnotic Peafowl - Minèmon",
+    "description": "",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "21",
+    "album_id": "1",
+    "track_number": "5",
+    "title": "Hypnotic Peafowl - Natrily",
+    "description": "",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "22",
+    "album_id": "1",
+    "track_number": "6",
+    "title": "Hypnotic Peafowl - Neiller",
+    "description": "",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "23",
+    "album_id": "1",
+    "track_number": "7",
+    "title": "Hypnotic Peafowl - Show me",
+    "description": "",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "24",
+    "album_id": "1",
+    "track_number": "8",
+    "title": "Juelz - Future Facing (Hypnotic Peafowl Remix)",
+    "description": "",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "25",
+    "album_id": "1",
+    "track_number": "9",
+    "title": "Kromagon - Heacy Lohic (Hypnotic Peafowl Remix)",
+    "description": "",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "26",
+    "album_id": "1",
+    "track_number": "10",
+    "title": "Scionaugh - Constantly Curious (Hypnotic Peafowl Remix)",
+    "description": "",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "27",
+    "album_id": "1",
+    "track_number": "11",
+    "title": "Zero Cult - Moonlight Run (Hypnotic Peafowl Remix)",
+    "description": "",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  // album_id:"2
+  {
+    "track_id": "1",
+    "album_id": "2",
+    "track_number": "1",
+    "title": "Samway - Random Step (Hypnotic Peafowl Remix)",
+    "description": "133bpm / D1, 97 pistes, 37 pistes midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "2",
+    "album_id": "2",
+    "track_number": "2",
+    "title": "Hypnotic Peafowl - Halfred",
+    "description": "136bpm / C0, 63 pistes, 22 pistes midi ",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "3",
+    "album_id": "2",
+    "track_number": "3",
+    "title": "Hypnotic Peafowl - Gliotcha",
+    "description": "136bpm / E1, 66 pistes, 19 pistes midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "4",
+    "album_id": "2",
+    "track_number": "4",
+    "title": "Hypnotic Peafowl - Morty",
+    "description": "137bpm / D1, 85 pistes, 26 pistes midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "5",
+    "album_id": "2",
+    "track_number": "5",
+    "title": "Hypnotic Peafowl - Enygma",
+    "description": "136bpm / B0, 67 pistes, 19 pistes midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "6",
+    "album_id": "2",
+    "track_number": "6",
+    "title": "Hypnotic Peafowl - Ryanlowb",
+    "description": "137bpm / B0, 101 pistes, 27 pistes midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "7",
+    "album_id": "2",
+    "track_number": "7",
+    "title": "Hypnotic Peafowl - Misses Daïmaïd",
+    "description": "135bpm / C0, 57 pistes, 13 pistes midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "8",
+    "album_id": "2",
+    "track_number": "8",
+    "title": "Hypnotic Peafowl - Merilyum",
+    "description": "136bpm / B0, 56 pistes, 21 pistes midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  // album_id: "3"
+  {
+    "track_id": "9",
+    "album_id": "3",
+    "track_number": "1",
+    "title": "Hypnotic Peafowl - Toysazuerta",
+    "description": "75 pistes, C1 / 120 bpm",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "10",
+    "album_id": "3",
+    "track_number": "2",
+    "title": "Samway - Random Step (Hypnotic Peafowl Remix)",
+    "description": "94 pistes, D1 / 110bpm ",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "11",
+    "album_id": "3",
+    "track_number": "3",
+    "title": "Hypnotic Peafowl - Cynoblast",
+    "description": "40 pistes, 86 bpm / C0",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "12",
+    "album_id": "3",
+    "track_number": "4",
+    "title": "Hypnotic Peafowl - Merilyum",
+    "description": "50 Pistes, 110bpm / B0",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  // album_id: "4"
+  {
+    "track_id": "13",
+    "album_id": "4",
+    "track_number": "1",
+    "title": "Eartheogen - Living Art (Hypnotic Peafowl Remix)",
+    "description": "D1 / 136bpm, 109 pistes, 33 pistes midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "14",
+    "album_id": "4",
+    "track_number": "2",
+    "title": "Hypnotic Peafowl - Hep-Not",
+    "description": "E1 / 135bpm, 126 pistes, 33 pistes midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "15",
+    "album_id": "4",
+    "track_number": "3",
+    "title": "Hypnotic Peafowl - Jawea",
+    "description": "D#1 / 136bpm, 77 pistes, 19 pistes midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "16",
+    "album_id": "4",
+    "track_number": "4",
+    "title": "Hypnotic Peafowl - Warnex",
+    "description": "E1 / 136 bpm, 81 pistes, 28 piste midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  // album_id: "5"
+  {
+    "track_id": "28",
+    "album_id": "5",
+    "track_number": "1",
+    "title": "Hypnotic Peafowl & Bendja - The Mind Box",
+    "description": "86bpm / D0, 113 pistes audio et midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "29",
+    "album_id": "5",
+    "track_number": "2",
+    "title": "Hypnotic Peafowl - Dokeh",
+    "description": "135bpm / D2, 109 pistes audio et midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "30",
+    "album_id": "5",
+    "track_number": "3",
+    "title": "Hypnotic Peafowl - Mind Control",
+    "description": "137bpm / D1, 158 pistes audio et midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "31",
+    "album_id": "5",
+    "track_number": "4",
+    "title": "Hypnotic Peafowl - Mysterious Feeling",
+    "description": "138bpm / D1, 150 pistes audio et midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "32",
+    "album_id": "5",
+    "track_number": "5",
+    "title": "Hypnotic Peafowl - Understand The Universe",
+    "description": "140bpm / F, 125 pistes audio et midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "32",
+    "album_id": "5",
+    "track_number": "6",
+    "title": "Hypnotic Peafowl & Version Bizar - Too Fast Bro",
+    "description": "137bpm / D1, 92 pistes audio et midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+  {
+    "track_id": "32",
+    "album_id": "5",
+    "track_number": "7",
+    "title": "Hypnotic Peafowl - What Time Is It",
+    "description": "139bpm / A#, 163 pistes audio et midi",
+    "cover": "",
+    "prix": "5",
+    "bucket_link": ""
+  },
+]
