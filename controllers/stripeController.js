@@ -9,16 +9,15 @@ var cors = require('cors');
 const app = express();
 
 var corsOptions = { credentials: true,
-    origin: ['http://localhost:8080/', 'https://sami-fekkar.xyz/'],
-    allowedHeaders: 'Accept, Content-Type, Authorization,append,delete,entries,foreach,get,has,keys,set,values',
+    origin: 'https://sami-fekkar.xyz/',
+    allowedHeaders: 'Content-Type, Accept, Origin, Authorization',
     preflightContinue: true,
-    methods: 'GET, PUT, POST, DELETE, OPTIONS',
-    optionSuccessStatus: true, 
+    methods: 'GET, PUT, POST, DELETE, PATCH',
     credentials: true
 };
 
-app.use(express.json()); 
 app.use(cors(corsOptions));
+app.use(express.json()); 
 // var allowCrossDomain = function (req, res, next) {
  //    res.header('Access-Control-Allow-Origin', ['http://localhost:8080/', 'https://sami-fekkar.xyz/']);
 //     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');

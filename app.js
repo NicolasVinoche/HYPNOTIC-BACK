@@ -16,12 +16,11 @@ const app = express();
 //    next();
 // };
  // app.use(allowCrossDomain);
-var corsOptions = { credentials: true,
-                   origin: ['http://localhost:8080/', 'https://sami-fekkar.xyz/'],
-                   allowedHeaders: 'Accept, Content-Type, Authorization,append,delete,entries,foreach,get,has,keys,set,values',
+var corsOptions = {
+                   origin: 'https://sami-fekkar.xyz/',
+                   allowedHeaders: 'Content-Type, Accept, Origin, Authorization',
                    preflightContinue: true,
-                   methods: 'GET, PUT, POST, DELETE, OPTIONS',
-                   optionSuccessStatus: true, 
+                   methods: 'GET, PUT, POST, DELETE, PATCH',
                    credentials: true
 };
 //app.options(cors(corsOptions)); 
