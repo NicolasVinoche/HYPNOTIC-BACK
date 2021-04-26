@@ -4,7 +4,7 @@ module.exports = (req, res, next) => {
   try {
     // On récupère le token dans le header Authorization de la requête, on split pour récuperer tout après l'espace
     const token = req.headers.cookie.replace('token=', '');
-    console.log('req.headers.cookie:', req.headers.cookie);
+    console.log('req.headers.cookie:', req.headers.cookie.token);
     // On décode let token
     const decodedToken = jwt.verify(token, process.env.JWT_SIGN_SECRET);
     // On extrait l'ID utilisateur dans le token
