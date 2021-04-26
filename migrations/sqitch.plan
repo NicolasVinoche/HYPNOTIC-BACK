@@ -6,3 +6,4 @@
 05-add-cart-table 2021-04-14T11:31:19Z "Etudiant O'clock",,, <etudiant@teleporteur> # table cart
 10-add-message-contact-table 2021-04-20T07:28:07Z "Etudiant O'clock",,, <etudiant@teleporteur> # ajout d'une table pour les messages contact
 15-add-sub_id 2021-04-22T14:04:20Z "Etudiant O'clock",,, <etudiant@teleporteur> # ajout du champ sub_id dans la table users
+20-albums-and-tracks 2021-04-26T13:57:17Z "Etudiant O'clock",,, <etudiant@teleporteur> # modif table albums et ajout d'une table tracks
