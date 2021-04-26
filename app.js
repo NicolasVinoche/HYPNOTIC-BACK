@@ -2,20 +2,20 @@
 require('dotenv').config();
 const express = require('express');
 const routers = require('./routers');  
-//const cors = require('cors');
+const cors = require('cors');
 
 // Instanciate server
 const app = express(); 
 
-var allowCrossDomain = function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', ['http://localhost:8080/', 'https://sami-fekkar.xyz/']);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Accept, Accept-Language, Content-Language, Upgrade-Insecure-Requests, Content-Type, X-requested-With, X-HTTP-Method-Override, X-Custom-Header, Content-Encoding');
-    res.header('Access-Control-Allow-Credentials', true);
+// var allowCrossDomain = function (req, res, next) {
+//     res.header('Access-Control-Allow-Origin', ['http://localhost:8080/', 'https://sami-fekkar.xyz/']);
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Accept, Accept-Language, Content-Language, Upgrade-Insecure-Requests, Content-Type, X-requested-With, X-HTTP-Method-Override, X-Custom-Header, Content-Encoding');
+//     res.header('Access-Control-Allow-Credentials', true);
 
-   next();
-};
-app.use(allowCrossDomain);
+//    next();
+// };
+ // app.use(allowCrossDomain);
 //var corsOptions = { credentials: true,
   //                  origin: 'http://localhost:8080',
     //                allowedHeaders: 'Accept, Content-Type, Authorization,append,delete,entries,foreach,get,has,keys,set,values',
@@ -24,7 +24,7 @@ app.use(allowCrossDomain);
           //          optionSuccessStatus: true
 //};
 //app.options(cors(corsOptions)); 
-//app.use(cors(corsOptions));
+app.use(cors(['http://localhost:8080/', 'https://sami-fekkar.xyz/']));
 //app.use((req, res, next) => {
   //res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
   //next();

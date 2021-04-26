@@ -4,19 +4,21 @@ const stripe = require("stripe")("sk_test_51IgW8cIXwT38my0aJiBhw4YHO8xtVt49kOEV7
 const { uuid } = require('uuidv4'); 
 const userDataMapper = require('../dataMappers/userDataMapper');
 var jwtUtils = require('../utils/jwt'); 
+var cors = require('cors');
 
 const app = express();
 
-app.use(express.json());
-var allowCrossDomain = function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', ['http://localhost:8080/', 'https://sami-fekkar.xyz/']);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Accept, Accept-Language, Content-Language, Upgrade-Insecure-Requests, Content-Type, X-requested-With, X-HTTP-Method-Override, X-Custom-Header, Content-Encoding');
-    res.header('Access-Control-Allow-Credentials', true);
+app.use(express.json()); 
+app.use(cors(['http://localhost:8080/', 'https://sami-fekkar.xyz/']));
+// var allowCrossDomain = function (req, res, next) {
+//     res.header('Access-Control-Allow-Origin', ['http://localhost:8080/', 'https://sami-fekkar.xyz/']);
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Accept, Accept-Language, Content-Language, Upgrade-Insecure-Requests, Content-Type, X-requested-With, X-HTTP-Method-Override, X-Custom-Header, Content-Encoding');
+//     res.header('Access-Control-Allow-Credentials', true);
 
-   next();
-};
-app.use(allowCrossDomain);
+//    next();
+// };
+// app.use(allowCrossDomain);
 module.exports = {
 
     stripeCheckout: async function(req, res, next) {
