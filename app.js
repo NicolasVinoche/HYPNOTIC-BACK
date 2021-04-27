@@ -2,10 +2,12 @@
 require('dotenv').config();
 const express = require('express');
 const routers = require('./routers');  
-const cors = require('cors');
+const cors = require('cors'); 
+const cookieParser = require('cookie-parser');
 
 // Instanciate server
 const app = express(); 
+app.use(cookieParser()); 
 
 // var allowCrossDomain = function (req, res, next) {
 //     res.header('Access-Control-Allow-Origin', ['http://localhost:8080/', 'https://sami-fekkar.xyz/']);
@@ -17,14 +19,15 @@ const app = express();
 // };
  // app.use(allowCrossDomain);
 var corsOptions = {
-                   origin: 'https://sami-fekkar.xyz/',
+                   origin: 'https://hypnoticpeafowl.com/',
                    allowedHeaders: 'Content-Type, Accept, Origin, Authorization',
                    preflightContinue: false,
                    methods: 'GET, PUT, POST, DELETE, PATCH',
                    credentials: true
 };
 //app.options(cors(corsOptions)); 
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); 
+ 
 //app.use((req, res, next) => {
   //res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
   //next();
