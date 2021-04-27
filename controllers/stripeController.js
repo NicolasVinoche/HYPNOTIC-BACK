@@ -52,7 +52,11 @@ module.exports = {
                 {   // empêche les bugs de paiement multiple
                     idempotencyKey
                 }
-            );
+            ); 
+            //const paymentIntent = await stripe.paymentIntents.confirm(
+              //  paymentIntent.id,
+                //{payment_method: paymentIntent.payment_method}
+              //);
             res.json({'client_secret': paymentIntent['client_secret']})
         } else {
             return res.status(400).json({errors :[`Utilisateur introuvable`]});

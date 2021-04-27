@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (req, res, next) => {
   try {
     // On récupère le token dans le header Authorization de la requête, on split pour récuperer tout après l'espace
-    const token = req.headers.cookie.replace('token=', '');
+    const token = req.headers.cookie.replace('token=', '') [1];
     console.log('req.headers.cookie:', req.headers.cookie.authorization);
     // On décode let token
     const decodedToken = jwt.verify(token, process.env.JWT_SIGN_SECRET);
