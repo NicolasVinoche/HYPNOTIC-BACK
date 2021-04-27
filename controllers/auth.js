@@ -1,10 +1,11 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken'); 
+const cookie = require('cookie-parser');
 
 module.exports = (req, res, next) => {
   try {
     // On récupère le token dans le header Authorization de la requête, on split pour récuperer tout après l'espace
-    const token = req.headers.cookie.replace('token=', '') [1];
-    console.log('req.headers.cookie:', req.headers.cookie.authorization);
+    const token = req.cookie.token;
+    console.log('req.headers.cookie:', req.cookie.token);
     // On décode let token
     const decodedToken = jwt.verify(token, process.env.JWT_SIGN_SECRET);
     // On extrait l'ID utilisateur dans le token
