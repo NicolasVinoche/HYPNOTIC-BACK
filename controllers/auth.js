@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 module.exports = (req, res, next) => {
   try {
     // On récupère le token dans le header Authorization de la requête, on split pour récuperer tout après l'espace
-    const token = req.cookies;
+    const token = req.cookies.token;
     console.log('cookies:', req.cookies);
     // On décode let token
     const decodedToken = jwt.verify(token, process.env.JWT_SIGN_SECRET);
