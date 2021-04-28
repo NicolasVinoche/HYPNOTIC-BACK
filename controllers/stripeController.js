@@ -8,8 +8,8 @@ var cors = require('cors');
 
 const app = express();
 
-var corsOptions = { credentials: true,
-    origin: 'https://sami-fekkar.xyz/',
+var corsOptions = { 
+    origin: 'https://hypnoticpeafowl.com/',
     allowedHeaders: 'Content-Type, Accept, Origin, Authorization',
     preflightContinue: false,
     methods: 'GET, PUT, POST, DELETE, PATCH',
@@ -53,10 +53,7 @@ module.exports = {
                     idempotencyKey
                 }
             ); 
-            //const paymentIntent = await stripe.paymentIntents.confirm(
-              //  paymentIntent.id,
-                //{payment_method: paymentIntent.payment_method}
-              //);
+
             res.json({'client_secret': paymentIntent['client_secret']})
         } else {
             return res.status(400).json({errors :[`Utilisateur introuvable`]});
@@ -131,26 +128,4 @@ module.exports = {
     
     }, 
 }
-    // cancelSub: async function(req, res, next) {
-
-    //     try {
-
-    //         const email = req.body.email
-    //         const user = await userDataMapper.findUser(email); 
-            
-    //         if (email === user.email) {
-
-    //             const deleted = await stripe.subscriptions.del(
-
-    //                 user.sub_id
-    //              );
-                
-    //         } else {
-    //             return res.status(400).json({errors :[`Utilisateur introuvable`]});
-    //         }
-
-    //     } catch(error) {
-    //         next();
-    //     }
-
-    // }
+    

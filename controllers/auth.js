@@ -1,11 +1,8 @@
 const jwt = require('jsonwebtoken'); 
-const cookieParser = require('cookie-parser'); 
-
-
 
 module.exports = (req, res, next) => {
   try {
-    // On récupère le token dans le header Authorization de la requête, on split pour récuperer tout après l'espace
+    // On récupère le token (cookie-parser dans le app)
     const token = req.cookies.token;
     console.log('cookies:', req.cookies);
     // On décode let token
