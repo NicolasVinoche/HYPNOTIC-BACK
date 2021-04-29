@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 var jwtUtils = require('../utils/jwt'); 
 const settingDataMapper = require('../dataMappers/settingDataMapper'); 
+const packDataMapper = require('../dataMappers/packDataMapper');
 
 const regex_password = /^(?=.*\d).{5,20}$/;
 
@@ -152,16 +153,15 @@ module.exports = {
                     
                 },
 
-                newPack: async function(req, res, next) {
+    newPack: async function(req, res, next) {
                     title = req.body.title;
                     description = req.body.description;
                     price = req.body.price;
                     tag = req.body.tag;
-                    file = req.body.file;
-                    
+                    file = req.body.file;     
+
                     try {
-                        const newpack = await packDataMapper.insertPack(title, description, price, tag); 
-            
+
                         var AWS = require('aws-sdk'); 
             
                         var creds = new AWS.Credentials({
@@ -191,23 +191,26 @@ module.exports = {
                         uploadParams.Key = path.basename(file);
             
                         // call S3 to retrieve upload file to specified bucket
-                        s3.upload (uploadParams, function (err, data) {
+                        
+                        s3.upload (uploadParams, async function (err, data) {
+                        
+                        
                         if (err) {
                             console.log("Error", err);
                         } if (data) {
                             console.log("Upload Success", data);
-                            
-                            const packlink = await packDataMapper.insertLink(data.Location) 
-                            
-                            console.log(packlink);
+        
+                            const newpack = await packDataMapper.insertPack(title, description, price, tag, data.Location);
+                            console.log(newpack); 
                         }
-                        });
-            
-                                    
-                                } catch (error) {
-                                    next(error);
-                                }
+                        }); 
+
+                           } catch (error) {
+                            
+                            next(error);
+                            
                             }
+                }            
 }    
             
             

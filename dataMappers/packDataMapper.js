@@ -33,10 +33,10 @@ module.exports = {
             return result.rows;
        }, 
        
-       async insertPack(title, description, price, tag) {
-            const result = await client.query(`INSERT INTO packs (title, description, price, tag) 
-                                                VALUES ($1, $2, $3, $4) RETURNING *`, 
-                                                [title, description, price, tag]);  
+       async insertPack(title, description, price, tag, link) {
+            const result = await client.query(`INSERT INTO packs (title, description, price, tag, link) 
+                                                VALUES ($1, $2, $3, $4, $5) RETURNING *`, 
+                                                [title, description, price, tag, link]);  
         
             return result.rows[0];           
         }, 

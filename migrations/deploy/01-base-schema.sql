@@ -38,9 +38,9 @@ CREATE TABLE masterclasses (
 
 CREATE TABLE packs (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    title TEXT NOT NULL, 
-    "description" TEXT NOT NULL, 
-    price NUMERIC(6, 2) NOT NULL, 
+    title TEXT, 
+    "description" TEXT, 
+    price NUMERIC(6, 2), 
     tag TEXT, 
     link TEXT
 ); 
