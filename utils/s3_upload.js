@@ -15,7 +15,7 @@ s3 = new AWS.S3({apiVersion: '2006-03-01',
 // call S3 to retrieve upload file to specified bucket
 var uploadParams = {Bucket: 'hypnotic-peafowl', Key: 'Pandoras Box_Full_Layer', Body: ''};
 var file = '/home/etudiant/Bureau/Pandoras Box_Full_Layer.png'; process.argv[3];
-
+'Upload Success https://hypnotic-peafowl.s3.amazonaws.com/Pandoras%20Box_Full_Layer.png Key: Pandoras Box_Full_Layer.png Bucket: hypnotic-peafowl'
 var fs = require('fs');
 var fileStream = fs.createReadStream(file);
 fileStream.on('error', function(err) {
