@@ -38,7 +38,7 @@ CREATE TABLE masterclasses (
 
 CREATE TABLE packs (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    title TEXT, 
+    title TEXT NOT NULL, 
     "description" TEXT, 
     price NUMERIC(6, 2), 
     tag TEXT, 
@@ -48,7 +48,8 @@ CREATE TABLE packs (
 CREATE TABLE albums (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title TEXT NOT NULL, 
-    image_path TEXT
+    image_path TEXT, 
+    link TEXT
 ); 
 
 CREATE TABLE streams (

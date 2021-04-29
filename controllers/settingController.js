@@ -154,63 +154,119 @@ module.exports = {
                 },
 
     newPack: async function(req, res, next) {
-                    title = req.body.title;
-                    description = req.body.description;
-                    price = req.body.price;
-                    tag = req.body.tag;
-                    file = req.body.file;     
+        title = req.body.title;
+        description = req.body.description;
+        price = req.body.price;
+        tag = req.body.tag;
+        file = req.body.file;     
 
-                    try {
+        try {
 
-                        var AWS = require('aws-sdk'); 
-            
-                        var creds = new AWS.Credentials({
-                        accessKeyId: 'AKIAYDMZRXLLOEPMOD7J', secretAccessKey: '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'
-                        });
-            
-                        // Create S3 service object
-                        s3 = new AWS.S3({apiVersion: '2006-03-01', 
-                                        credentials: creds});
-                        var bucketParams = {
-                        Bucket : 'hypnotic-peafowl'
-                        }; 
-            
-                        // call S3 to retrieve upload file to specified bucket
-                        var uploadParams = {Bucket: 'hypnotic-peafowl/images', 
-                                            Key: 'Pandoras Box_Full_Layer', 
-                                            ACL: "public-read-write", 
-                                            };
-                        var file = file;
-                        var fs = require('fs');
-                        var fileStream = fs.createReadStream(file);
-                        fileStream.on('error', function(err) {
-                        console.log('File Error', err);
-                        });
-                        uploadParams.Body = fileStream;
-                        var path = require('path');
-                        uploadParams.Key = path.basename(file);
-            
-                        // call S3 to retrieve upload file to specified bucket
-                        
-                        s3.upload (uploadParams, async function (err, data) {
-                        
-                        
-                        if (err) {
-                            console.log("Error", err);
-                        } if (data) {
-                            console.log("Upload Success", data);
-        
-                            const newpack = await packDataMapper.insertPack(title, description, price, tag, data.Location);
-                            console.log(newpack); 
-                        }
-                        }); 
+            var AWS = require('aws-sdk'); 
 
-                           } catch (error) {
-                            
-                            next(error);
-                            
-                            }
-                }            
-}    
+            var creds = new AWS.Credentials({
+            accessKeyId: 'AKIAYDMZRXLLOEPMOD7J', secretAccessKey: '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'
+            });
+
+            // Create S3 service object
+            s3 = new AWS.S3({apiVersion: '2006-03-01', 
+                            credentials: creds});
+            var bucketParams = {
+            Bucket : 'hypnotic-peafowl'
+            }; 
+
+            // call S3 to retrieve upload file to specified bucket
+            var uploadParams = {
+                Bucket: 'hypnotic-peafowl', 
+                Key: title, 
+                ACL: "public-read-write", 
+            };
+            var file = file;
+            var fs = require('fs');
+            var fileStream = fs.createReadStream(file);
+            fileStream.on('error', function(err) {
+            console.log('File Error', err);
+            });
+            uploadParams.Body = fileStream;
+            var path = require('path');
+            uploadParams.Key = path.basename(file);
+
+            // call S3 to retrieve upload file to specified bucket
             
+            s3.upload (uploadParams, async function (err, data) {
             
+                if (err) {
+                    console.log("Error", err);
+                } if (data) {
+                    console.log("Upload Success", data);
+
+                    const newpack = await packDataMapper.insertPack(title, description, price, tag, data.Location);
+                    console.log(newpack);
+                    return res.status(200).json ({newpack}); 
+                    
+                }
+            }); 
+
+        } catch (error) {
+                
+            next(error);
+        }
+    },
+    
+    newAlbum : async function(req, res, next) {
+        title = req.body.title;
+        description = req.body.description;
+        file = req.body.file;     
+
+        try {
+
+            var AWS = require('aws-sdk'); 
+
+            var creds = new AWS.Credentials({
+            accessKeyId: 'AKIAYDMZRXLLOEPMOD7J', secretAccessKey: '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'
+            });
+
+            // Create S3 service object
+            s3 = new AWS.S3({apiVersion: '2006-03-01', 
+                            credentials: creds});
+            var bucketParams = {
+            Bucket : 'hypnotic-peafowl'
+            }; 
+
+            // call S3 to retrieve upload file to specified bucket
+            var uploadParams = {
+                Bucket: 'hypnotic-peafowl', 
+                Key: title, 
+                ACL: "public-read-write", 
+            };
+            var file = file;
+            var fs = require('fs');
+            var fileStream = fs.createReadStream(file);
+            fileStream.on('error', function(err) {
+            console.log('File Error', err);
+            });
+            uploadParams.Body = fileStream;
+            var path = require('path');
+            uploadParams.Key = path.basename(file);
+
+            // call S3 to retrieve upload file to specified bucket
+            
+            s3.upload (uploadParams, async function (err, data) {
+            
+                if (err) {
+                    console.log("Error", err);
+                } if (data) {
+                    console.log("Upload Success", data);
+
+                    const newalbum = await albumDataMapper.insertAlbum(title, description, cover);
+                    console.log(newalbum);
+                    return res.status(200).json ({newalbum});
+                }
+            }); 
+
+        } catch (error) {
+                
+            next(error);
+        }
+    },
+}        
