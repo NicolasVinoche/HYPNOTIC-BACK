@@ -8,14 +8,15 @@ var creds = new AWS.Credentials({
 s3 = new AWS.S3({apiVersion: '2006-03-01', 
                   credentials: creds});
    var bucketParams = {
-  Bucket : 'hypnotic-peafowl',
-   //Key: 'téléchargements/pack-sample/HYPNOTIC PEAFOWL - Archive Vol 1.zip'
+  Bucket : 'hypnotic-peafowl'
 }; 
 
 // call S3 to retrieve upload file to specified bucket
-var uploadParams = {Bucket: 'hypnotic-peafowl', Key: 'Pandoras Box_Full_Layer', Body: ''};
-var file = '/home/etudiant/Bureau/Pandoras Box_Full_Layer.png'; process.argv[3];
-
+var uploadParams = {Bucket: 'hypnotic-peafowl/images', 
+                    Key: 'Pandoras Box_Full_Layer', 
+                    ACL: "public-read-write", 
+                    };
+var file = '/home/etudiant/Bureau/Pandoras Box_Full_Layer.png';
 var fs = require('fs');
 var fileStream = fs.createReadStream(file);
 fileStream.on('error', function(err) {
@@ -30,6 +31,6 @@ s3.upload (uploadParams, function (err, data) {
   if (err) {
     console.log("Error", err);
   } if (data) {
-    console.log("Upload Success", data.Location);
+    console.log("Upload Success", data);
   }
 });

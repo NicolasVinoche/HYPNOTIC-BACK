@@ -39,9 +39,10 @@ CREATE TABLE masterclasses (
 CREATE TABLE packs (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title TEXT NOT NULL, 
-    content TEXT, 
+    "description" TEXT NOT NULL, 
     price NUMERIC(6, 2) NOT NULL, 
-    tag TEXT
+    tag TEXT, 
+    link TEXT
 ); 
 
 CREATE TABLE albums (
