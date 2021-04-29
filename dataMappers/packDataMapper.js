@@ -1,3 +1,4 @@
+const { link } = require('fs');
 const client = require ('./client'); 
 
 module.exports = {
@@ -30,6 +31,22 @@ module.exports = {
             } 
                                 
             return result.rows;
-       }     
+       }, 
+       
+       async insertPack(title, description, price, tag, link) {
+            const result = await client.query(`INSERT INTO packs (title, description, price, tag, link) 
+                                                VALUES ($1, $2, $3, $4, $5) RETURNING *`, 
+                                                [title, description, price, tag, link]);  
+        
+            return result.rows[0];           
+        }, 
+
+        async insertLink(link) {
+            const result = await client.query(`INSERT INTO packs (link) 
+                                                VALUES ($1) RETURNING *`, 
+                                                [link]); 
+
+            return result.rows[0];                                                                        
+        }
         
 }
