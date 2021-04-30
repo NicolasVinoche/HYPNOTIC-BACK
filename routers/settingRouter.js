@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router(); 
 
 const settingController = require('../controllers/settingController'); 
-const multerS3 = require('../controllers/multers3');
+const multerS3 = require('../controllers/multers3'); 
+const packDataMapper = require ('../dataMappers/packDataMapper');
 
 router.put('/user/:id', settingController.updateUser);
 router.post('/admin/pack', multerS3.newPack, async(req, res, next) => {
@@ -17,7 +18,7 @@ router.post('/admin/pack', multerS3.newPack, async(req, res, next) => {
     try {
             const newpack = await packDataMapper.insertPack(title, description, price, tag, file);
                 console.log(newpack);
-            return res.status(200).json ({newpack}); 
+            // return res.status(200).json ({newpack}); 
         } catch (error) {
             next(error)
         }
