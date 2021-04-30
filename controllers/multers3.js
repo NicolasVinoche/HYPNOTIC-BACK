@@ -17,7 +17,7 @@ module.exports = {
        // console.log('REQ.FILE :', req.file);
 
 
-       console.log(file);
+       console.log('REQ FILE :', file);
        try {
         console.log('JE PASSE ICI')
 
@@ -48,7 +48,7 @@ module.exports = {
 
         console.log ('JAI FAIS CA');
         
-        upload.single(file, async function (err, data, req) {
+        upload.single('file'), async function (err, data, req) {
 
             if (err) {
                 console.log("Error", err);
@@ -59,7 +59,7 @@ module.exports = {
                 // console.log(newpack);
                 // return res.status(200).json ({newpack}); 
             }
-        })
+        }
         
         
         } catch (error) {
