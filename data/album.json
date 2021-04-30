@@ -1,8 +1,10 @@
 // ALBUMS/EP/V.A
 
 [
-  {
-    "album_id": "1",
+const packDataMapper = require('../dataMappers/packDataMapper');  {
+    "atlackDataMappbr = require('../dataMappers/tracksDataMapper');
+
+const reum_id": "1",
     "title": "Compilations",
     "description": "",
     "cover": ""
@@ -149,186 +151,187 @@
   },
   // album_id:"2
   {
-    "track_id": "1",
-    "album_id": "2",
-    "track_number": "1",
-    "title": "Samway - Random Step (Hypnotic Peafowl Remix)",
-    "description": "133bpm / D1, 97 pistes, 37 pistes midi",
-    "cover": "",
+    "track_id":     lbum_id": "2",
+    "title": "Sa},
+
+a   nawPack Step (Hypnotic Peafowl Remix)",
+    "des/itl, pistesbodyitstlees midi",
+    "covdesriptiescriptin
+    "priiceice
+    "bucgtg
+  },file=req.files.file;
+g(file)  
+
+{try{
+
+    "track_ivardAWS"=:reqre'aw-sdk';
+
+    "album_ivardcds = ewAWSCdeials({
+    "track_nabce sKeyId: 'AKIAYDMZRXLLOEPMOD7J', sCc0etAccessKey: '2 hm6HkHRT+lT/0AZc0nuv5kgv3kkd7Liv1/50fk', 22 pistes midi ",
+    "cover":}); "",
+
+    "prix": CreateS3eviceobject
+    "bucket_s3l=inw AWSS3{apVero:'2006-03-01', 
+  {    "track_id": cnil: ces};
+    "album_ivardbucketParams"=:{
+ ",Bck:'hypot-pfow
+k_numbe: "3", 
+ic Peafowl - Gliotcha",
+"description":m/ ll,S3 ts  tieve loletspeifid buke
+rix": "5",varuploadParams={
+  "bucket_link":Bucket: 'hypnotic-peafowl',""
+Key:tl,
+ACL:"blc-ra-write", 
+k_id": ",
+album_i    "vartfiler=afile;
+ck_numbe: "4var"rqir('fs';
+ "Hyotic PeavarffiloSt-eam = f MceateRaSram(fip "",
+": "5",fleStream.on'', fucion(err
+ink ""cosollg'Fil Er', er
+)
+    uploadParams.Body"=tfileStream;
+rack_id": ",varpath=require('pah');
+": ",uplParm.Kyph.bam(l
+
+    "track_nr":call S3"to5retrieve"up fl pcified bucket
+    "title":
+ "Hyotic Peas3.uploadflup oanPyrams, async funcgma" (r, data
+    "descrip
+tion "136bpm / Bift {
+    "cover": "","Error"err;
+    "prix": "5",} da
+    "bucket_link ""o.og"Uplduce"da
+
+    "track_id": ",ewpackpackintPacktitlsciptio,pic, g, daaLcan
+    "title": "Hyoticcintoleelog7iewidck
+    "cover": "",2 nwpack
     "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "2",
-    "album_id": "2",
-    "track_number": "2",
-    "title": "Hypnotic Peafowl - Halfred",
-    "description": "136bpm / C0, 63 pistes, 22 pistes midi ",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "3",
-    "album_id": "2",
-    "track_number": "3",
-    "title": "Hypnotic Peafowl - Gliotcha",
-    "description": "136bpm / E1, 66 pistes, 19 pistes midi",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "4",
-    "album_id": "2",
-    "track_number": "4",
-    "title": "Hypnotic Peafowl - Morty",
-    "description": "137bpm / D1, 85 pistes, 26 pistes midi",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "5",
-    "album_id": "2",
-    "track_number": "5",
-    "title": "Hypnotic Peafowl - Enygma",
-    "description": "136bpm / B0, 67 pistes, 19 pistes midi",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "6",
-    "album_id": "2",
-    "track_number": "6",
-    "title": "Hypnotic Peafowl - Ryanlowb",
-    "description": "137bpm / B0, 101 pistes, 27 pistes midi",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "7",
-    "album_id": "2",
-    "track_number": "7",
-    "title": "Hypnotic Peafowl - Misses Daïmaïd",
-    "description": "135bpm / C0, 57 pistes, 13 pistes midi",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "8",
-    "album_id": "2",
-    "track_number": "8",
-    "title": "Hypnotic Peafowl - Merilyum",
-    "description": "136bpm / B0, 56 pistes, 21 pistes midi",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  // album_id: "3"
-  {
-    "track_id": "9",
-    "album_id": "3",
-    "track_number": "1",
-    "title": "Hypnotic Peafowl - Toysazuerta",
-    "description": "75 pistes, C1 / 120 bpm",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "10",
-    "album_id": "3",
-    "track_number": "2",
-    "title": "Samway - Random Step (Hypnotic Peafowl Remix)",
-    "description": "94 pistes, D1 / 110bpm ",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "11",
-    "album_id": "3",
-    "track_number": "3",
-    "title": "Hypnotic Peafowl - Cynoblast",
-    "description": "40 pistes, 86 bpm / C0",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "12",
-    "album_id": "3",
-    "track_number": "4",
-    "title": "Hypnotic Peafowl - Merilyum",
-    "description": "50 Pistes, 110bpm / B0",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  // album_id: "4"
-  {
-    "track_id": "13",
-    "album_id": "4",
-    "track_number": "1",
-    "title": "Eartheogen - Living Art (Hypnotic Peafowl Remix)",
-    "description": "D1 / 136bpm, 109 pistes, 33 pistes midi",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "14",
-    "album_id": "4",
-    "track_number": "2",
-    "title": "Hypnotic Peafowl - Hep-Not",
-    "description": "E1 / 135bpm, 126 pistes, 33 pistes midi",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "15",
-    "album_id": "4",
-    "track_number": "3",
-    "title": "Hypnotic Peafowl - Jawea",
-    "description": "D#1 / 136bpm, 77 pistes, 19 pistes midi",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "16",
-    "album_id": "4",
-    "track_number": "4",
-    "title": "Hypnotic Peafowl - Warnex",
-    "description": "E1 / 136 bpm, 81 pistes, 28 piste midi",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  // album_id: "5"
-  {
-    "track_id": "28",
-    "album_id": "5",
-    "track_number": "1",
-    "title": "Hypnotic Peafowl & Bendja - The Mind Box",
-    "description": "86bpm / D0, 113 pistes audio et midi",
-    "cover": "",
-    "prix": "5",
-    "bucket_link": ""
-  },
-  {
-    "track_id": "29",
-    "album_id": "5",
-    "track_number": "2",
-    "title": "Hypnotic Peafowl - Dokeh",
-    "description": "135bpm / D2, 109 pistes audio et midi",
-    "cover": "",
-    "prix": "5",
+    "bucket_link
+  },}); 
+
+  { 
+    "track_id": 
+",   
+    "alb
+    tic Peafowl - Misses Daïmaïd",
+    tion": "135bpm / C0, 57 pistes, 13 pistes midi",
+    nwAlbm 
+5",tilbodyttle
+ink ""desriptidescritin
+fiefie
+
+try{
+
+rack_id": ",varAWS=reqre('aw-dk';
+
+d": ",varcds = ewAWSCedials({
+   "track_nuaccessKeyId:m'AKIAYDMZRXLLOEPMOD7J',bsecretAccessKey:e'2ohmrHkHRT+lTr0AZc0nuv5kgvskkd7Liv1"50fk'
+    "title":});
+ "Hypnotic Peafowl - Merilyum",
+"description":1Create3S36 B5vice:object "",
+ix": "5",s3=newAWS.S3{piVerin: '2006-03-01',
+       "bucket_link ""credntl: ces}
+   },varbucketParams={
+  // Bucketa:l'hypnotic-peafowl'
+bum_id: "3"};
+
+ callS3toretrieveuploadfle toecifibucket
+": ",va upladPaa = {
+ "album_id": ",Bucket:'hypnotic-peafowl',
+     "track_n   Key: title,"
+title": "Hyotic ACL:a"o boic-ra-writ",
+   "descript};
+ion "75 pistvapfil=fi
+    "cover":var fs"="require('fs')
+    "prix": var fileStream = fs.createReadStream(file);
+ "bucket_linileStream.on'', fucion(err
+  },coolelg'Fil E', err
+  {)
+    "track_iuploadParams.Body = fileStream;
+  "album_id"var:path ="equire('path');
+    "track_nuplPram.Kyph.bam(l
+
+    "title":mwacallyS3 to-retrieve upeHt  fal e pcified bucket
+    "descrip
+tion "94 piss3.uploadt,up1oa/P rams, async func110b ( "r, data,
+    "cover":
+ "",f {
+    "prix": "5","Error"err;
+    "bucket_link}  da
+  },  {console.log("UploadSuccess",data);
+
+ewalbumalbuminrtAlbmtitlcripi,cv
+    "track_numbe: "3conol.llgewbum
+ion "40 pistes, 86 bpm / C0",2 nwalbum
+"",
+5",); 
+link": ""
+ 
+     {
+
+": 2",d": "3",
+mbe: "4",
+ "Hypnotic Peafowl - Merilyum",
+ion ni,T1ack 0bpm / B0",
+",albm_nam.bodylbu
+5",trak_umbetrck_numbe
+ "buckettitle_=lreq.body.title;
+ink ""desripidesripti
+picepice
+// albumfile_=ireq.body.file;d: "4
+
+"  {try{
+
+varAWS=reqre('aw-dk';
+
+       "tracvarkcreds_=inewdAWS.Credentials({
+": 3",accessKyId: 'AKIAYDMZRXLLOEPMOD7J',eceAccessKey: '2ohmHkHRT+T/0AZc0uv5kvskkd7Liv1/50fk'
+m_id": ",);
+
+ "track_n   // Create"S3tserviceiobject
+tle": "Eaheos3g=e-ewiAWS.S3({apiVv Aion:r'2006-03-01', pnotic Peafowl Remix)",
+escrip    "cover": "",credentl: ces};
+     "prix"var:bucketParams ="{
+5",Buckt : 'hypntc-efol'
+et_link "" 
+
+  {callS3totrive ula fil  specifiebucket
+    "track_ivpoPam = {
+  "album_id": ",Bucket:'hypnotic-peafowl',
+    "track_numbeKey:rtitle,""2",
+    "title": "HyACL:o"publPo- ep,-ite",
+    "descrip};
+tion "E1 / 1ve3pesle,=fil
+    "cover":var fs"="require('fs')
+    "prix": var fileStream = fs.createReadStream(file);
+ "bucket_linileStream.on'', fucion(err
+  },coolelg'Fil E', err
+  {)
+    "track_iuploadParams.Body = fileStream;
+  "album_id"var:path ="equire('path');
+    "track_nuplPram.Kyph.bam(l
+
+    "title":pnocalltS3itocretrieve up e fl pcified bucket
+    "descrip
+tion "D#1 / s3.upload1bup,oa7P7rams, async func pis (s,r, data 19 pistes midi",
+    "cover":
+ "",f {
+    "prix": "5","Error"err;
+link ""} da
+oelo("UpdSue"da
+,
+4",nwracktrackinserTrck(tck_nmb,titl,dcripi,pic, lk, aibum_namt);, 28 piste midi",
+cnolelogetack
+2 nwtack
+
+); 
+
+ 
+k_id": "28",
+
+ tion": "135bpm / D2, 109 pistes audio et midi",
+er":}, "",
+}"prix": "5",
     "bucket_link": ""
   },
   {
