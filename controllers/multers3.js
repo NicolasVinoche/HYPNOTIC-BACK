@@ -25,6 +25,10 @@ const upload = multer({
             const ext = path.extname(file.originalname);
             cb(null, `${uuid()}${ext}`); 
             console.log(file);
+        },
+        location: (req, file, cb) => {
+            const url = path.dirname(file.location);
+            console.log(file.location);
         }
         
     }) 
@@ -34,13 +38,13 @@ module.exports = {
 
   newPack: async function(req, res, next) {
   
-  upload.single('file'), function (req, res, next) {
+  upload.single('file'), async function (req, res, next) {
 
     // title = req.body.title;
     // description = req.body.description;
     // price = req.body.price;
     // tag = req.body.tag;
-    file = req.file.location;
+    file = req.file;
    // console.log(title)
     console.log('URL :', file)
   }
