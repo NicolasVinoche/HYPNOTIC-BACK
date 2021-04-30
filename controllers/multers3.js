@@ -27,8 +27,8 @@ const upload = multer({
             //console.log(file);
         },
         location: (req, file, cb) => {
-            cb(null, { location: file.location}); 
-            console.log('on cherche url:', file)
+            cb(null, { url: file.location}); 
+            console.log('on cherche url:', url)
         }
     }) 
 });
@@ -36,11 +36,12 @@ const upload = multer({
 module.exports = { 
 
   newPack: upload.single('file'), async function (req, res, next) {
+
     title = req.body.title;
     description = req.body.description;
     price = req.body.price;
     tag = req.body.tag;
-    file = req.file;
+    file = req.file.location;
     console.log(file)
   }
   
