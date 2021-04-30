@@ -36,7 +36,7 @@ const upload = multer({
 
 module.exports = { 
 
-  newPack: upload.single('file'), async function (req, res, next) {
+  newPack: upload.single('file'), function (req, res, next) {
           
           // title = req.body.title;
           // description = req.body.description;
