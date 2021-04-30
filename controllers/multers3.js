@@ -11,7 +11,7 @@ module.exports = {
         description = req.body.description;
         price = req.body.price;
         tag = req.body.tag;
-        file = req.file.file;  
+        file = req.file;  
         
         console.log(file);
 
