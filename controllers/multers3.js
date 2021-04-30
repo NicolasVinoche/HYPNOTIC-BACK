@@ -11,7 +11,7 @@ module.exports = {
         // description = req.body.description;
         // price = req.body.price;
         // tag = req.body.tag;
-        file = req.file;
+        file = req.formData.file;
         // console.log('REQ :', req);
         //console.log('REQ.BODY :', req.body);
        // console.log('REQ.FILE :', req.file);
