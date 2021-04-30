@@ -45,7 +45,7 @@ const packDataMapper = require('../dataMappers/packDataMapper');
 // }
 module.exports = { 
 
-  newPack: async function(req, res, next) {
+  newPack: function(req, res, next) {
         // title = req.body.title;
         // description = req.body.description;
         // price = req.body.price;
@@ -87,18 +87,20 @@ module.exports = {
 
         console.log ('JAI FAIS CA');
         
-        upload.single('file'), (err, data, req) => { 
+        upload.single('file'), (req) => { 
 
             file = req.file; 
+            console.log('uploaded');
         
 
-            
-                console.log('uploaded:', req.files.length);
+            //if (err) {
+              //  console.log("Error", err);
+            //} else {
 
                 // const newpack = await packDataMapper.insertPack(title, description, price, tag, data.Location);
                 // console.log(newpack);
                 // return res.status(200).json ({newpack}); 
-            
+           // }
         }
         
         
