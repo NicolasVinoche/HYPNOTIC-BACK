@@ -59,7 +59,7 @@ module.exports = {
     // file = req.file;
     // console.log(title)
     // console.log('URL :', file)
-   }
+}
 
 
     
@@ -130,7 +130,7 @@ module.exports = {
     //     }
 
     
-    }
+    // }
     
 
 
