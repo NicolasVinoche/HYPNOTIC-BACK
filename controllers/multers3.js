@@ -7,12 +7,16 @@ const path = require('path');
 module.exports = { 
 
   newPack: async function(req, res, next) {
-        title = req.body.title;
-        description = req.body.description;
-        price = req.body.price;
-        tag = req.body.tag;
+        // title = req.body.title;
+        // description = req.body.description;
+        // price = req.body.price;
+        // tag = req.body.tag;
         file = req.file;  
-        
+        console.log('REQ :', req);
+        console.log('REQ.BODY :', req.body);
+        console.log('REQ.FILE :', req.file);
+
+
         console.log(file);
 
     try {
@@ -47,9 +51,9 @@ module.exports = {
             } else {
                 console.log("Upload Success", data);
 
-                const newpack = await packDataMapper.insertPack(title, description, price, tag, data.Location);
-                console.log(newpack);
-                return res.status(200).json ({newpack}); 
+                // const newpack = await packDataMapper.insertPack(title, description, price, tag, data.Location);
+                // console.log(newpack);
+                // return res.status(200).json ({newpack}); 
             }
         })
         
