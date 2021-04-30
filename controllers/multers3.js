@@ -26,10 +26,10 @@ const upload = multer({
             cb(null, `${uuid()}${ext}`); 
             console.log(file);
         },
-        location: (req, file, cb) => {
-            const url = path.dirname(file.location);
-            console.log(file.location);
-        }
+        // location: (req, file, cb) => {
+        //     const url = path.dirname(file.location);
+        //     console.log(file.location);
+        // }
         
     }) 
 });
