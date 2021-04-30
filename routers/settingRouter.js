@@ -6,6 +6,7 @@ const multerS3 = require('../controllers/multers3');
 
 router.put('/user/:id', settingController.updateUser);
 router.post('/admin/pack', multerS3.newPack,  (req, res, next) => {
+    console.log('REQ :', req)
     console.log('req.file:', req.file)
     console.log('req.title:', req.title)
     console.log('req.description:', req.description)
