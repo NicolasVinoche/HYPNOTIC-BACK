@@ -11,15 +11,15 @@ module.exports = {
         // description = req.body.description;
         // price = req.body.price;
         // tag = req.body.tag;
-       // file = req.file;
+        //file = req.file;
         // console.log('REQ :', req);
         //console.log('REQ.BODY :', req.body);
        // console.log('REQ.FILE :', req.file);
 
 
        // console.log(file);
-
-    try {
+       try {
+        console.log('JE PASSE ICI')
 
         var creds = new AWS.Credentials({
             accessKeyId: 'AKIAYDMZRXLLOEPMOD7J', secretAccessKey: '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'
@@ -45,6 +45,8 @@ module.exports = {
                 }
             }) 
         }); 
+
+        console.log ('JAI FAIS CA');
         
         upload.single('file', async function (err, data, req) {
 
@@ -62,6 +64,7 @@ module.exports = {
         
         } catch (error) {
             next(error)
+            console.log(error)
         }
 
     
