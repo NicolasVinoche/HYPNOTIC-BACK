@@ -53,17 +53,17 @@ module.exports = {
   
     // , function(req, res, next) {
           
-    //     addPack: async function (location) {
+        // addPack: async function (location) {
         
-    //     try {
-    //         const newpack = await packDataMapper.insertPack(title, description, price, tag, data.Location);
-    //             console.log(newpack);
-    //         return res.status(200).json ({newpack}); 
-    //     } catch (error) {
-    //         next(error)
-    //     }
-    // }
-}
+//     //     try {
+//     //         const newpack = await packDataMapper.insertPack(title, description, price, tag, data.Location);
+//     //             console.log(newpack);
+//     //         return res.status(200).json ({newpack}); 
+//     //     } catch (error) {
+//     //         next(error)
+//     //     }
+//     // }
+// }
 
 
     
