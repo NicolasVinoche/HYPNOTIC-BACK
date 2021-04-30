@@ -19,13 +19,16 @@ const upload = multer({
         bucket: 'hypnotic-peafowl', 
         acl: 'public-read-write',
         metadata: (req, file, cb) => { 
-            cb(null, { fieldName: file.fieldname});  
-            console.log(file);   
+            cb(null, { fieldName: file.fieldname});     
         }, 
         key: (req, file, cb) => {
             const ext = path.extname(file.originalname);
             cb(null, `${uuid()}${ext}`); 
-            console.log(file);
+            //console.log(file);
+        },
+        location: (req, file, cb) => {
+            cb(null, { location: file.location}); 
+            console.log('on cherche url:', file)
         }
     }) 
 });
@@ -33,6 +36,10 @@ const upload = multer({
 module.exports = { 
 
   newPack: upload.single('file'), async function (req, res, next) {
+    title = req.body.title;
+    description = req.body.description;
+    price = req.body.price;
+    tag = req.body.tag;
     file = req.file;
     console.log(file)
   }
