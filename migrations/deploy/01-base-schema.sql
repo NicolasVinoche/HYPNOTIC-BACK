@@ -20,14 +20,6 @@ CREATE TABLE subscriptions (
     description TEXT
 ); 
 
-CREATE TABLE projects (
-    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    title TEXT NOT NULL, 
-    "description" TEXT NOT NULL, 
-    image_path TEXT, 
-    video_path TEXT
-); 
-
 CREATE TABLE masterclasses (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title TEXT NOT NULL, 
@@ -68,9 +60,7 @@ CREATE TABLE tips (
 ); 
  
 -- Insertion des FK dans albums
-
-ALTER TABLE albums
-ADD COLUMN projects_id INT REFERENCES projects (id); 
+; 
 
 -- Tables de liaisons
 
@@ -78,12 +68,6 @@ CREATE TABLE _m2m_user_tips (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
     users_id INT REFERENCES users (id), 
     tips_id INT REFERENCES tips (id)
-); 
-
-CREATE TABLE _m2m_user_projects (
-    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
-    users_id INT REFERENCES users (id), 
-    projects_id INT REFERENCES projects (id)
 ); 
 
 CREATE TABLE _m2m_user_packs (

@@ -2,7 +2,7 @@ const express = require('express');
 
 const userRouter = require('./userRouter');
 const packRouter = require('./packRouter'); 
-const projectRouter = require('./projectRouter');
+const trackRouter = require('./trackRouter');
 const streamRouter = require('./streamRouter'); 
 const tipsRouter = require('./tipsRouter');
 const cartRouter = require('./cartRouter');
@@ -20,7 +20,7 @@ const router = express.Router();
 
 router.use('/user', userRouter);
 router.use('/pack', auth, packRouter);
-router.use('/project', auth, projectRouter);
+router.use('/track', auth, trackRouter);
 router.use('/stream', auth, streamRouter); 
 router.use('/tips', auth, tipsRouter);
 router.use('/cart', auth, cartRouter);

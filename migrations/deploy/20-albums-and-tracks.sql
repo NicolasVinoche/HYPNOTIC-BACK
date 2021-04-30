@@ -10,11 +10,13 @@ CREATE TABLE tracks (
     "description" TEXT, 
     cover TEXT, 
     price NUMERIC(6, 2) NOT NULL, 
-    bucket_link TEXT 
+    bucket_link TEXT, 
+    album_name TEXT
 ); 
 
 ALTER TABLE tracks
-ADD COLUMN album_id INT REFERENCES albums (id);
+ADD COLUMN album_id INT REFERENCES albums (id); 
+
 
 ALTER TABLE albums 
 ADD COLUMN "description" TEXT; 
