@@ -36,18 +36,18 @@ module.exports = {
   
   upload.single('file'), function (req, res, next) {
 
-    title = req.body.title;
-    description = req.body.description;
-    price = req.body.price;
-    tag = req.body.tag;
+    // title = req.body.title;
+    // description = req.body.description;
+    // price = req.body.price;
+    // tag = req.body.tag;
     file = req.file.location;
-    console.log(title)
+   // console.log(title)
     console.log('URL :', file)
   }
     try {
-        const newpack = await packDataMapper.insertPack(title, description, price, tag, file);
-        console.log(newpack);
-        return res.status(200).json ({newpack});
+        // const newpack = await packDataMapper.insertPack(title, description, price, tag, file);
+        console.log('coucoujesuisla');
+        //return res.status(200).json ({newpack});
     } catch (error) {
         next(error)
     }
