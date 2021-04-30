@@ -48,7 +48,7 @@ module.exports = {
 
         console.log ('JAI FAIS CA');
         
-        upload.single('file', async function (err, data, req) {
+        upload.single(file, async function (err, data, req) {
 
             if (err) {
                 console.log("Error", err);
