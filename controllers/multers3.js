@@ -3,7 +3,7 @@ const multer = require('multer');
 const multerS3 = require('multer-s3'); 
 const { uuid } = require('uuidv4'); 
 const path = require('path');  
-
+const packDataMapper = require('../dataMappers/packDataMapper');
 
 var creds = new AWS.Credentials({
     accessKeyId: 'AKIAYDMZRXLLOEPMOD7J', secretAccessKey: '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'
