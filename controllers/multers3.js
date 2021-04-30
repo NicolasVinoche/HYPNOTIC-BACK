@@ -87,20 +87,18 @@ module.exports = {
 
         console.log ('JAI FAIS CA');
         
-        await upload.single('file'), function (err, data, req) { 
+        upload.single('file'), (err, data, req) => { 
 
             file = req.file; 
         
 
-            if (err) {
-                console.log("Error", err);
-            } else {
+            
                 console.log('uploaded:', req.files.length);
 
                 // const newpack = await packDataMapper.insertPack(title, description, price, tag, data.Location);
                 // console.log(newpack);
                 // return res.status(200).json ({newpack}); 
-            }
+            
         }
         
         
