@@ -11,13 +11,13 @@ module.exports = {
         // description = req.body.description;
         // price = req.body.price;
         // tag = req.body.tag;
-        //file = req.file;
+        file = req.file;
         // console.log('REQ :', req);
         //console.log('REQ.BODY :', req.body);
        // console.log('REQ.FILE :', req.file);
 
 
-       // console.log(file);
+       console.log(file);
        try {
         console.log('JE PASSE ICI')
 
