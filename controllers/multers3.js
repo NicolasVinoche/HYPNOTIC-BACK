@@ -26,34 +26,39 @@ const upload = multer({
             cb(null, `${uuid()}${ext}`); 
             console.log(file);
         },
-        // location: (req, file, cb) => {
-        //     const url = path.dirname(file.location);
-        //     console.log(file.location);
-        // }
+         location: (req, file, cb) => {
+             const url = path.dirname(file.location);
+           console.log(file.location);
+         }
         
     }) 
- });
+ })
+
+  
 // upload.single('file'), function (req, res, next) {
           
- // title = req.body.title;
- // description = req.body.description;
- // price = req.body.price;
- // tag = req.body.tag;
+//  title = req.body.title;
+//  description = req.body.description;
+//  price = req.body.price;
+//  tag = req.body.tag;
 //  file = req.file;
 //  console.log(title)
 //  console.log('URL :', file)
-// }
+
 module.exports = { 
 
-  newPack: upload.single('file'), function (req, res, next) {
+    newPack: upload.single('file')
+    .then( () => console.log('wesh ta race'))
+  
+    // , function(req, res, next) {
           
-    title = req.body.title;
-    description = req.body.description;
-    price = req.body.price;
-    tag = req.body.tag;
-    file = req.file;
-    console.log(title)
-    console.log('URL :', file)
+    // title = req.body.title;
+    // description = req.body.description;
+    // price = req.body.price;
+    // tag = req.body.tag;
+    // file = req.file;
+    // console.log(title)
+    // console.log('URL :', file)
    }
 
 
