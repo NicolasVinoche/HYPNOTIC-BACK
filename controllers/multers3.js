@@ -30,6 +30,7 @@ const upload = multer({
             console.log(file);
         },
          location: (req, file, cb) => {
+             console.log('file:', file)
              const url = path.dirname(file.location);
            console.log(file.location);
          }
