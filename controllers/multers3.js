@@ -19,6 +19,9 @@ const upload = multer({
         bucket: 'hypnotic-peafowl', 
         acl: 'public-read-write',
         metadata: (req, file, cb) => { 
+            console.log('cb:', cb)
+            console.log('req:', req)
+            console.log('file:', file)
             cb(null, { fieldName: file.fieldname});     
         }, 
         key: (req, file, cb) => {
@@ -47,11 +50,7 @@ const upload = multer({
 
 module.exports = { 
 
-    newPack: () => {
-        upload.single('file')
-        console.log('upload.single():', upload.single('file'))
-        
-    } 
+    newPack: upload.single('file')
   
     // , function(req, res, next) {
           
