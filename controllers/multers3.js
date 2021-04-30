@@ -24,12 +24,9 @@ const upload = multer({
         key: (req, file, cb) => {
             const ext = path.extname(file.originalname);
             cb(null, `${uuid()}${ext}`); 
-            //console.log(file);
-        },
-        location: (req, file, cb) => {
-            cb(null, { url: file.location}); 
-            console.log('on cherche url:', url)
+            console.log(file);
         }
+        
     }) 
 });
 
@@ -41,7 +38,7 @@ module.exports = {
     description = req.body.description;
     price = req.body.price;
     tag = req.body.tag;
-    file = req.file.location;
+    file = req.file;
     console.log(file)
   }
   
