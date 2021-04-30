@@ -11,13 +11,13 @@ module.exports = {
         // description = req.body.description;
         // price = req.body.price;
         // tag = req.body.tag;
-        file = req.file;  
-        console.log('REQ :', req);
-        console.log('REQ.BODY :', req.body);
-        console.log('REQ.FILE :', req.file);
+       // file = req.file;
+        // console.log('REQ :', req);
+        //console.log('REQ.BODY :', req.body);
+       // console.log('REQ.FILE :', req.file);
 
 
-        console.log(file);
+       // console.log(file);
 
     try {
 
@@ -35,21 +35,23 @@ module.exports = {
                 bucket: 'hypnotic-peafowl', 
                 acl: 'public-read-write',
                 metadata: (req, file, cb) => { 
-                    cb(null, { fieldName: file.fieldname});    
+                    cb(null, { fieldName: file.fieldname});  
+                    console.log(file);   
                 }, 
                 key: (req, file, cb) => {
                     const ext = path.extname(file.originalname);
-                    cb(null, `${uuid()}${ext}`);
+                    cb(null, `${uuid()}${ext}`); 
+                    console.log(file);
                 }
             }) 
         }); 
         
-        upload.single(file, async function (err, data) {
+        upload.single('file', async function (err, data, req) {
 
             if (err) {
                 console.log("Error", err);
             } else {
-                console.log("Upload Success", data);
+                console.log('uploaded:', req.files.length);
 
                 // const newpack = await packDataMapper.insertPack(title, description, price, tag, data.Location);
                 // console.log(newpack);
