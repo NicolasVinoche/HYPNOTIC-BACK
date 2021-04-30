@@ -47,8 +47,11 @@ const upload = multer({
 
 module.exports = { 
 
-    newPack: upload.single('file')
-    .then( () => console.log('wesh ta race'))
+    newPack: () => {
+        upload.single('file')
+        console.log('upload.single():', upload.single('file'))
+        
+    } 
   
     // , function(req, res, next) {
           
