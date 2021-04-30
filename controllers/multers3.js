@@ -19,8 +19,6 @@ const upload = multer({
         bucket: 'hypnotic-peafowl', 
         acl: 'public-read-write',
         metadata: (req, file, cb) => { 
-            console.log('cb:', cb)
-            console.log('req:', req)
             console.log('file:', file)
             cb(null, { fieldName: file.fieldname});     
         }, 
@@ -30,7 +28,7 @@ const upload = multer({
             console.log(file);
         },
          location: (req, file, cb) => {
-             console.log('file:', file)
+             console.log('file2:', file)
              const url = path.dirname(file.location);
            console.log(file.location);
          }
