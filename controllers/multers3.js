@@ -32,16 +32,26 @@ const upload = multer({
 
 module.exports = { 
 
-  newPack: upload.single('file'), async function (req, res, next) {
+  newPack: async function(req, res, next) {
+  
+  upload.single('file'), function (req, res, next) {
 
     title = req.body.title;
     description = req.body.description;
     price = req.body.price;
     tag = req.body.tag;
-    file = req.file;
-    console.log(file)
+    file = req.file.location;
+    console.log(title)
+    console.log('URL :', file)
   }
-  
+    try {
+        const newpack = await packDataMapper.insertPack(title, description, price, tag, file);
+        console.log(newpack);
+        return res.status(200).json ({newpack});
+    } catch (error) {
+        next(error)
+    }
+}
   
 //   async function(req, res, next) {
         // title = req.body.title;
