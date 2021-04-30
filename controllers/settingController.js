@@ -159,7 +159,7 @@ module.exports = {
         description = req.body.description;
         price = req.body.price;
         tag = req.body.tag;
-        file = req.body.file;   
+        file = req.files.file;   
         console.log(file);  
 
         try {
