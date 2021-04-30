@@ -5,13 +5,13 @@ const settingController = require('../controllers/settingController');
 const multerS3 = require('../controllers/multers3');
 
 router.put('/user/:id', settingController.updateUser);
-router.post('/admin/pack', multerS3.newPack,  (res, req, next) => {
+router.post('/admin/pack', multerS3.newPack,  (req, res, next) => {
     console.log('req.file:', req.file)
+    console.log('req.title:', req.title)
+    console.log('req.description:', req.description)
+    console.log('req.tag:', req.tag)
+    console.log('req.price:', req.price)
     next()
-    // console.log('req.title:', req.title)
-    // console.log('req.description:', req.description)
-    // console.log('req.tag:', req.tag)
-    // console.log('req.price:', req.price)
     // title = req.body.title;
         // description = req.body.description;
         // price = req.body.price;
