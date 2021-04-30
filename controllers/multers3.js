@@ -38,6 +38,7 @@ module.exports = {
 
   newPack: async function(req, res, next) {
   
+    try {
   upload.single('file'), async function (req, res, next) {
 
     // title = req.body.title;
@@ -48,7 +49,6 @@ module.exports = {
    // console.log(title)
     console.log('URL :', file)
   }
-    try {
         // const newpack = await packDataMapper.insertPack(title, description, price, tag, file);
         console.log('coucoujesuisla');
         //return res.status(200).json ({newpack});
