@@ -87,7 +87,7 @@ module.exports = {
 
         console.log ('JAI FAIS CA');
         
-        upload.single('file'), async function (err, data, req) { 
+        await upload.single('file'), function (err, data, req) { 
 
             file = req.file; 
         
