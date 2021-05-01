@@ -136,7 +136,7 @@ module.exports = {
                        if(match) { 
     
                              res.cookie('token', token, {
-                                 maxAge: 1000 * 60 * 60 * 5,
+                                 maxAge: 1000 * 60,
                                  httpOnly: true,
                                  secure: true,
                                  sameSite: 'None',
