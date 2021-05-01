@@ -7,6 +7,7 @@ module.exports = {
             console.log('cookies:', req.cookies);
             // On décode let token
             const decodedToken = jwt.verify(token, process.env.JWT_SIGN_SECRET);
+            console.log('decodedToken:', decodedToken)
             // On extrait l'ID utilisateur dans le token
             const userId = decodedToken.userId;
             // On vérifie si ID utilisateur de la demande et on le compare à celui du token
@@ -20,7 +21,7 @@ module.exports = {
             res.status(401).json({
               error: new Error('Invalid request!'),
             });
-          }
+        }
     }
 
 }
