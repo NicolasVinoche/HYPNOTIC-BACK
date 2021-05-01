@@ -4,7 +4,7 @@ module.exports = {
         try {
             // On récupère le token (cookie-parser dans le app)
             const token = req.cookies.token;
-            console.log('cookies:', req.cookies);
+            console.log('COOKIE:', req.cookies.token);
             // On décode let token
             const decodedToken = jwt.verify(token, process.env.JWT_SIGN_SECRET);
             console.log('decodedToken:', decodedToken)
