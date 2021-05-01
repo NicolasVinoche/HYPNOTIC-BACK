@@ -17,7 +17,7 @@ module.exports = {
             if (!userId) {
               throw 'Invalid user ID';
             } else {
-              next();
+              res.json({'decodedToken': decodedToken})
             }
         }   catch {
             res.status(401).json({
