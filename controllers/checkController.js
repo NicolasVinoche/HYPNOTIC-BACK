@@ -14,11 +14,11 @@ module.exports = {
             const userId = decodedToken.userId;
             // On vérifie si ID utilisateur de la demande et on le compare à celui du token
             console.log('userId :', userId)
-            if (!userId) {
-              throw 'Invalid user ID';
-            } else {
-                console.log('res.json({decodedToken}):', res.json({decodedToken}))
-              res.json({decodedToken})
+            if (userId) {
+                res.json({decodedToken})
+            }
+            if (error) {
+                next(error);
             }
         }   catch {
             res.status(401).json({
