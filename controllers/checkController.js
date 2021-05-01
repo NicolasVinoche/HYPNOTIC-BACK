@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken'); 
+
 module.exports = {
     
     check: async function(req, res, next) {
