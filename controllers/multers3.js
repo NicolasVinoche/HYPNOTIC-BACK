@@ -11,13 +11,20 @@ var creds = new AWS.Credentials({
 
     // Create S3 service object
 const s3 = new AWS.S3({apiVersion: '2006-03-01', 
-                    credentials: creds}); 
+                    credentials: creds});  
 
-const upload = multer({
+var limits = {
+    files: 1, // allow only 1 file per request
+    fileSize: 10000 * 1024 * 1024, // (replace MBs allowed with your desires)
+     };
+
+const upload = multer({ 
+    limits: limits,
     storage: multerS3({
         s3, 
         bucket: 'hypnotic-peafowl', 
-        acl: 'public-read-write',
+        acl: 'public-read-write', 
+        
         metadata: (req, file, cb) => { 
             console.log('file:', file)
             cb(null, { fieldName: file.fieldname});     
@@ -26,7 +33,8 @@ const upload = multer({
             const ext = path.extname(file.originalname);
             cb(null, `${uuid()}${ext}`); 
             console.log(file);
-        },
+        }, 
+        
          location: (req, file, cb) => {
              console.log('file2:', file)
              const url = path.dirname(file.location);
