@@ -6,6 +6,6 @@ const auth = require('../controllers/auth');
 
 router.get('/', auth, contactController.getMessages); 
 router.post('/:id', contactController.postMessage);
-router.delete('/', contactController.deleteMessage);
+router.delete('/:id', contactController.deleteMessage);
 
 module.exports = router;

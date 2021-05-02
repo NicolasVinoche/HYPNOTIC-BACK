@@ -63,7 +63,7 @@ module.exports = {
     },
 
     deleteMessage: async function(req, res, next) {
-        const messageId = req.body.id;
+        const messageId = req.params.id;
         console.log('messageId:', messageId)
         console.log('REQ.BODY :', req.body)
         try {
