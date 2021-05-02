@@ -26,8 +26,8 @@ var corsOptions = {
 }; 
 app.use(cors(corsOptions)); 
  
-app.use(express.json({ limit: '100MB' }));
-app.use(express.urlencoded()) 
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit:90000})) 
 app.use(routers); 
 
 // Launch server

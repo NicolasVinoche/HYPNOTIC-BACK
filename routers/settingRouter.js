@@ -6,7 +6,7 @@ const multerS3 = require('../controllers/multers3');
 const packDataMapper = require ('../dataMappers/packDataMapper');
 
 router.put('/user/:id', settingController.updateUser);
-router.post('/admin/pack', express.json({ limit: '100MB' }) ,multerS3.newPack, async(req, res, next) => {
+router.post('/admin/pack', express.json({ limit: '100mb' }) ,multerS3.newPack, async(req, res, next) => {
     console.log('req.file:', req.file)
     console.log('req.title:', req.body.title)
     next()
