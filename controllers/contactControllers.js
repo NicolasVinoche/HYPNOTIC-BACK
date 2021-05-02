@@ -60,5 +60,16 @@ module.exports = {
     } catch (error) {
             next(error);
         }
+    },
+
+    deleteMessage: async function(req, res, next) {
+        const messageId = req.body.id;
+        try {
+            const remove = await contactDataMapper.deleteMessage(messageId); 
+
+            res.json ({ remove });
+        } catch (error) {
+            next(error);
+        }
     }
 }

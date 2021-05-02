@@ -15,6 +15,11 @@ module.exports = {
 
         return result.rows[0];                                    
     }, 
+
+    async deleteMessage( message_id ) {
+        const result = await client.query(`DELETE FROM message_contact WHERE id = $1`, [message_id]);
+        return result.rows[0];
+    },
     
     async verifyPseudo(pseudo) {
         const result = await client.query(`SELECT id, pseudo FROM users WHERE pseudo = $1`, [pseudo]);
