@@ -24,43 +24,43 @@ module.exports = {
         const errors = [];
                     
         if (isEmpty(firstName)) {
-            errors.push('missing first name'); 
+            errors.push('Le champ prénom est vide'); 
         };
 
         if (isEmpty(lastName)) {
-            errors.push('missing last name');
+            errors.push('Le champ nom est vide');
         };
         
         if (isEmpty(email)) {
-            errors.push('missing email');
+            errors.push('Le champ email est vide');
         }; 
 
         if (!regex_email.test(email)) {
-            errors.push('wrong email format');
+            errors.push('Format de l\'adresse mail invalide');
         };
 
         if (isEmpty(password)) {
-            errors.push(`missing password`);
+            errors.push(`Le champ mot de passe est vide`);
         };
 
         if (!regex_password.test(password)) {
-            errors.push('password invalid (must length 5 - 20 and include 1 number at least)');
+            errors.push('Mot de passe invalide (entre 5 et 20 caractères avec au moins 1 chiffre)');
         };
 
         if (isEmpty(confirmPassword)) {
-            errors.push('missing password confirmation');
+            errors.push('Veuillez confirmer votre mot de passe');
         };
 
         if (confirmPassword !== password) {
-            errors.push('password confimation not correct');
+            errors.push('Le mot de passe ne correspond pas');
         };
 
         if (isEmpty(pseudo)) {
-            errors.push('missing pseudo');
+            errors.push('Le champ pseudo est vide');
         };
 
         if (pseudo.length >= 13 || pseudo.length <= 2) {
-            errors.push('wrong pseudo (must be length 3 - 12)');
+            errors.push('Pseudo invalide (entre 3 et 12 caractères)');
         }; 
 
         if (errors.length) {
@@ -92,7 +92,7 @@ module.exports = {
                      }
 
          } else {
-            return res.status(400).json({errors :['this email already exist']});
+            return res.status(400).json({errors :['Cette adresse email existe déjà']});
          } 
     },
     login: async function(req, res, next) {
@@ -107,11 +107,11 @@ module.exports = {
         const errors = [];
 
         if (isEmpty(email)) {
-            errors.push('missing email');
+            errors.push('Le champ email est vide');
         }; 
 
         if (isEmpty(password)) {
-            errors.push(`missing password`);
+            errors.push(`Le champ mot de passe est vide`);
         }; 
 
         if (errors.length) {
@@ -148,7 +148,7 @@ module.exports = {
                         
 
                        } else {
-                        errors.push(`invalid password`);
+                        errors.push(`Mot de passe invalide`);
                         return res.status(400).json({errors});
                      }
                      

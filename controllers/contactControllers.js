@@ -25,14 +25,14 @@ module.exports = {
         const errors = []; 
 
         if (isEmpty(title)) {
-            errors.push('missing title'); 
+            errors.push('Le champ titre est vide'); 
         };
 
         if (isEmpty(content)) {
-            errors.push('Empty message');
+            errors.push('Contenu du message vide');
         };  
         if (isEmpty(pseudo)) {
-            errors.push('missing pseudo');
+            errors.push('Le champ pseudo est vide');
         };
 
         if (errors.length) {
@@ -53,7 +53,7 @@ module.exports = {
             }); 
 
         } else {
-            errors.push('Pseudo not found'); 
+            errors.push('Pseudo introuvable'); 
             return res.status(400).json({errors});
         } 
 
