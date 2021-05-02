@@ -56,9 +56,10 @@ const upload = multer({
 //  console.log('URL :', file)
 
 module.exports = { 
-
+    
     newPack: upload.single('file'),
-  
+    
+}
     // , function(req, res, next) {
           
         // addPack: async function (location) {
@@ -142,7 +143,6 @@ module.exports = {
     //     }
 
     
-    }
     
 
 

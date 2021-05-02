@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const routers = require('./routers');  
 const cors = require('cors'); 
-const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser'); 
 
 const app = express(); 
 app.use(cookieParser()); 
@@ -26,8 +26,8 @@ var corsOptions = {
 }; 
 app.use(cors(corsOptions)); 
  
-app.use(express.json());
-app.use(express.urlencoded())
+app.use(express.json({ limit: '100MB' }));
+app.use(express.urlencoded()) 
 app.use(routers); 
 
 // Launch server
