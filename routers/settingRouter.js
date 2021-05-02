@@ -49,4 +49,25 @@ router.post('/admin/track', express.json({ limit: '100mb' }) ,multerS3.newTrack,
         }
 } );
 
+// NEW ALBUM
+
+router.post('/admin/track', express.json({ limit: '100mb' }) ,multerS3.newTrack, async(req, res, next) => {
+    console.log('req.file:', req.file)
+    console.log('req.title:', req.body.title)
+    next()
+        title = req.body.title; 
+        track_number = req.body.track_number;
+        description = req.body.description;
+        price = req.body.price;
+        album_id = req.body.album_id;
+        file = req.file.location;
+    try {
+            const newtrack = await trackDataMapper.insertTracks(track_number, title, description, price, album_id, file);
+                console.log(newtrack);
+            return res.status(200, 'INSERTION EN BASE DU TRACK OK'); 
+        } catch (error) {
+            next(error)
+        }
+} );
+
 module.exports = router;

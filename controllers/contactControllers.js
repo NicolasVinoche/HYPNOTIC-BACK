@@ -64,8 +64,6 @@ module.exports = {
 
     deleteMessage: async function(req, res, next) {
         const messageId = req.params.id;
-        console.log('messageId:', messageId)
-        console.log('REQ.BODY :', req.body)
         try {
             const remove = await contactDataMapper.deleteMessage(messageId); 
 

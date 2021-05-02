@@ -20,10 +20,10 @@ module.exports = {
         return result.rows[0];
     }, 
 
-    async insertTracks(track_number, title, description, price, link, album_name) {
-        const result = await client.query(`INSERT INTO tracks (track_number, title, description, price, link, album_name) 
+    async insertTracks(track_number, title, description, price, link, album_id) {
+        const result = await client.query(`INSERT INTO tracks (track_number, title, description, price, link, album_id) 
                                             VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, 
-                                            [track_number, title, description, price, link, album_name]);  
+                                            [track_number, title, description, price, link, album_id]);  
     
         return result.rows[0];           
     },
