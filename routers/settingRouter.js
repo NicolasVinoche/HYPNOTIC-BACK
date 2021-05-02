@@ -38,7 +38,7 @@ router.post('/admin/track', express.json({ limit: '100mb' }) ,multerS3.newTrack,
         track_number = req.body.track_number;
         description = req.body.description;
         price = req.body.price;
-        album_name = req.body.album_name;
+        album_id = req.body.album_id;
         file = req.file.location;
     try {
             const newtrack = await trackDataMapper.insertTracks(track_number, title, description, price, album_name, file);
