@@ -35,6 +35,7 @@ module.exports = {
       const { product, email } = req.body;
       const checkEmail = await userDataMapper.findUser(email);
 
+      console.log('product:', product);
       if (checkEmail) {
         // On fait la somme de tout les produits et on la stocke
         const allProductPrice = product
