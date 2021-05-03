@@ -48,9 +48,9 @@ module.exports = {
         return result.rows[0];
     }, 
 
-    async logoutSet(email) {
+    async logoutSet(userId) {
         const result = await client.query(`UPDATE users
-                                           SET isLogged = false WHERE email = $1 RETURNING *`, [email]);
+                                           SET isLogged = false WHERE id = $1 RETURNING *`, [userId]);
         if (result.rowCount === 0) {
             return undefined;
         } 

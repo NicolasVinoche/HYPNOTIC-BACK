@@ -168,10 +168,10 @@ module.exports = {
     }, 
 
     logout: async function(req, res, next) {
-        const email = req.params.email
+        const userId = req.params.id
         
         try {
-            await userDataMapper.logoutSet (email)
+            await userDataMapper.logoutSet (userId)
             return res.status(200).json('logout');
 
         } catch (error) {
