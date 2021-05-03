@@ -20,7 +20,35 @@ router.post('/admin/pack', express.json({ limit: '100mb' }) ,multerS3.newPack, a
         description = req.body.description;
         price = req.body.price;
         tag = req.body.tag;
-        file = req.file.location;
+        file = req.file.location; 
+
+        function isEmpty(str) {
+            return !str.trim().length;
+        }
+
+
+        const errors = []; 
+
+        if (isEmpty(title)) {
+            errors.push('Le champ titre est vide'); 
+        };
+
+        if (isEmpty(description)) {
+            errors.push('Le champ description est vide');
+        }; 
+
+        if (isEmpty(tag)) {
+            errors.push('Le champ tag est vide');
+        }; 
+
+        if (isEmpty(price)) {
+            errors.push('Le champ prix est vide');
+        };
+
+        if (errors.length) {
+            return res.status(400).json({errors});
+        };
+    
     try {
             const newpack = await packDataMapper.insertPack(title, description, price, tag, file);
                 console.log(newpack);
@@ -41,8 +69,36 @@ router.post('/admin/track', express.json({ limit: '100mb' }) ,multerS3.newTrack,
         description = req.body.description;
         price = req.body.price;
         album_id = req.body.album_id;
-        file = req.file.location;
-    try {
+        file = req.file.location; 
+
+        function isEmpty(str) {
+            return !str.trim().length;
+        }
+
+
+        const errors = []; 
+
+        if (isEmpty(title)) {
+            errors.push('Le champ titre est vide'); 
+        };
+
+        if (isEmpty(description)) {
+            errors.push('Le champ description est vide');
+        }; 
+        
+        if (isEmpty(track_number)) {
+            errors.push('Le champ n° de piste est vide');
+        }; 
+
+        if (isEmpty(price)) {
+            errors.push('Le champ prix est vide');
+        };
+
+        if (errors.length) {
+            return res.status(400).json({errors});
+        };
+    
+        try {
             const newtrack = await trackDataMapper.insertTracks(title, track_number, description, price, album_id, file);
                 console.log(newtrack);
             return res.status(200, 'INSERTION EN BASE DU TRACK OK'); 
@@ -59,7 +115,27 @@ router.post('/admin/album', express.json({ limit: '100mb' }) ,multerS3.newAlbum,
     next()
         title = req.body.title; 
         description = req.body.description;
-        file = req.file.location;
+        file = req.file.location; 
+
+        function isEmpty(str) {
+            return !str.trim().length;
+        }
+
+
+        const errors = []; 
+
+        if (isEmpty(title)) {
+            errors.push('Le champ titre est vide'); 
+        };
+
+        if (isEmpty(description)) {
+            errors.push('Le champ description est vide');
+        };
+
+        if (errors.length) {
+            return res.status(400).json({errors});
+        };
+
         try {
             const newalbum = await albumDataMapper.insertAlbums(title, description, file);
                 console.log(newalbum);
