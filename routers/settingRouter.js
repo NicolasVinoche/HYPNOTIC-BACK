@@ -5,6 +5,8 @@ const settingController = require('../controllers/settingController');
 const multerS3 = require('../controllers/multers3'); 
 const packDataMapper = require ('../dataMappers/packDataMapper'); 
 const trackDataMapper = require('../dataMappers/tracksDataMapper');
+const albumDataMapper = require('../dataMappers/albumDataMapper');
+
 
 router.put('/user/:id', settingController.updateUser);
 
@@ -51,5 +53,19 @@ router.post('/admin/track', express.json({ limit: '100mb' }) ,multerS3.newTrack,
 
 // NEW ALBUM
 
-
+router.post('/admin/album', express.json({ limit: '100mb' }) ,multerS3.newTrack, async(req, res, next) => {
+    console.log('req.file:', req.file)
+    console.log('req.title:', req.body.title)
+    next()
+        title = req.body.title; 
+        description = req.body.description;
+        file = req.file.location;
+        try {
+            const newalbum = await albumDataMapper.insertAlbums(title, description, file);
+                console.log(newalbum);
+            return res.status(200, 'INSERTION EN BASE DE L\'ALBUM OK'); 
+        } catch (error) {
+            next(error)
+        }
+} );
 module.exports = router;
