@@ -13,7 +13,7 @@ module.exports = {
       email: userData.email,
       pseudo: userData.pseudo,
       current_period_end: userData.sub_end,
-      isLogged: userData.isLogged
+      isLogged: userData.islogged
     },
     JWT_SIGN_SECRET,
     {

@@ -125,11 +125,10 @@ module.exports = {
         }
 
         try {
+            await userDataMapper.loginSet(email);
             const loginUser = await userDataMapper.loginUser(email);
             
             if (loginUser) {
-
-                await userDataMapper.loginSet(email);
 
                 const match = await bcrypt.compare(password, loginUser.password);
                    console.log('match:', match) 
