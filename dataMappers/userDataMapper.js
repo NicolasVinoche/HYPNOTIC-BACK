@@ -46,6 +46,25 @@ module.exports = {
             return undefined;
         } 
         return result.rows[0];
-    },
+    }, 
+
+    async logoutSet(email) {
+        const result = await client.query(`UPDATE users
+                                           SET isLogged = false WHERE email = $1 RETURNING *`, [email]);
+        if (result.rowCount === 0) {
+            return undefined;
+        } 
+        return result.rows[0];
+    }, 
+
+    async loginSet(userId) {
+        const result = await client.query(`UPDATE users 
+                                           SET isLogged = true WHERE id = $1 RETURNING *`, [userId]); 
+        if (result.rowCount === 0) {
+            return undefined;
+        } 
+        return result.rows[0];
+    }
+
     
 }

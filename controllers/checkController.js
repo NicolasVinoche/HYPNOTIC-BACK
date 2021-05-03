@@ -17,7 +17,7 @@ module.exports = {
       console.log('userRefresh:', userRefresh);
       // On vérifie si ID utilisateur de la demande et on le compare à celui du token
       console.log('userId :', userId);
-      if (userId) {
+      if (userId && decodedToken.isLogged === true) {
         res.json({ userRefresh });
       }
       if (error) {

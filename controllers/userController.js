@@ -128,6 +128,9 @@ module.exports = {
             const loginUser = await userDataMapper.loginUser(email);
             
             if (loginUser) {
+
+                await userDataMapper.loginSet(email);
+
                 const match = await bcrypt.compare(password, loginUser.password);
                    console.log('match:', match) 
 
@@ -163,5 +166,17 @@ module.exports = {
         
         
         
+    }, 
+
+    logout: async function(req, res, next) {
+        const userId = req.params.id
+        
+        try {
+            await userDataMapper.logoutSet (userId)
+            return res.status(200).json('logout');
+
+        } catch (error) {
+            next(error);
+        }
     }
 }
