@@ -39,7 +39,7 @@ module.exports = {
       if (checkEmail) {
         // On fait la somme de tout les produits et on la stocke
         const allProductPrice = product
-          .map((item) => item.price)
+          .map((item) => Number(item.price))
           .reduce((memo, val) => memo + val);
 
         console.log('allProductPrice:', allProductPrice);
