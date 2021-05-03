@@ -25,4 +25,17 @@ module.exports = {
         } 
     }, 
 
+    trackByAlbum: async function(req, res, next) {
+        const albumId = req.params.id;
+
+        try {
+            const track = await tracksDataMapper.findTracksByAlbum(albumId); 
+
+            res.json({ data: track });
+        
+        } catch (error) {
+            next(error);
+        } 
+    },
+
 }

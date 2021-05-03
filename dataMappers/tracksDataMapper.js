@@ -28,4 +28,15 @@ module.exports = {
         return result.rows[0];           
     },
 
+    async findTracksByAlbum (albumId) {
+        const result = await client.query(`SELECT * 
+                                            FROM tracks 
+                                            WHERE album_id = $1`, [albumId]); 
+        if (result.rowCount === 0) {
+            return undefined;
+        } 
+
+        return result.rows[0];
+    },
+
 }
