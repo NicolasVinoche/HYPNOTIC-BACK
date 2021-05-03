@@ -50,6 +50,8 @@ module.exports = {
     
     newPack: upload.single('file'), 
 
-    newTrack: upload.single('file')
+    newTrack: upload.single('file'),
+
+    newAlbum: upload.single('file')
     
 }

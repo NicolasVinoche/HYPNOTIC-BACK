@@ -53,7 +53,7 @@ router.post('/admin/track', express.json({ limit: '100mb' }) ,multerS3.newTrack,
 
 // NEW ALBUM
 
-router.post('/admin/album', express.json({ limit: '100mb' }) ,multerS3.newTrack, async(req, res, next) => {
+router.post('/admin/album', express.json({ limit: '100mb' }) ,multerS3.newAlbum, async(req, res, next) => {
     console.log('req.file:', req.file)
     console.log('req.title:', req.body.title)
     next()
