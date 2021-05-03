@@ -36,7 +36,7 @@ module.exports = {
             return undefined;
         } 
 
-        return result.rows[0];
+        return result.rows;
     },
 
 }
