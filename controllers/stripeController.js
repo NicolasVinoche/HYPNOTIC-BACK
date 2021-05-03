@@ -41,6 +41,7 @@ module.exports = {
           .map((item) => item.price)
           .reduce((memo, val) => memo + val);
 
+        console.log('allProductPrice:', allProductPrice);
         const idempotencyKey = uuid();
         const paymentIntent = await stripe.paymentIntents.create(
           {
