@@ -26,7 +26,7 @@ router.use('/stream', auth, streamRouter);
 router.use('/tips', auth, tipsRouter);
 router.use('/cart', auth, cartRouter);
 router.use('/masterclass', auth, masterclassRouter);
-router.use('/setting', settingRouter); //auth
+router.use('/setting', auth, settingRouter);
 router.use('/contact', contactRouter);
 router.use('/stripe', auth, stripeRouter);
 router.use('/temple', templeRouter); 
