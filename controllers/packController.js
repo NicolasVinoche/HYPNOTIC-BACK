@@ -4,7 +4,8 @@ module.exports = {
     getPacks: async function(_, res, next) {
         try {
             const packs = await packDataMapper.findAllPacks();
-        
+            console.log('packs:', packs)
+            
             res.json({ data: packs });
         } catch (error) {
             next(error);

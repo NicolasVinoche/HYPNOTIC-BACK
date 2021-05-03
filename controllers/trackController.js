@@ -4,6 +4,7 @@ module.exports = {
     getTracks: async function(_, res, next) {
         try { 
             const projects = await tracksDataMapper.findAllTracks(); 
+            console.log('projects:', projects)
 
             res.json({ data: projects });
         } catch (error) {

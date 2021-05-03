@@ -4,7 +4,7 @@ module.exports = {
     getAlbum: async function(_, res, next) {
         try {
             const albums = await packDataMapper.findAllAlbums();
-        
+            console.log(albums)
             res.json({ data: albums });
         } catch (error) {
             next(error);
