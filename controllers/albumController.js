@@ -3,7 +3,7 @@ const albumDataMapper = require('../dataMappers/albumDataMapper');
 module.exports = {
     getAlbum: async function(_, res, next) {
         try {
-            const albums = await packDataMapper.findAllAlbums();
+            const albums = await albumDataMapper.findAllAlbums();
             console.log(albums)
             res.json({ data: albums });
         } catch (error) {
