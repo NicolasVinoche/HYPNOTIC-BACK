@@ -118,13 +118,13 @@ module.exports = {
             return res.status(400).json({errors});
         }
 
-        const user = await userDataMapper.findUser(email);
         
-        if(new Date() >= new Date(user.sub_end * 1000)) {
-            await userDataMapper.subscriberSet(email)
-        }
-
         try {
+            const user = await userDataMapper.findUser(email);
+            
+            if(new Date() >= new Date(user.sub_end * 1000)) {
+                await userDataMapper.subscriberSet(email)
+            }
             await userDataMapper.loginSet(email);
             const loginUser = await userDataMapper.loginUser(email);
             
@@ -155,7 +155,7 @@ module.exports = {
                      }
                      
             } else {
-                errors.push(`Utilisateur introuvale`);
+                errors.push(`Utilisateur introuvable`);
                 return res.status(400).json({errors});
                 
             }
