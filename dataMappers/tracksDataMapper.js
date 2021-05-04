@@ -39,4 +39,9 @@ module.exports = {
         return result.rows;
     },
 
+    async addCover() {
+        const result = await client.query(`UPDATE tracks SET cover = ( SELECT cover FROM albums WHERE albums.id = tracks.album_id )`);
+        return result.rows;
+    }
+
 }
