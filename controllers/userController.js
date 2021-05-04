@@ -182,7 +182,7 @@ module.exports = {
     getItem: async function (req, res, next) {
         const userId = req.params.id 
         try {  
-            const item = await userDataMapper.getitem(userId);
+            const item = await userDataMapper.getItem(userId);
             console.log('stringItem :', item);
 
             const jsonItem = JSON.parse(item.item); 

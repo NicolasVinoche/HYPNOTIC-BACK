@@ -101,7 +101,7 @@ router.post('/admin/track', express.json({ limit: '100mb' }) ,multerS3.newTrack,
         try {
             const newtrack = await trackDataMapper.insertTracks(title, track_number, description, price, album_id, file);
                 console.log(newtrack);
-            await trackDataMapper.addCover();
+            // await trackDataMapper.addCover();
             return res.status(200, 'INSERTION EN BASE DU TRACK OK'); 
         } catch (error) {
             next(error)
