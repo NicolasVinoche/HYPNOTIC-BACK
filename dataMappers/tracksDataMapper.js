@@ -21,7 +21,7 @@ module.exports = {
     }, 
 
     async insertTracks(title, track_number, description, price, album_id, file) {
-        const result = await client.query(`INSERT INTO tracks (title, track_number, description, price, album_id, bucket_link) 
+        const result = await client.query(`INSERT INTO tracks (title, track_number, description, price, album_id, link) 
                                             VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, 
                                             [title, track_number, description, price, album_id, file]);  
     
