@@ -58,15 +58,10 @@ module.exports = {
         );
 
         //enregistrement des produits achetés en base
-        try {  
-            const itemStringed = JSON.stringify(product);
-            console.log('itemStringed', itemStringed)
-             const updateItem = await userDataMapper.updateItem(itemStringed, email);
-
-            return res.json({ cart: updateItem });
-        } catch (error) {
-            next(error);
-        }
+         
+        const itemStringed = JSON.stringify(product);
+        console.log('itemStringed', itemStringed)
+        await userDataMapper.updateItem(itemStringed, email);
         
         res.json({ client_secret: paymentIntent['client_secret'] });
       } else {
