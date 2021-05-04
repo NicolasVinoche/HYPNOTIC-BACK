@@ -185,7 +185,7 @@ module.exports = {
             const item = await userDataMapper.getItem(userId);
             console.log('stringItem :', item);
 
-            const jsonItem = JSON.parse(item.item); 
+            const jsonItem = JSON.parse(item.items); 
             console.log('JSON:', jsonItem)
             return res.json({ item: jsonItem });
         } catch (error) {
