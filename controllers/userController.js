@@ -150,7 +150,7 @@ module.exports = {
                         
 
                        } else {
-                        errors.push(`Mot de passe invalide`);
+                        errors.push(`Mot de passe incorrect`);
                         return res.status(400).json({errors});
                      }
                      

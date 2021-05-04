@@ -30,15 +30,15 @@ module.exports = {
                     const errors = [];
                     
                     if (isEmpty(oldPassword)) {
-                        errors.push(`missing password`);
+                        errors.push(`Le champ mot de passe est vide`);
                     };
                     
                     if (isEmpty(pseudo)) {
-                        errors.push('missing pseudo');
+                        errors.push('Le champ pseudo est vide');
                     };
                     
                     if (pseudo.length >= 13 || pseudo.length <= 4) {
-                        errors.push('wrong pseudo (must be length 5 - 12)');
+                        errors.push('Pseudo invalide (entre 3 et 12 caractères)');
                     };
                 
                     if (errors.length) {
@@ -57,7 +57,7 @@ module.exports = {
                         
                                     return res.status(200).json({ 'pseudo': userSetting.pseudo});
                                 } else { 
-                                errors.push(`invalid password`);
+                                errors.push(`Mot de passe incorrect`);
                                 return res.status(400).json({errors});
                             }
                         }
@@ -73,15 +73,15 @@ module.exports = {
                         const errors = [];
                 
                         if (isEmpty(password)) {
-                            errors.push(`missing password`);
+                            errors.push(`Le champ mot de passe est vide`);
                         };
                 
                         if (!regex_password.test(password)) {
-                            errors.push('password invalid (must length 5 - 20 and include 1 number at least)');
+                            errors.push('Mot de passe invalide (entre 5 et 20 caractères avec au moins 1 chiffre)');
                         };
                         
                         if (confirmPassword !== password) {
-                            errors.push('password confimation not correct');
+                            errors.push('Le mot de passe ne correspond pas');
                         };
                 
                         if (errors.length) {
@@ -102,7 +102,7 @@ module.exports = {
                             
                                     return res.status(200).json({ 'id': userSetting.id});
                                 } else {
-                                    errors.push(`invalid password`);
+                                    errors.push(`Mot de passe incorrect`);
                                     return res.status(400).json({errors});
                                 }
                             }
@@ -113,16 +113,16 @@ module.exports = {
                     }; 
                     
                     if (!regex_password.test(password)) {
-                        errors.push('password invalid (must length 5 - 20 and include 1 number at least)');
+                        errors.push('Mot de passe invalide (entre 5 et 20 caractères avec au moins 1 chiffre)');
                     };
                     
                     if (confirmPassword !== password) {
-                        errors.push('password confimation not correct');
+                        errors.push('Le mot de passe ne correspond pas');
                     };
                     
                     
                     if (pseudo.length >= 13 || pseudo.length <= 4) {
-                        errors.push('wrong pseudo (must be length 5 - 12)');
+                        errors.push('Pseudo invalide (entre 3 et 12 caractères)');
                     }; 
                 
                     if (errors.length) {
@@ -143,7 +143,7 @@ module.exports = {
                         
                                 return res.status(200).json({ 'pseudo': userSetting.pseudo}); 
                             } else { 
-                                errors.push(`invalid password`);
+                                errors.push(`Mot de passe incorrect`);
                                 return res.status(400).json({errors}); 
                             }
                         }

@@ -9,7 +9,7 @@ const app = express();
 app.use(cookieParser()); 
 
 var corsOptions = {
-                   origin: 'https://hypnoticpeafowl.com/',
+                   origin: ['https://hypnoticpeafowl.com/','https://www.hypnoticpeafowl.com'],
                    allowedHeaders: 'Content-Type, Accept, Origin, Authorization',
                    preflightContinue: false,
                    methods: 'GET, PUT, POST, DELETE, PATCH',
