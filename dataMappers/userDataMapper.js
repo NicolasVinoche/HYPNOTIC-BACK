@@ -64,7 +64,18 @@ module.exports = {
             return undefined;
         } 
         return result.rows[0];
-    }
+    },
 
-    
+    async updateItem(item, email) {
+        const result = await client.query(`UPDATE users 
+                                           SET item = $1 
+                                           WHERE email = $2 RETURNING *`, [item, email]); 
+        return result.rows[0];
+    }, 
+
+    async getItem(userId) {
+        const result = await client.query(`SELECT id, item FROM users WHERE id = $1`, [userId]); 
+
+        return result.rows[0];
+    }
 }

@@ -177,5 +177,19 @@ module.exports = {
         } catch (error) {
             next(error);
         }
+    },
+
+    getItem: async function (req, res, next) {
+        const userId = req.params.id 
+        try {  
+            const item = await userDataMapper.getitem(userId);
+            console.log('stringItem :', item);
+
+            const jsonItem = JSON.parse(item.item); 
+            console.log('JSON:', jsonItem)
+            return res.json({ item: jsonItem });
+        } catch (error) {
+            next(error);
+        }
     }
 }
