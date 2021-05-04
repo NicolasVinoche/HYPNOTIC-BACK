@@ -53,7 +53,7 @@ module.exports = {
                     idempotencyKey
                 }
             ); 
-
+                console.log('ITEMS :', product);
             res.json({'client_secret': paymentIntent['client_secret']})
         } else {
             return res.status(400).json({errors :[`Utilisateur introuvable`]});
