@@ -52,7 +52,7 @@ module.exports = {
         };
 
         if (confirmPassword !== password) {
-            errors.push('Le mot de passe ne correspond pas');
+            errors.push('Les deux mots de passe ne correspondent pas');
         };
 
         if (isEmpty(pseudo)) {
