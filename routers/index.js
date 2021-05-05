@@ -20,8 +20,8 @@ const auth = require('../controllers/auth');
 const router = express.Router();
 
 router.use('/user', userRouter);
-router.use('/pack', auth, packRouter);
-router.use('/track', auth, trackRouter);
+router.use('/pack', packRouter);
+router.use('/track', trackRouter);
 router.use('/stream', auth, streamRouter); 
 router.use('/tips', auth, tipsRouter);
 router.use('/cart', auth, cartRouter);

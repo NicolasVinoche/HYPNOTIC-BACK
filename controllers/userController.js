@@ -60,7 +60,7 @@ module.exports = {
         };
 
         if (pseudo.length >= 13 || pseudo.length <= 2) {
-            errors.push('Pseudo invalide (entre 2 et 12 caractères)');
+            errors.push('Pseudo invalide (entre 3 et 12 caractères)');
         }; 
 
         if (errors.length) {
