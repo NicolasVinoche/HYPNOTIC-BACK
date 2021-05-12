@@ -5,11 +5,8 @@ const { uuid } = require('uuidv4');
 const path = require('path');  
 const packDataMapper = require('../dataMappers/packDataMapper'); 
 
-const accessKeyId = process.env.ACCESS_KEY_ID; 
-const secretAccessKey = process.env.SECRET_ACCESS_KEY;
-
 var creds = new AWS.Credentials({
-    accessKeyId: accessKeyId, secretAccessKey: secretAccessKey
+    accessKeyId: 'AKIAYDMZRXLLOEPMOD7J', secretAccessKey: '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'
     });
 
     // Create S3 service object
