@@ -6,7 +6,7 @@ const path = require('path');
 const packDataMapper = require('../dataMappers/packDataMapper');
 
 var creds = new AWS.Credentials({
-    accessKeyId: 'AKIAYDMZRXLLOEPMOD7J', secretAccessKey: '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'
+    accessKeyId: process.env.ACCESS_KEY_ID, secretAccessKey: process.env.SECRET_ACCESS_KEY
     });
 
     // Create S3 service object
